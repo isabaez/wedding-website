@@ -1,0 +1,26 @@
+.page {
+  min-height: 100svh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  height: 100%;
+  width: 100%;
+}
+
+.heading {
+  font-size: 4.8rem;
+  text-align: center;
+  margin-bottom: 16px;
+  font-family: var(--font-hamilton-script);
+}
+.subheading {
+  font-size: 4.2rem;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: var(--font-hamilton-script);
+}
