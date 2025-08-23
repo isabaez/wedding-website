@@ -30,5 +30,5 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main # The branch to deploy to (or 'public' if using that convention)
+          branch: gh-pages # The branch to deploy to for GitHub Pages
           folder: out # The folder containing your built static files
