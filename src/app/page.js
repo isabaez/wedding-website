@@ -1,11 +1,13 @@
 import Link from "next/link";
-import styles from "@components/home/home.module.css";
+import styles from "@components/home/home.module.scss";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 className={styles.heading}>Brianna & Uriel Are Getting Married</h1>
+        <h1 className={"h1 " + styles.heading}>
+          Brianna & Uriel Are Getting Married
+        </h1>
         <p className={styles.subheading}>May 2, 2026</p>
         <p className={styles.subheading}>Dallas, Texas</p>
         <div className={styles.ctaContainer}>

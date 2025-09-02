@@ -13,7 +13,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $sansSerif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,7 +26,7 @@ body {
 
 .cta {
   display: inline-block;
-  font-family: var(--font-aguila-thin);
+  font-family: $sansSerif;
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: .1rem;
@@ -45,6 +45,12 @@ body {
     color: $black;
   }
 }
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $serif;
+  font-weight: 400;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

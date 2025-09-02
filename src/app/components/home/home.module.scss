@@ -16,14 +16,13 @@
   font-size: 4.8rem;
   text-align: center;
   margin-bottom: 2rem;
-  font-family: var(--font-hamilton-script);
 }
 
 .subheading {
+  font-family: $serif;
   font-size: 4.2rem;
   text-align: center;
-  margin-bottom: 0;
-  font-family: var(--font-hamilton-script);
+  margin-bottom: .5rem;
 }
 
 .ctaContainer {

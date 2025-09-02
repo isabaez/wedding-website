@@ -13,7 +13,7 @@ export default function DallasRsvpPage() {
       >
         &lt; Back to Home
       </Link>
-      <h1 className={styles.header}>
+      <h1 className={"h1 " + styles.header}>
         RSVP
       </h1>
       <DallasRsvpForm/>

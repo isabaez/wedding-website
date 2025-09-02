@@ -152,7 +152,7 @@ export default function DallasRsvpForm() {
 
           <div className={styles.submitContainer}>
             <button 
-              className={styles.submitButton}
+              className={"cta"}
               type="submit"
             >
               Submit
