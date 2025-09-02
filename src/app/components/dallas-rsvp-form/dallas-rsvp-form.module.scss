@@ -66,26 +66,6 @@
   margin: 2rem 0 0;
 }
 
-.submitButton {
-  font-family: var(--font-aguila-thin);
-  letter-spacing: .1rem;
-  background-color: $black;
-  color: $white;
-  text-transform: uppercase;
-  border: 1px solid $white;
-  padding: 1.5rem 3rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  cursor: pointer;
-  border-radius: 1px;
-  transition: background-color 0.3s, color 0.3s;
-
-  &:hover {
-    background-color: $white;
-    color: $black;
-  }
-}
-
 .errorMessage {
   font-size: 1.4rem;
   color: #ff6b6b;
