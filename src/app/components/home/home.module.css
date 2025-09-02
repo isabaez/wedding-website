@@ -15,12 +15,17 @@
 .heading {
   font-size: 4.8rem;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 2rem;
   font-family: var(--font-hamilton-script);
 }
+
 .subheading {
   font-size: 4.2rem;
   text-align: center;
   margin-bottom: 0;
   font-family: var(--font-hamilton-script);
+}
+
+.ctaContainer {
+  margin-top: 2.8rem;
 }
