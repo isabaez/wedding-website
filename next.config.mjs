@@ -4,6 +4,9 @@ const nextConfig = {
   sassOptions: {
     prependData: `@import "src/app/components/global/_variables.scss";`,
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
