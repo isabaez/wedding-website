@@ -4,7 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "@components/gallery/gallery.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/effect-fade';
+
 
 export default function GalleryPage() {
   const swiperRef = useRef(null);
@@ -48,17 +51,18 @@ export default function GalleryPage() {
           <Swiper
             className="styles.slider"
             slidesPerView={1}
+            modules={[EffectFade]}
+            loop={true}
+            effect={'fade'}
+            fadeEffect={{ crossFade: true }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-            loop={true}
-            direction={'vertical'}
-            height={700}
           >
             <SwiperSlide>
               <Image
                 className={styles.sliderImage}
-                src='/test2.jpg'
+                src='/gallery1.png'
                 alt=""
                 width={800}
                 height={1000}
@@ -67,7 +71,7 @@ export default function GalleryPage() {
             <SwiperSlide>
               <Image
                 className={styles.sliderImage}
-                src='/website1.jpg'
+                src='/gallery2.png'
                 alt=""
                 width={800}
                 height={1000}
@@ -76,7 +80,7 @@ export default function GalleryPage() {
             <SwiperSlide>
               <Image
                 className={styles.sliderImage}
-                src='/website2.jpg'
+                src='/gallery3.png'
                 alt=""
                 width={800}
                 height={1000}
@@ -85,7 +89,7 @@ export default function GalleryPage() {
             <SwiperSlide>
               <Image
                 className={styles.sliderImage}
-                src='/website3.jpg'
+                src='/gallery4.png'
                 alt=""
                 width={800}
                 height={1000}
@@ -94,52 +98,7 @@ export default function GalleryPage() {
             <SwiperSlide>
               <Image
                 className={styles.sliderImage}
-                src='/website4.jpg'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/website5.jpg'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/website6.jpg'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/website7.jpg'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/website8.jpg'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/website9.jpg'
+                src='/gallery5.png'
                 alt=""
                 width={800}
                 height={1000}
@@ -153,14 +112,26 @@ export default function GalleryPage() {
           className={`${styles.arrowPrev} ${styles.arrow}`}
           aria-label="Previous Slide"
         >
-          &lt;
+          <Image
+            className={styles.arrowImage}
+            src='/cupid-arrow.png'
+            alt=""
+            width={100}
+            height={100}
+          />
         </button>
         <button 
           onClick={() => swiperRef.current?.slideNext()}
           className={`${styles.arrowNext} ${styles.arrow}`}
           aria-label="Next Slide"
         >
-          &gt;
+          <Image
+            className={styles.arrowImage}
+            src='/cupid-arrow.png'
+            alt=""
+            width={100}
+            height={100}
+          />
         </button>
       </div>
     </div>

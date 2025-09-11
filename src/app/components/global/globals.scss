@@ -39,6 +39,7 @@ body {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
+  letter-spacing: -.1rem;
 
   &:hover {
     background-color: $white;
@@ -55,5 +56,21 @@ body {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+.backLink {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: $black;
+  text-decoration: none;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  letter-spacing: -.2rem;
+
+  &:hover {
+    text-decoration: underline;
   }
 }

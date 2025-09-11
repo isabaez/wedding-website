@@ -11,14 +11,14 @@ const hamiltonScript = localFont({
   variable: '--font-hamilton-script',
 })
 
-const aguilaThin = localFont({
-  src: '/fonts/latinotype-aguila-thin.woff2',
-  weight: '100',
+const prairieSans = localFont({
+  src: '/fonts/Prairie-Sans.woff',
+  weight: '400',
   style: 'normal',
   preload: true,
   fallback: ['sans-serif'],
   display: 'swap',
-  variable: '--font-aguila-thin',
+  variable: '--font-prairie-sans',
 })
 
 export const metadata = {
@@ -29,7 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${hamiltonScript.variable} ${aguilaThin.variable}`}>
+      <body className={`${hamiltonScript.variable} ${prairieSans.variable}`}>
         {children}
       </body>
     </html>
