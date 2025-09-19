@@ -16,9 +16,10 @@ export default function GalleryPage() {
     <div className={styles.page}>
       <Link
         href="/"
-        className={styles.backLink}
+        className="backLink"
+        style={{color: '#000'}}
       >
-        &lt; Back to Home
+        &lt; Back Home
       </Link>
       <Image 
         className={styles.backgroundMobile}
@@ -72,33 +73,6 @@ export default function GalleryPage() {
               <Image
                 className={styles.sliderImage}
                 src='/gallery2.png'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/gallery3.png'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/gallery4.png'
-                alt=""
-                width={800}
-                height={1000}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                className={styles.sliderImage}
-                src='/gallery5.png'
                 alt=""
                 width={800}
                 height={1000}

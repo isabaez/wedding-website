@@ -9,12 +9,13 @@ export default function DallasRsvpPage() {
     <div className={styles.page}>
       <Link
         href="/"
-        className={styles.backLink}
+        className="backLink"
+        style={{color: '#fff'}}
       >
-        &lt; Back to Home
+        &lt; Back Home
       </Link>
       <h1 className={"h1 " + styles.header}>
-        RSVP
+        R<span className={styles.headerLine}>SVP</span>
       </h1>
       <DallasRsvpForm/>
     </div>

@@ -17,7 +17,7 @@
   font-size: 1.6rem;
   margin-bottom: 2rem;
   display: inline-block;
-  letter-spacing: -.2rem;
+  letter-spacing: -.1rem;
 
   &:hover {
     text-decoration: underline;
@@ -93,7 +93,7 @@
 
 .arrow {
   position: absolute;
-  top: 45%;
+  top: 50%;
   color: $black;
   background: none;
   outline: none;
@@ -104,7 +104,7 @@
 
 .arrowPrev {
   left: -100px;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(56deg);
   font-size: 3rem;
   cursor: pointer;
   z-index: 1;
@@ -116,7 +116,7 @@
   cursor: pointer;
   outline: none;
   z-index: 1;
-  transform: translateY(-50%) scaleX(-1);
+  transform: translateY(-50%) scaleX(-1) rotate(56deg);
 }
 
 .arrowImage {

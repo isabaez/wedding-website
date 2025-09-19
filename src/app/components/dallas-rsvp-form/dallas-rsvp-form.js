@@ -39,11 +39,14 @@ export default function DallasRsvpForm() {
     >
       { !success ? (
         <form 
+          className={styles.form}
           onSubmit={onSubmit} 
           autoComplete="off"
         >
           <fieldset className={styles.fieldset}>
-            <legend className={styles.legend}>Contact Info</legend>
+            <legend className={styles.legend}>
+              Who are you?
+            </legend>
             <FloatingLabelInput 
               type="text"
               label="Full Name"
@@ -52,7 +55,7 @@ export default function DallasRsvpForm() {
             />
             <FloatingLabelInput 
               type="email"
-              label="Email"
+              label="E-mail"
               name="email"
               required={true}
             />
@@ -63,7 +66,7 @@ export default function DallasRsvpForm() {
             onChange={(e) => setAttending(e.target.value === 'yes')}
           >  
             <legend className={styles.legend}>
-              Will you be attending our reception on May 2, 2026 in Hutchins, TX?
+              Will you be in attendance on May 2, 2026 in Hutchins, TX?
             </legend>
             <input
               id="attending-yes"
@@ -78,7 +81,6 @@ export default function DallasRsvpForm() {
             >
               Yes, I will be attending
             </label>
-            <br/>
             <input
               id="attending-no"
               type="radio"
@@ -95,10 +97,10 @@ export default function DallasRsvpForm() {
           </fieldset>
 
           { attending && (
-            <div>
+            <div className={styles.additionalQuestions}>
               <fieldset className={styles.fieldset}>  
                 <legend className={styles.legend}>
-                  Please list the names of everyone in your party (including yourself)
+                  Please list everyone in your party, including yourself:
                 </legend>
                 <FloatingLabelInput 
                   type="textarea"
@@ -111,11 +113,11 @@ export default function DallasRsvpForm() {
 
               <fieldset className={styles.fieldset}>  
                 <legend className={styles.legend}>
-                  If anyone in your party has dietary restrictions or food allergies, please list them below.
+                  List any dietary restrictions, allergies, or preferences:
                 </legend>
                 <FloatingLabelInput 
                   type="textarea"
-                  label="List dietary restrictions here"
+                  label="vegan, gluten-free, sober, peanut allergy, etc."
                   name="dietary_restrictions"
                   rows="4"
                   required={false}
@@ -124,11 +126,11 @@ export default function DallasRsvpForm() {
 
               <fieldset className={styles.fieldset}>  
                 <legend className={styles.legend}>
-                  Any song requests?
+                  Song requests for the DJ?
                 </legend>
                 <FloatingLabelInput 
                   type="textarea"
-                  label="List song requests here"
+                  label="Not guaranteed, but we’ll try our best"
                   name="songs"
                   rows="4"
                   required={false}
@@ -137,11 +139,11 @@ export default function DallasRsvpForm() {
 
               <fieldset className={styles.fieldset}>  
                 <legend className={styles.legend}>
-                  Feel free to leave us any other comments, well wishes, or questions you may have!
+                  Anything else we should know about?
                 </legend>
                 <FloatingLabelInput 
                   type="textarea"
-                  label="Additional comments here"
+                  label="We'll reach out if needed"
                   name="comments"
                   rows="4"
                   required={false}
@@ -151,6 +153,18 @@ export default function DallasRsvpForm() {
           )}
 
           <div className={styles.submitContainer}>
+
+            <div className={styles.infoText}>
+              Be sure to visit our 
+              <Link
+                href="/"
+                className={styles.infoLink}
+              >
+                information page
+              </Link> 
+              <br/> before submitting your RSVP!
+            </div>
+
             <button 
               className={"cta"}
               type="submit"

@@ -6,7 +6,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1 className={"h1 " + styles.heading}>
-          Brianna & Uriel Are Getting Married
+          Brianna & Uriel <br />Are Getting Married
         </h1>
         <p className={styles.subheading}>May 2, 2026</p>
         <p className={styles.subheading}>Dallas, Texas</p>
