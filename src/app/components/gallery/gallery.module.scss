@@ -6,6 +6,11 @@
   margin: 0 auto;
   letter-spacing: .02rem;
   font-weight: 700;
+  padding: 3rem;
+
+  @media screen and (min-width: 1024px) {
+    padding: 6rem;
+  }
 }
 
 .backLink {
@@ -54,6 +59,14 @@
   }
 }
 
+.header {
+  color: $black;
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: .2rem;
+}
+
 .frameContainer {
   position: absolute;
   top: 50%;
@@ -93,30 +106,42 @@
 
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 105%;
   color: $black;
   background: none;
   outline: none;
   border: none;
-  height: 65px;
-  width: 65px;
+  height: auto;
+  width: 45px;
+
+  @media screen and (min-width: 768px) {
+    top: 49%;
+  }
 }
 
 .arrowPrev {
-  left: -100px;
-  transform: translateY(-50%) rotate(56deg);
+  left: calc(50% - 80px);
+  transform: translateY(-50%) scaleX(-1);
   font-size: 3rem;
   cursor: pointer;
   z-index: 1;
+
+  @media screen and (min-width: 768px) {
+    left: -100px;
+  }
 }
 
 .arrowNext {
-  right: -100px;
+  right: calc(50% - 80px);
   font-size: 3rem;
   cursor: pointer;
   outline: none;
   z-index: 1;
-  transform: translateY(-50%) scaleX(-1) rotate(56deg);
+  transform: translateY(-50%);
+
+  @media screen and (min-width: 768px) {
+    right: -100px;
+  }
 }
 
 .arrowImage {

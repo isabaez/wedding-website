@@ -21,6 +21,9 @@ export default function GalleryPage() {
       >
         &lt; Back Home
       </Link>
+      <h1 className={"h1 " + styles.header}>
+        Gallery
+      </h1>
       <Image 
         className={styles.backgroundMobile}
         src="/gallery-background-mobile.png"
@@ -78,7 +81,78 @@ export default function GalleryPage() {
                 height={1000}
               />
             </SwiperSlide>
-          </Swiper>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery3.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery4.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery5.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery6.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery7.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery8.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery9.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery10.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
         </div>
 
         <button 
@@ -88,7 +162,7 @@ export default function GalleryPage() {
         >
           <Image
             className={styles.arrowImage}
-            src='/cupid-arrow.png'
+            src='/arrow.png'
             alt=""
             width={100}
             height={100}
@@ -101,7 +175,7 @@ export default function GalleryPage() {
         >
           <Image
             className={styles.arrowImage}
-            src='/cupid-arrow.png'
+            src='/arrow.png'
             alt=""
             width={100}
             height={100}

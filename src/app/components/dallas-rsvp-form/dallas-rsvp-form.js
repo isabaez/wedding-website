@@ -13,8 +13,6 @@ export default function DallasRsvpForm() {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    console.log('formData', formData);
-
     formData.append("access_key", "3b000ad7-da14-4d30-9734-3519baa420d7");
     formData.append("subject", `[RSVP] ${formData.get("attending")} - ${formData.get("name")}`);
 
@@ -157,12 +155,13 @@ export default function DallasRsvpForm() {
             <div className={styles.infoText}>
               Be sure to visit our 
               <Link
-                href="/"
+                href="/information"
                 className={styles.infoLink}
               >
                 information page
               </Link> 
-              <br/> before submitting your RSVP!
+              <br/> 
+              for more details and our registry!
             </div>
 
             <button 
