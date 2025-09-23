@@ -153,6 +153,7 @@ export default function GalleryPage() {
                 height={1000}
               />
             </SwiperSlide>
+          </Swiper>
         </div>
 
         <button 
