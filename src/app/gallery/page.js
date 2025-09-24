@@ -19,7 +19,13 @@ export default function GalleryPage() {
         className="backLink"
         style={{color: '#000'}}
       >
-        &lt; Back Home
+        <Image
+          className='backLink__image'
+          src='/arrow.png'
+          alt=""
+          width={100}
+          height={100}
+        /> Home
       </Link>
       <h1 className={"h1 " + styles.header}>
         Gallery

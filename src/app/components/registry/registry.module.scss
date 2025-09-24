@@ -1,0 +1,49 @@
+.page {
+  min-height: 100vh;
+  padding: 6rem 3rem;
+
+  @media screen and (min-width: 1024px) {
+    padding: 12rem 6rem;
+  }
+}
+
+.header {
+  font-size: 6rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: .2rem;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 8rem;
+  }
+}
+
+.envelopeWrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
+}
+
+.envelopeImage {
+  width: 100%;
+  height: auto;
+}
+
+.envelopeText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 30% 15% 0;
+  color: $black;
+  font-size: 1.2rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.8rem;
+  }
+}

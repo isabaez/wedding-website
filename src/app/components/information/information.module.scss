@@ -9,10 +9,14 @@
 }
 
 .header {
-  font-size: 8rem;
+  font-size: 6rem;
   text-align: center;
   margin-bottom: 4rem;
   letter-spacing: .2rem;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 8rem;
+  }
 }
 
 .content {
@@ -33,6 +37,22 @@
     margin-top: 0;
   }
 }
+
+.listHeader {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.list {
+  text-align: center;
+  list-style: none;
+
+  li {
+    padding-left: 20px;
+  }
+}
+
 
 
 

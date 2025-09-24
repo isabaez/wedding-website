@@ -59,23 +59,40 @@ body {
   }
 }
 
+a {
+  color: inherit;
+}
+
 .backLink {
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   left: 1rem;
   text-decoration: none;
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   letter-spacing: -.1rem;
+
+  @media screen and (min-width: 768px) { 
+    left: 3rem;
+  }
 
   @media screen and (min-width: 1024px) {
     font-size: 1.6rem;
-    top: 2rem;
-    left: 2rem;
+    top: 3rem;
+    left: 3rem;
   }
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &__image {
+    transform: scaleX(-1);
+    height: 20px;
+    width: auto;
   }
 }
