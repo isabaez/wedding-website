@@ -13,7 +13,7 @@ export default function RegistryPage() {
       >
         <Image
           className='backLink__image'
-          src='/arrow.png'
+          src='/spade-white.png'
           alt=""
           width={100}
           height={100}
@@ -40,7 +40,29 @@ export default function RegistryPage() {
           We can&#39;t wait to celebrate with you.
           <br></br>
           <br></br>
-          <Link href='https://www.myregistry.com/giftlist/brianna-and-uri'>View Registry</Link>
+          <br></br>
+          <br></br>
+          <Link 
+            className={`cta cta--underline ${styles.registryCta}`}
+            href='https://www.myregistry.com/giftlist/brianna-and-uri'
+            target="_blank"
+          >
+            <Image
+              className={`${styles.registrySpade} ${styles['registrySpade--left']}`}
+              src='/spade-black.png'
+              alt=""
+              width={100}
+              height={100}
+            />
+              Our Registry
+            <Image
+              className={`${styles.registrySpade}`}
+              src='/spade-black.png'
+              alt=""
+              width={100}
+              height={100}
+            />
+          </Link>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function GalleryPage() {
       >
         <Image
           className='backLink__image'
-          src='/arrow.png'
+          src='/spade-black.png'
           alt=""
           width={100}
           height={100}
@@ -159,6 +159,78 @@ export default function GalleryPage() {
                 height={1000}
               />
             </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery12.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery13.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery14.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery15.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery16.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery17.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery18.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery19.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
           </Swiper>
         </div>
 
@@ -169,7 +241,7 @@ export default function GalleryPage() {
         >
           <Image
             className={styles.arrowImage}
-            src='/arrow.png'
+            src='/spade-black.png'
             alt=""
             width={100}
             height={100}
@@ -182,7 +254,7 @@ export default function GalleryPage() {
         >
           <Image
             className={styles.arrowImage}
-            src='/arrow.png'
+            src='/spade-black.png'
             alt=""
             width={100}
             height={100}

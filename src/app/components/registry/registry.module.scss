@@ -1,10 +1,15 @@
 .page {
   min-height: 100vh;
-  padding: 6rem 3rem;
+  padding: 6rem 0rem;
+
+  @media screen and (min-width: 375px) {
+    padding: 6rem 3rem;
+  }
 
   @media screen and (min-width: 1024px) {
-    padding: 12rem 6rem;
+    padding: 8rem 6rem;
   }
+  
 }
 
 .header {
@@ -39,11 +44,28 @@
   left: 0;
   height: 100%;
   width: 100%;
-  padding: 30% 15% 0;
+  padding: 30% 20% 0;
   color: $black;
   font-size: 1.2rem;
 
   @media screen and (min-width: 768px) {
     font-size: 1.8rem;
+  }
+}
+
+.registryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto
+}
+
+.registrySpade {
+  height: 20px;
+  width: auto;
+
+  &--left {
+    transform: scaleX(-1);
   }
 }

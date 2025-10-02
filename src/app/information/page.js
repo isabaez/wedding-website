@@ -13,7 +13,7 @@ export default function InformationPage() {
       >
         <Image
           className='backLink__image'
-          src='/arrow.png'
+          src='/spade-white.png'
           alt=""
           width={100}
           height={100}
