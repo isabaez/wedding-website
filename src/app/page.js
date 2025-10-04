@@ -1,11 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@components/home/home.module.scss";
+import Navigation from "@components/global/navigation/navigation";
 import Footer from "@components/global/footer/footer";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <header>
+        <Navigation />
+      </header>
       <main className={styles.main}>
         <h1 className={"h1 " + styles.heading}>
           Brianna & Uriel <br />Are Getting Married
