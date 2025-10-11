@@ -42,27 +42,31 @@ export default function RegistryPage() {
           <br></br>
           <br></br>
           <br></br>
-          <Link 
-            className={`cta cta--underline ${styles.registryCta}`}
-            href='https://www.myregistry.com/giftlist/brianna-and-uri'
-            target="_blank"
-          >
-            <Image
-              className={`${styles.registrySpade} ${styles['registrySpade--left']}`}
-              src='/spade-black.png'
-              alt=""
-              width={100}
-              height={100}
-            />
-              Our Registry
-            <Image
-              className={`${styles.registrySpade}`}
-              src='/spade-black.png'
-              alt=""
-              width={100}
-              height={100}
-            />
-          </Link>
+          <div className={styles.registryCtaWrapper}> 
+            <Link 
+              className={styles.registryCta}
+              href='https://www.myregistry.com/giftlist/brianna-and-uri'
+              target="_blank"
+            >
+              <Image
+                className={styles.registryCtaDecoration}
+                src='/flower-left.png'
+                alt=""
+                width={100}
+                height={100}
+              />
+              <span className={`h2 ${styles.registryCtaText}`}>
+                Our Registry
+              </span>
+              <Image
+                className={styles.registryCtaDecoration}
+                src='/flower-right.png'
+                alt=""
+                width={100}
+                height={100}
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
