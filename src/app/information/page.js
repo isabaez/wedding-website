@@ -9,11 +9,11 @@ export default function InformationPage() {
       <Link
         href="/"
         className="backLink"
-        style={{color: '#fff'}}
+        style={{color: "#fff"}}
       >
         <Image
-          className='backLink__image'
-          src='/spade-white.png'
+          className="backLink__image"
+          src="/spade-white.png"
           alt=""
           width={100}
           height={100}
@@ -25,48 +25,41 @@ export default function InformationPage() {
       <div className={styles.content}>
         <h2 className={styles.subheader}>The Event</h2>
         <p className={styles.text}>
-          We will be hosting a celebration of our marriage on Saturday, May 2, 2026 in Hutchins, Texas 
-          at the garden of the Kendall family home. The party will begin at 6:00pm with an open bar and appetizers,
-          followed by dinner, speeches, cake cutting, dancing to the tunes of our favorite DJ, 
-          and unlimited photobooth pics. We can&#39;t wait to celebrate with you!
+          We will be celebrating our legal marriage on Saturday, May 2, 2026 in Hutchins, Texas. The party will begin at 6:00pm with an open bar, followed by dinner and speeches, cake (!!!), dancing to our favorite DJ, and unlimited photobooth pics. We can&#39;t wait to celebrate with you!
         </p>
         <h2 className={styles.subheader}>The Venue</h2>
         <p className={styles.text}>
-          The Kendall family home is located 20 minutes south of downtown Dallas (roughly 45 minutes from DFW airport). 
-          The exact address can be found on your invitation, or by reaching out to us directly via text or email at <Link href="mailto:briurixo@gmail.com">briurixo@gmail.com</Link>.
+          The Kendall home is located 15 minutes south of downtown Dallas (roughly 40 minutes from DFW airport). The exact address can be found on your invitation, or by reaching out to us directly via text or email at <Link href="mailto:briurixo@gmail.com">briurixo@gmail.com</Link>.
           <br></br>
           <br></br>
-          The garden is an intimate outdoor space, we will have a variety of seating options available to encourage mingling and dancing.
-          <br></br>
-          <br></br>
-          Parking will be available at a nearby lot, only a 5 minute walk away from the venue.
+          The garden is an intimate outdoor space, so parking will be available at a nearby lot (less than a 5 minute walk away).
         </p>
         <h2 className={styles.subheader}>Dress Code</h2>
         <p className={styles.text}>
-          The dress code is evening garden party / cocktail attire. Please no shorts or denim.<br></br>
+           Cocktail attire/evening garden party. Please no shorts or denim. For inspiration, check out these Pinterest boards:
+          <br></br>
           <Link href="/">Dress Code Examples / Inspiration</Link>
         </p>
 
         <h2 className={styles.subheader}>Food & Drink</h2>
         <p className={styles.text}>
-          Our appetizer table will feature bread, cheese, salad, and a variety of other snacks to pick at.
-          For dinner, a showcase of two favorites of our Italian and Mexican heritage: <strong>pizza and tacos</strong>. Please note any dietary limitations while RSVPing.
+           We&#39;ll have a variety of salads and appetizers. For dinner, a showcase of two favorites from our mixed heritage: pizza and tacos. Please note any dietary limitations while RSVPing.
           <br></br> 
           <br></br>
-          The <strong>open bar</strong> will serve wine, beer, and a few signature cocktails, along with several alcohol-free options.
+          The open bar will serve beer, wine, signature cocktails, and alcohol-free options.
           <br></br>
           <br></br>
-          All food and drinks will be served on a <strong>first come, first serve</strong> basis in a relaxed environment. There will be no assigned seating or wait staff.
+          All food and drinks will be served buffet-style.
         </p>
 
         <h2 className={styles.subheader}>Our Registry</h2>
         <p className={styles.text}>
-          Visit our registry page <Link href='/registry'>here</Link>
+          Visit our <Link href="/registry">registry page here</Link>
         </p>
 
         <h2 className={styles.subheader}>Accommodations</h2>
         <p className={styles.text}>
-          If you&#39;re visiting us from out of town, there are plenty of hotel options within driving distance. We don&#39;t have any room blocks, so you&#39;ll need to book directly with the hotel you choose. 
+          If you&#39;re visiting us from out of town, there are plenty of hotel options within driving distance. We don&#39;t have any room blocks, so you&#39;ll need to book directly with the hotel you choose.
           <br></br>
           Below are some recommendations to get you started!
         </p>
@@ -75,8 +68,16 @@ export default function InformationPage() {
           Closest to the venue (5 min drive):
         </p>
         <ul className={styles.list}>
-          <li>La Quinta Inn & Suites</li> 
-          <li>Red Roof Inn</li>
+          <li>
+            <Link href="https://www.wyndhamhotels.com/laquinta/hutchins-texas/la-quinta-dallas-hutchins/overview">
+              La Quinta Inn & Suites
+            </Link>
+          </li> 
+          <li>
+            <Link href="https://www.redroof.com/property/tx/hutchins/rri611">
+              Red Roof Inn
+            </Link>
+          </li>
         </ul>
 
         <p className={styles.listHeader}>
@@ -99,7 +100,11 @@ export default function InformationPage() {
           Our Picks
         </p>
         <ul className={styles.list}>
-          <li>The Virgin Hotel (Right across the street from our apartment!)</li> 
+          <li>
+            <Link href="https://virginhotels.com/dallas/">
+            The Virgin Hotel (Right across the street from our apartment!)
+            </Link>
+          </li> 
           <li>Omni Las Colinas (Beautiful hotel near DFW airport)</li>
           <li>The Westin Downtown Dallas (Located right in downtown amongst many attractions)</li>
         </ul>
