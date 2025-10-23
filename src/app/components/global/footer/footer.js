@@ -2,18 +2,18 @@ import Image from "next/image";
 import styles from "@components/global/footer/footer.module.scss";
 
 export default function Footer({
-  transparent = false
+  invert = false
  }) {
 
   return (
-    <footer className={styles.footer }>
+  <footer className={invert ? `${styles.footer} ${styles.inverted}` : styles.footer}>
       <Image
-        className={styles.footerLogo}
-        src='/cherub-white.png'
+        className={styles.crest}
+        src={invert ? '/crest-black.png' : '/crest-white.png'}
         alt=""
-        width={30}
-        height={50}
+        width={200}
+        height={200}
       />
     </footer>
-  )
+  ) 
 }

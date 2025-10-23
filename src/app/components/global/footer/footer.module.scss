@@ -1,16 +1,31 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 50px;
-  background-color: $black;
+  width: 100%;
+  max-width: 400px;
+  background-color: transparent;
   color: $white;
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 0;
+  margin: 6rem auto 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
 
-  &__inverted {
-    background-color: none;
-    color: $black;
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+    max-width: 400px;
+    padding: 6rem 8rem 0;
+    margin: 6rem auto 0;
+  }
+
+  &.inverted {
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .crest {
+    margin: 0 auto;
+    height: 110px;
+    width: auto;
+
+    @media screen and (min-width: 1024px) {
+      height: 130px;
+    }
   }
 }

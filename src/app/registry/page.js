@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@components/registry/registry.module.scss";
+import Footer from "@components/global/footer/footer";
 
 export default function RegistryPage() {
 
@@ -29,6 +30,13 @@ export default function RegistryPage() {
           alt=""
           width={600}
           height={700}
+        />
+        <Image
+          className={styles.crestImage}
+          src='/crest-black.png'
+          alt=""
+          width={200}
+          height={200}
         />
         <div className={styles.envelopeText}>
           Thank you so much for thinking of us.

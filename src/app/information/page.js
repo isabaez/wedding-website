@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@components/information/information.module.scss";
+import Footer from "@components/global/footer/footer";
 
 export default function InformationPage() {
 
@@ -169,6 +170,7 @@ export default function InformationPage() {
             <li>Bottolino Gelato</li>
           </ul>
       </div>
+      <Footer/>
     </div>
   );
 }
