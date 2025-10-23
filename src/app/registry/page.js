@@ -1,16 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "@components/registry/registry.module.scss";
-import Footer from "@components/global/footer/footer";
+import "@styles/registry.scss";
 
 export default function RegistryPage() {
 
   return (
-    <div className={styles.page}>
+    <div className="Registry">
       <Link
         href="/"
         className="backLink"
-        style={{color: '#fff'}}
+        style={{ color: '#fff' }}
       >
         <Image
           className='backLink__image'
@@ -20,25 +19,25 @@ export default function RegistryPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className={"h1 " + styles.header}>
+      <h1 className="Registry__header h1">
         Registry
       </h1>
-      <div className={styles.envelopeWrapper}>
+      <div className="Registry__envelope-wrapper">
         <Image
-          className={styles.envelopeImage}
+          className="Registry__envelope-image"
           src='/envelope.png'
           alt=""
           width={600}
           height={700}
         />
         <Image
-          className={styles.crestImage}
+          className="Registry__crest-image"
           src='/crest-black.png'
           alt=""
           width={200}
           height={200}
         />
-        <div className={styles.envelopeText}>
+        <div className="Registry__envelope-text">
           Thank you so much for thinking of us.
           <br></br>
           <br></br>
@@ -50,24 +49,24 @@ export default function RegistryPage() {
           <br></br>
           <br></br>
           <br></br>
-          <div className={styles.registryCtaWrapper}> 
-            <Link 
-              className={styles.registryCta}
+          <div className="Registry__cta-wrapper">
+            <Link
+              className="Registry__cta"
               href='https://www.myregistry.com/giftlist/brianna-and-uri'
               target="_blank"
             >
               <Image
-                className={styles.registryCtaDecoration}
+                className="Registry__cta-decoration"
                 src='/flower-left.png'
                 alt=""
                 width={100}
                 height={100}
               />
-              <span className={`h2 ${styles.registryCtaText}`}>
+              <span className="Registry__cta-text h2">
                 Our Registry
               </span>
               <Image
-                className={styles.registryCtaDecoration}
+                className="Registry__cta-decoration"
                 src='/flower-right.png'
                 alt=""
                 width={100}

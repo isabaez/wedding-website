@@ -2,18 +2,18 @@
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "@components/gallery/gallery.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import "@styles/gallery.scss";
 
 
 export default function GalleryPage() {
   const swiperRef = useRef(null);
 
   return (
-    <div className={styles.page}>
+    <div className="Gallery">
       <Link
         href="/"
         className="backLink"
@@ -27,11 +27,11 @@ export default function GalleryPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className={"h1 " + styles.header}>
+      <h1 className="Gallery__header h1">
         Gallery
       </h1>
       <Image 
-        className={styles.backgroundMobile}
+        className="Gallery__background-mobile"
         src="/gallery-background-mobile.png"
         alt=""
         priority={true}
@@ -39,7 +39,7 @@ export default function GalleryPage() {
         sizes="100vw"
       />
       <Image 
-        className={styles.backgroundDesktop}
+        className="Gallery__background-desktop"
         src="/gallery-background-desktop.png"
         alt=""
         priority={true}
@@ -47,9 +47,9 @@ export default function GalleryPage() {
         sizes="100vw"
       />
 
-      <div className={styles.frameContainer}>
+      <div className="Gallery__frame-container">
         <Image 
-          className={styles.frame}
+          className="Gallery__frame"
           src="/gallery-frame.png"
           width={1289}
           height={1667}
@@ -57,9 +57,9 @@ export default function GalleryPage() {
           sizes="700px"
         />
 
-        <div className={styles.sliderContainer}>
+        <div className="Gallery__slider-wrapper">
           <Swiper
-            className="styles.slider"
+            className="Gallery__slider"
             slidesPerView={1}
             modules={[EffectFade]}
             loop={true}
@@ -71,7 +71,7 @@ export default function GalleryPage() {
           >
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery1.png'
                 alt=""
                 width={800}
@@ -80,7 +80,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery2.png'
                 alt=""
                 width={800}
@@ -89,7 +89,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery3.png'
                 alt=""
                 width={800}
@@ -98,7 +98,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery4.png'
                 alt=""
                 width={800}
@@ -107,7 +107,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery5.png'
                 alt=""
                 width={800}
@@ -116,7 +116,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery6.png'
                 alt=""
                 width={800}
@@ -125,7 +125,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery7.png'
                 alt=""
                 width={800}
@@ -134,7 +134,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery8.png'
                 alt=""
                 width={800}
@@ -143,7 +143,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery9.png'
                 alt=""
                 width={800}
@@ -152,7 +152,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery10.png'
                 alt=""
                 width={800}
@@ -161,7 +161,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery12.png'
                 alt=""
                 width={800}
@@ -170,7 +170,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery13.png'
                 alt=""
                 width={800}
@@ -179,7 +179,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery14.png'
                 alt=""
                 width={800}
@@ -188,7 +188,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery15.png'
                 alt=""
                 width={800}
@@ -197,7 +197,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery16.png'
                 alt=""
                 width={800}
@@ -206,7 +206,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery17.png'
                 alt=""
                 width={800}
@@ -215,7 +215,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery18.png'
                 alt=""
                 width={800}
@@ -224,7 +224,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery19.png'
                 alt=""
                 width={800}
@@ -233,7 +233,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className={styles.sliderImage}
+                className="Gallery__slider-image"
                 src='/gallery20.png'
                 alt=""
                 width={800}
@@ -245,11 +245,11 @@ export default function GalleryPage() {
 
         <button 
           onClick={() => swiperRef.current?.slidePrev()}
-          className={`${styles.arrowPrev} ${styles.arrow}`}
+          className="Gallery__arrow Gallery__arrow--prev"
           aria-label="Previous Slide"
         >
           <Image
-            className={styles.arrowImage}
+            className="Gallery__arrow-image"
             src='/spade-black.png'
             alt=""
             width={100}
@@ -258,11 +258,11 @@ export default function GalleryPage() {
         </button>
         <button 
           onClick={() => swiperRef.current?.slideNext()}
-          className={`${styles.arrowNext} ${styles.arrow}`}
+          className="Gallery__arrow Gallery__arrow--next"
           aria-label="Next Slide"
         >
           <Image
-            className={styles.arrowImage}
+            className="Gallery__arrow-image"
             src='/spade-black.png'
             alt=""
             width={100}

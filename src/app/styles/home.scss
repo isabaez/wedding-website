@@ -1,0 +1,75 @@
+.HomePage {
+  min-height: 100svh;
+  padding: 8rem 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    padding: 10rem 6rem 4rem;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__heading {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: 375px) {
+      font-size: 4.8rem;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 5.6rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 6.8rem;
+    }
+
+    br {
+      display: block;
+
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  &__subheading {
+    font-family: $serif;
+    font-size: 3.2rem;
+    text-align: center;
+    margin-bottom: .5rem;
+
+    @media screen and (min-width: 375px) {
+      font-size: 3.4rem;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 3.8rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 4.2rem;
+    }
+  }
+
+  &__cta-container {
+    margin-top: 2.8rem;
+  }
+
+  &__cherub {
+    margin-top: 3.3rem;
+    height: 200px;
+    width: auto;
+  }
+}

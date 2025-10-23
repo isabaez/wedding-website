@@ -1,4 +1,4 @@
-.footer {
+.Footer {
   width: 100%;
   max-width: 400px;
   background-color: transparent;
@@ -15,11 +15,11 @@
     margin: 6rem auto 0;
   }
 
-  &.inverted {
+  &--inverted {
     border-top: 1px solid rgba(0, 0, 0, 0.4);
   }
 
-  .crest {
+  &__crest {
     margin: 0 auto;
     height: 110px;
     width: auto;
