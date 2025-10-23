@@ -15,6 +15,13 @@ export default function Home() {
         </h1>
         <p className="Home__subheading">May 2, 2026</p>
         <p className="Home__subheading">Dallas, Texas</p>
+        <Image
+          className="Home__photobooth-image"
+          src='/photobooth-3.png'
+          alt=""
+          width={600}
+          height={200}
+        />
         <div className="Home__cta-container">
           <Link 
             href="/rsvp" 

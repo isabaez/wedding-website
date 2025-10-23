@@ -1,12 +1,12 @@
 .Home {
   min-height: 100svh;
-  padding: 8rem 1.8rem;
+  padding: 12rem 1.8rem 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media screen and (min-width: 1024px) {
-    padding: 10rem 6rem 4rem;
+    padding: 14rem 6rem 4rem;
   }
 
   &__main {
@@ -60,6 +60,16 @@
 
     @media screen and (min-width: 1024px) {
       font-size: 4.2rem;
+    }
+  }
+
+  &__photobooth-image {
+    width: 100%;
+    height: auto;
+    margin: 3rem 0;
+
+    @media screen and (min-width: 768px) {
+      width: 500px;
     }
   }
 
