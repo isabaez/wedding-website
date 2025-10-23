@@ -231,6 +231,15 @@ export default function GalleryPage() {
                 height={1000}
               />
             </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                className={styles.sliderImage}
+                src='/gallery20.png'
+                alt=""
+                width={800}
+                height={1000}
+              />
+            </SwiperSlide>
           </Swiper>
         </div>
 
