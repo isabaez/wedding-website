@@ -52,9 +52,13 @@
 
   &__frame-container {
     position: absolute;
-    top: 50%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media screen and (min-width: 768px) {
+      top: 50%;
+    }
   }
 
   &__frame {
@@ -89,7 +93,8 @@
 
   &__arrow {
     position: absolute;
-    top: 105%;
+    top: calc(100% + 22px);
+    transform: translateY(-50%);
     color: $black;
     background: none;
     outline: none;
@@ -135,7 +140,7 @@
 
   &__captions-container {
     position: absolute;
-    bottom: -45px;
+    bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
