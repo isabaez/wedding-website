@@ -2,7 +2,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import "@styles/rsvp-page.scss";
-import RsvpForm from "@/app/components/rsvp-form";
+import RsvpForm from "@components/rsvp-form";
+import Footer from "@components/footer";
 
 export default function DallasRsvpPage() {
 
@@ -27,6 +28,7 @@ export default function DallasRsvpPage() {
         Please visit our <a href="/information">information page</a> before submitting your RSVP
       </div>
       <RsvpForm/>
+      <Footer />
     </div>
   );
 }

@@ -136,13 +136,18 @@ export default function InformationPage() {
               <h4>Museums, Parks, and Attractions</h4>
               <ul >
                 <li>
+                  <Link href="https://www.dallascontemporary.org/">
+                    Dallas Contemporary (Free)
+                  </Link>
+                </li>
+                <li>
                   <Link href="https://www.dallasarboretum.org/">
                     Dallas Arboretum
                   </Link>
                 </li>
                 <li>
                   <Link href="https://dma.org/">
-                    Dallas Museum of Art
+                    Dallas Museum of Art (Free)
                   </Link>
                 </li>
                 <li>
@@ -150,22 +155,47 @@ export default function InformationPage() {
                     Fort Worth Stockyards
                   </Link>
                 </li>
+                <li>
+                  <Link href="https://thetexastheatre.com/">
+                    Texas Theatre
+                  </Link>
+                </li>
                 <li>Klyde Warren Park</li>
-                <li>Sixth Floor Museum</li>
+                <li>Dallas Bishop Arts District</li>
+                <li>Lower Greenville Neighborhood</li>
+                <li>Katy Trail</li>
               </ul>
               <h4 >
                 Our fav local food options
               </h4>
-              <ul >
+              <ul>
                 <li>Jimmy&#39;s Food Store</li>
                 <li>Tacos La Banqueta Puro DF</li>
-                <li>Tacos El Si Hay</li>
+                <li>Spiral Diner in Fort Worth (vegan)</li>
+                <li>
+                  <Link href="https://www.royalchinadallas.com/">
+                    Royal China
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://www.elpalote.com/">
+                    El Palote Panaderia (vegan)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://www.facebook.com/profile.php?id=100063604538415#">
+                    Catrachito Restaurante
+                  </Link>
+                </li>
               </ul>
               <h4 >
                 World Famous BBQ & Steakhouses
               </h4>
               <ul>
                 <li>Terry Black&#39;s BBQ</li>
+                <li>Hutchins BBQ</li>
+                <li>Smokey Joe&#39;s BBQ</li>
+                <li>Goldee&#39;s</li>
                 <li>Al Biernat&#39;s</li>
                 <li>Pappas Bros</li>
               </ul>
@@ -176,16 +206,34 @@ export default function InformationPage() {
                 <li>Bowen House</li>
                 <li>Katy Trail Ice House</li>
                 <li>Double D&#39;s</li>
+                <li>Reveler&#39;s Hall</li>
               </ul>
               <h4 >
                 Coffee & Sweet Treats
               </h4>
               <ul >
+                <li>
+                  Del Norte Bakery #2
+                </li>
                 <li>Village Baking Co.</li>
                 <li>LDU Coffee To Go</li>
                 <li>Bottolino Gelato</li>
+                <li>Cafe Momento</li>
+                <li>85 Degree Bakery</li>
+                <li>Emporium Pies</li>
+                <li>Picolé Pops</li>
               </ul>
             </div>
+          }
+        >
+        </AccordionItem>
+
+        <AccordionItem
+          title="Plus Ones"
+          content={
+            <p>
+              Due to the intimate setting, please request any plus ones via the RSVP form and we will reach out to let you know if we can accomodate your guest.
+            </p>
           }
         >
         </AccordionItem>
