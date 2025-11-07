@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "@components/global/floating-label-input/floating-label-input.module.scss";
+import "@styles/floating-label-input.scss";
 
 export default function FloatingLabelInput({
   type,
@@ -17,11 +17,11 @@ export default function FloatingLabelInput({
   };
 
   return (
-    <div className={styles.floatingLabelGroup}>
+    <div className="floating-label-input">
       { type === 'textarea' ? (
         <textarea
           id={'input-'+ name}
-          className={inputValue ? styles.filled : ''} 
+          className={inputValue ? 'filled' : ''} 
           name={name}
           value={inputValue} 
           onChange={handleInputChange} 
@@ -32,7 +32,7 @@ export default function FloatingLabelInput({
       ) : (
         <input 
           id={'input-'+ name}
-          className={inputValue ? styles.filled : ''} 
+          className={inputValue ? 'filled' : ''} 
           type={type} 
           name={name}
           value={inputValue} 
@@ -44,7 +44,7 @@ export default function FloatingLabelInput({
       { label && (
         <label 
           htmlFor={'input-'+ name}
-          className={inputValue ? styles.filled : ''}
+          className={inputValue ? 'filled' : ''}
         >
           {label}
         </label>

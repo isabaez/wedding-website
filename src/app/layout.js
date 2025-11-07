@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import "@styles/globals.scss";
+import "@styles/base.scss";
 
 const hamiltonScript = localFont({
   src: '/fonts/hamilton-script.woff2',

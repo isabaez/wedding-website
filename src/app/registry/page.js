@@ -8,11 +8,10 @@ export default function RegistryPage() {
     <div className="Registry">
       <Link
         href="/"
-        className="backLink"
-        style={{ color: '#fff' }}
+        className="back-link"
       >
         <Image
-          className='backLink__image'
+          className='back-link__image'
           src='/spade-white.png'
           alt=""
           width={100}

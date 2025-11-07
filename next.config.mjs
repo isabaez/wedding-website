@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   sassOptions: {
-    prependData: `@import "src/app/components/global/_variables.scss";`,
+    prependData: `@import "src/app/styles/_variables.scss";`,
   },
   images: {
     unoptimized: true,

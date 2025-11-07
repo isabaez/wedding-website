@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
-import styles from "@components/dallas-rsvp-form/dallas-rsvp-form.module.scss";
-import FloatingLabelInput from "@components/global/floating-label-input/floating-label-input";
+import "@styles/rsvp-form.scss";
+import FloatingLabelInput from "@components/floating-label-input";
 import Link from "next/link";
 
 export default function DallasRsvpForm() {
@@ -33,16 +33,16 @@ export default function DallasRsvpForm() {
 
   return (
     <div
-      className={styles.page}
+      className="rsvp-form"
     >
       { !success ? (
         <form 
-          className={styles.form}
+          className="rsvp-form__container"
           onSubmit={onSubmit} 
           autoComplete="off"
         >
-          <fieldset className={styles.fieldset}>
-            <legend className={styles.legend}>
+          <fieldset className="rsvp-form__fieldset">
+            <legend className="rsvp-form__legend">
               Who are you?
             </legend>
             <FloatingLabelInput 
@@ -60,10 +60,10 @@ export default function DallasRsvpForm() {
           </fieldset>
 
           <fieldset 
-            className={styles.fieldset}
+            className="rsvp-form__fieldset"
             onChange={(e) => setAttending(e.target.value === 'yes')}
           >  
-            <legend className={styles.legend}>
+            <legend className="rsvp-form__legend">
               Will you be in attendance on May 2, 2026 in Hutchins, TX?
             </legend>
             <input
@@ -71,11 +71,11 @@ export default function DallasRsvpForm() {
               type="radio"
               name="attending"
               value="yes"
-              className={styles.radioInput}
+              className="rsvp-form__radio-input"
             />
             <label 
               htmlFor="attending-yes"
-              className={styles.radioLabel}
+              className="rsvp-form__radio-label"
             >
               Yes, I will be attending
             </label>
@@ -84,20 +84,20 @@ export default function DallasRsvpForm() {
               type="radio"
               name="attending"
               value="no"
-              className={styles.radioInput}
+              className="rsvp-form__radio-input"
             />
             <label 
               htmlFor="attending-no"
-              className={styles.radioLabel}
+              className="rsvp-form__radio-label"
             >
               No, I will not be attending
             </label>
           </fieldset>
 
           { attending && (
-            <div className={styles.additionalQuestions}>
-              <fieldset className={styles.fieldset}>  
-                <legend className={styles.legend}>
+            <div className="rsvp-form__container">
+              <fieldset className="rsvp-form__fieldset">  
+                <legend className="rsvp-form__legend">
                   Please list everyone in your party, including yourself:
                 </legend>
                 <FloatingLabelInput 
@@ -109,8 +109,8 @@ export default function DallasRsvpForm() {
                 />
               </fieldset>
 
-              <fieldset className={styles.fieldset}>  
-                <legend className={styles.legend}>
+              <fieldset className="rsvp-form__fieldset">  
+                <legend className="rsvp-form__legend">
                   List any dietary restrictions, allergies, or preferences:
                 </legend>
                 <FloatingLabelInput 
@@ -122,8 +122,8 @@ export default function DallasRsvpForm() {
                 />
               </fieldset>
 
-              <fieldset className={styles.fieldset}>  
-                <legend className={styles.legend}>
+              <fieldset className="rsvp-form__fieldset">  
+                <legend className="rsvp-form__legend">
                   Song requests for the DJ?
                 </legend>
                 <FloatingLabelInput 
@@ -135,8 +135,8 @@ export default function DallasRsvpForm() {
                 />
               </fieldset>
 
-              <fieldset className={styles.fieldset}>  
-                <legend className={styles.legend}>
+              <fieldset className="rsvp-form__fieldset">  
+                <legend className="rsvp-form__legend">
                   Anything else we should know about?
                 </legend>
                 <FloatingLabelInput 
@@ -150,29 +150,17 @@ export default function DallasRsvpForm() {
             </div>
           )}
 
-          <div className={styles.submitContainer}>
-
-            <div className={styles.infoText}>
-              Be sure to visit our 
-              <Link
-                href="/information"
-                className={styles.infoLink}
-              >
-                information page
-              </Link> 
-              <br/> 
-              for more details and our registry!
-            </div>
+          <div className="rsvp-form__submit-container">
 
             <button 
-              className={"cta"}
+              className="cta"
               type="submit"
             >
               Submit
             </button>
 
             { error && (
-              <p className={styles.errorMessage}>
+              <p className="rsvp-form__error-message">
                 There was an error submitting your RSVP.<br />
                 Please try again or email us at <Link href="mailto:briurixo@gmail.com">briurixo@gmail.com</Link>
               </p>
@@ -180,9 +168,13 @@ export default function DallasRsvpForm() {
           </div>
         </form>
       ) : (
-      <div className={styles.thankYouMessage}>
-        <h2 className={styles.thankYouHeader}>Thank you for your RSVP!</h2>
-        <p className={styles.thankYouBody}>We look forward to celebrating with you on our special day.</p>
+      <div className="rsvp-form__success-container">
+        <h2 className="rsvp-form__success-header">
+          Thank you for your RSVP!
+        </h2>
+        <p className="rsvp-form__success-text">
+          We look forward to celebrating with you on our special day.
+        </p>
       </div>
       ) }
     </div>

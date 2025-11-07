@@ -1,6 +1,6 @@
 .Footer {
   width: 100%;
-  max-width: 400px;
+  max-width: 800px;
   background-color: transparent;
   color: $white;
   text-align: center;
@@ -9,10 +9,8 @@
   border-top: 1px solid rgba(255, 255, 255, 0.4);
 
   @media screen and (min-width: 1024px) {
-    width: 50%;
-    max-width: 400px;
-    padding: 6rem 8rem 0;
-    margin: 6rem auto 0;
+    max-width: 1200px;
+    margin: 0 auto 0;
   }
 
   &--inverted {
@@ -23,9 +21,5 @@
     margin: 0 auto;
     height: 110px;
     width: auto;
-
-    @media screen and (min-width: 1024px) {
-      height: 130px;
-    }
   }
 }

@@ -34,8 +34,8 @@ body {
   padding: 1rem 2rem;
   color: $white;
   background-color: $black;
-  border: 1px solid $white;
-  border-radius: 1px;
+  border: .5px solid $white;
+  border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
@@ -71,6 +71,7 @@ body {
   }
 }
 
+h1,h2,h3,h4,h5,h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $serif;
   font-weight: 400;
@@ -88,18 +89,47 @@ a {
   color: inherit;
 }
 
-.backLink {
-  position: absolute;
+.back-link {
+  position: fixed;
   top: 2rem;
   left: 1rem;
   text-decoration: none;
   font-size: 1.2rem;
-  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 6px;
   letter-spacing: -.1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: .5px solid $white;
+  border-radius: 2px;
+  background: $black;
+  color: $white;
+  z-index: 1;
+  transition: background-color .3s ease;
+
+  &--transparent {
+    background: transparent;
+    color: $black;
+    border-color: $black;
+
+    .back-link__image {
+      filter: invert(1);
+    }
+
+    // only add hover if not on touch device
+    @media (hover: hover) and (pointer: fine) {
+      &.back-link:hover {
+        background: $black;
+        color: $white;
+
+        .back-link__image {
+          filter: invert(0);
+        }
+      }
+    }
+  }
 
   @media screen and (min-width: 768px) { 
     left: 3rem;
@@ -109,15 +139,29 @@ a {
     font-size: 1.6rem;
     top: 3rem;
     left: 3rem;
+    padding: 1.5rem;
   }
 
-  &:hover {
-    text-decoration: underline;
+  // only add hover if not on touch device
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: $white;
+      color: $black;
+      border-color: $black;
+
+      .back-link__image {
+        filter: invert(1);
+      }
+    }
   }
 
   &__image {
     transform: scaleX(-1);
-    height: 20px;
+    height: 16px;
     width: auto;
+
+    @media screen and (min-width: 1024px) {
+      height: 20px;
+    }
   }
 }
