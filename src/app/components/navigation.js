@@ -13,7 +13,7 @@ export default function Navigation() {
           <Link href="/gallery">Gallery</Link>
         </li>
         <li className="Navigation__item">
-          <Link href="/registry">Registry</Link>
+          <Link href="/rsvp">RSVP</Link>
         </li>
       </ul>
     </nav>
