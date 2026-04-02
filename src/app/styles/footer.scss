@@ -1,0 +1,25 @@
+.Footer {
+  width: 100%;
+  max-width: 800px;
+  background-color: transparent;
+  color: $white;
+  text-align: center;
+  padding: 6rem 2rem 0;
+  margin: 6rem auto 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1200px;
+    margin: 0 auto 0;
+  }
+
+  &--inverted {
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  &__crest {
+    margin: 0 auto;
+    height: 110px;
+    width: auto;
+  }
+}

@@ -1,22 +1,34 @@
 'use client';
 import Link from "next/link";
-import styles from "@components/dallas-rsvp/dallas-rsvp.module.scss";
-import DallasRsvpForm from "@/app/components/dallas-rsvp-form/dallas-rsvp-form";
+import Image from "next/image";
+import "@styles/rsvp-page.scss";
+import RsvpForm from "@components/rsvp-form";
+import Footer from "@components/footer";
 
 export default function DallasRsvpPage() {
 
   return (
-    <div className={styles.page}>
+    <div className="rsvp-page">
       <Link
         href="/"
-        className={styles.backLink}
+        className="back-link"
       >
-        &lt; Back to Home
+        <Image
+          className='back-link__image'
+          src='/spade-white.png'
+          alt=""
+          width={100}
+          height={100}
+        /> Home
       </Link>
-      <h1 className={"h1 " + styles.header}>
-        RSVP
+      <h1 className="rsvp-page__header h1">
+        R<span className="rsvp-page__header-space">SVP</span>
       </h1>
-      <DallasRsvpForm/>
+      <div className="rsvp-page__info-text">
+        Please visit our <a href="/information">information page</a> before submitting your RSVP
+      </div>
+      <RsvpForm/>
+      <Footer />
     </div>
   );
 }
