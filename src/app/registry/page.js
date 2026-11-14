@@ -5,7 +5,7 @@ import "@styles/registry.scss";
 export default function RegistryPage() {
 
   return (
-    <div className="Registry">
+    <div className="registry">
       <Link
         href="/"
         className="back-link"
@@ -18,25 +18,25 @@ export default function RegistryPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className="Registry__header h1">
+      <h1 className="registry__header">
         Registry
       </h1>
-      <div className="Registry__envelope-wrapper">
+      <div className="registry__envelope-wrapper">
         <Image
-          className="Registry__envelope-image"
+          className="registry__envelope-image"
           src='/envelope.png'
           alt=""
           width={600}
           height={700}
         />
         <Image
-          className="Registry__crest-image"
+          className="registry__crest-image"
           src='/crest-black.png'
           alt=""
           width={200}
           height={200}
         />
-        <div className="Registry__envelope-text">
+        <div className="registry__envelope-text">
           Thank you so much for thinking of us.
           <br></br>
           <br></br>
@@ -48,24 +48,24 @@ export default function RegistryPage() {
           <br></br>
           <br></br>
           <br></br>
-          <div className="Registry__cta-wrapper">
+          <div className="registry__cta-wrapper">
             <Link
-              className="Registry__cta"
+              className="registry__cta"
               href='https://www.myregistry.com/giftlist/brianna-and-uri'
               target="_blank"
             >
               <Image
-                className="Registry__cta-decoration"
+                className="registry__cta-decoration"
                 src='/flower-left.png'
                 alt=""
                 width={100}
                 height={100}
               />
-              <span className="Registry__cta-text h2">
+              <span className="registry__cta-text">
                 Our Registry
               </span>
               <Image
-                className="Registry__cta-decoration"
+                className="registry__cta-decoration"
                 src='/flower-right.png'
                 alt=""
                 width={100}
