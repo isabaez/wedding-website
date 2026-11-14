@@ -4,3 +4,13 @@ $black: #000;
 $placeholder: #000;
 $serif: var(--font-hamilton-script), serif;
 $sansSerif: var(--font-prairie-sans), sans-serif;
+
+// Keyboard focus indicator (WCAG 2.2 SC 2.4.7): a white outline over a black band, so it shows on the black pages
+// and on the gallery's light background alike (two-colour technique, WCAG C40). base.scss applies it to every
+// :focus-visible element; use it directly only where focus lands on a hidden control (the RSVP radio labels).
+// $offset widens the ring where glyphs overflow their box (the script accordion titles).
+@mixin focus-ring($offset: 2px) {
+  outline: 2px solid $white;
+  outline-offset: $offset;
+  box-shadow: 0 0 0 $offset $black;
+}
