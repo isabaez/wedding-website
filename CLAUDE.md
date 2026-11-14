@@ -76,8 +76,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `/gallery`, `/registry`, `/rsvp`. `src/app/layout.js` is the root layout: it loads the two local fonts and
   `base.scss`.
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
-  `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`). React hooks live in
-  `src/app/hooks/` (`@hooks/<name>`).
+  `rsvp-form`, `live-region`) and are imported as `@components/<name>` (aliases in `jsconfig.json`). React hooks
+  live in `src/app/hooks/` (`@hooks/<name>`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
   (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables and mixins in
@@ -148,12 +148,15 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
   outline over a black band, visible on the black pages and on the gallery's tan background). Never set
   `outline: none`. Where focus lands on a visually hidden control, put `@include focus-ring` on its label (the RSVP
   radios, which are hidden with `opacity: 0`, not `display: none`, so they stay in the tab order).
+- **Announcements:** `LiveRegion` (`src/app/components/live-region.js`) renders `role="status"` (or `role="alert"`
+  with `urgent`). Render it always and put the message inside, since screen readers may not announce a region that
+  appears with its message. The RSVP error uses it; the RSVP thank-you moves focus to its heading (`tabIndex={-1}`).
 - **Reduced motion:** a `prefers-reduced-motion: reduce` rule at the top of `base.scss` makes every CSS transition and
   animation finish at once, including a `transition-duration` set inline from JavaScript, so new CSS motion needs
   nothing extra. Motion CSS can't reach (`requestAnimationFrame`, the Web Animations API) reads
   `usePrefersReducedMotion()` (`@hooks/use-prefers-reduced-motion`); the gallery also sets Swiper's `speed` to 0 with
   it, so slides switch without waiting for `transitionend`.
-- No other shared helpers yet: no visually hidden class, skip link or live region.
+- No other shared helpers yet: no visually hidden class or skip link.
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
 - The design is dark only (black background); `base.scss` sets `color-scheme: dark` under
   `prefers-color-scheme: dark`. There is no contrast check.

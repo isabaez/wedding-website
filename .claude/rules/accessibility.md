@@ -20,6 +20,11 @@ paths:
   `outline: none`; a visually hidden control (opacity 0, never `display: none`) puts `@include focus-ring` on its
   label. Leave room for the ring inside `overflow: hidden` containers.
   Source: https://www.w3.org/WAI/WCAG22/Techniques/css/C40 (checked 2026-11-14)
+- **Live region** (`live-region.js`): a message that appears after load (an error, a confirmation) goes inside a
+  `LiveRegion` that is already in the page, `urgent` (`role="alert"`) for errors and `role="status"` otherwise. When
+  new content replaces the focused control (the RSVP thank-you), move focus to its heading with `tabIndex={-1}`.
+  Source: https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19 and
+  https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22 (checked 2026-11-14)
 - **Reduced motion**: `base.scss` cuts every CSS transition and animation under `prefers-reduced-motion: reduce`, so
   CSS motion needs nothing extra. Motion CSS can't reach (`requestAnimationFrame`, Web Animations, a library's own
   timing such as Swiper's `speed`) checks `usePrefersReducedMotion()`. Never auto-play motion longer than 5 seconds
