@@ -42,7 +42,7 @@
   }
 
   &__title {
-    // font-family: $sansSerif;
+    @include heading-type;
     font-size: 3.8rem;
 
     &:first-child {
