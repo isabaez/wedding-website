@@ -123,6 +123,11 @@
 
   &__success-header {
     font-size: 2.4rem;
+    // It takes focus after a successful submit: fit it to the text, with room for the script's descenders, so the
+    // focus ring hugs the words instead of spanning the form.
+    width: fit-content;
+    margin-inline: auto;
+    padding: 0 .2em .3em;
   }
 
   &__success-text {

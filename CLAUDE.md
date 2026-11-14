@@ -76,7 +76,7 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `/gallery`, `/registry`, `/rsvp`. `src/app/layout.js` is the root layout: it loads the two local fonts and
   `base.scss`.
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
-  `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
+  `rsvp-form`, `live-region`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
   (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables and mixins in
@@ -147,7 +147,10 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
   outline over a black band, visible on the black pages and on the gallery's tan background). Never set
   `outline: none`. Where focus lands on a visually hidden control, put `@include focus-ring` on its label (the RSVP
   radios, which are hidden with `opacity: 0`, not `display: none`, so they stay in the tab order).
-- No other shared helpers yet: no visually hidden class, skip link, live region or reduced-motion handling.
+- **Announcements:** `LiveRegion` (`src/app/components/live-region.js`) renders `role="status"` (or `role="alert"`
+  with `urgent`). Render it always and put the message inside, since screen readers may not announce a region that
+  appears with its message. The RSVP error uses it; the RSVP thank-you moves focus to its heading (`tabIndex={-1}`).
+- No other shared helpers yet: no visually hidden class, skip link or reduced-motion handling.
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
 - The design is dark only (black background); `base.scss` sets `color-scheme: dark` under
   `prefers-color-scheme: dark`. There is no contrast check.
