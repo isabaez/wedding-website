@@ -14,3 +14,11 @@ $sansSerif: var(--font-prairie-sans), sans-serif;
   outline-offset: $offset;
   box-shadow: 0 0 0 $offset $black;
 }
+
+// Heading typography: the h1–h6 elements get it in base.scss; include it in an element that isn't a heading but
+// should look like one (the accordion title, the registry call to action).
+@mixin heading-type {
+  font-family: $serif;
+  font-weight: 400;
+  line-height: .95;
+}
