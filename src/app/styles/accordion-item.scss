@@ -18,6 +18,14 @@
     background: $white;
   }
 
+  &__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // The title used to sit inside a <button>, which resets letter-spacing; keep that for always-open items too.
+    letter-spacing: normal;
+  }
+
   &__toggle {
     position: relative;
     background: none;
@@ -27,10 +35,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &:disabled {
-      cursor: default;
-    }
   }
 
   &__title {
@@ -54,7 +58,7 @@
       width: 100%;
       transition: transform 0.5s ease;
 
-      .is-open & {
+      [aria-expanded="true"] & {
         transform: scaleY(-1);
       }
     }
@@ -66,7 +70,7 @@
     transition: height 0.3s ease-out;
     height: 0;
 
-    button:disabled + & {
+    &--static {
       height: auto;
       transition: none;
     }
@@ -97,8 +101,5 @@
       }
     }
 
-    // .is-open & {
-    //   padding: 1rem 0;
-    // }
   }
 }

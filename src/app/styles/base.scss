@@ -37,7 +37,16 @@ body {
   border: .5px solid $white;
   border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+
+  // Busy while a form is sending (the RSVP Submit button): dimmed, keeping its resting colours even under the pointer.
+  &[aria-disabled="true"],
+  &[aria-disabled="true"]:hover {
+    cursor: progress;
+    opacity: .6;
+    background-color: $black;
+    color: $white;
+  }
   text-decoration: none;
   letter-spacing: -.1rem;
 

@@ -8,26 +8,36 @@ export default function DallasRsvpForm() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [attending, setAttending] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    setError(false);
     const formData = new FormData(event.target);
 
     formData.append("access_key", "3b000ad7-da14-4d30-9734-3519baa420d7");
     formData.append("subject", `[RSVP] ${formData.get("attending")} - ${formData.get("name")}`);
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+    // Any failure (network error, non-2xx response, a body that isn't JSON, or success: false) shows the error
+    // message, so a guest never sees nothing after pressing Submit.
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
 
-    const data = await response.json();
-
-    if (data.success) {
-      setSuccess(true);
-    } else {
-      console.log('error', data);
+      if (response.ok && data.success) {
+        setSuccess(true);
+      } else {
+        setError(true);
+      }
+    } catch {
       setError(true);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -155,6 +165,9 @@ export default function DallasRsvpForm() {
             <button 
               className="cta"
               type="submit"
+              // aria-disabled, not disabled: disabling the focused button would drop keyboard focus to the page.
+              // onSubmit ignores a second press while a request is in flight.
+              aria-disabled={submitting}
             >
               Submit
             </button>

@@ -38,7 +38,7 @@ export default function InformationPage() {
                 <Image
                   className="Information__image"
                   src="/schedule-of-events.jpg"
-                  alt=""
+                  alt="Schedule of events, May 2nd 2026. 6:00pm: host's welcome remarks and cocktail hour kickoff. 7:00pm: dinner presentation and photobooth opens. 8:00pm: cake! (and speeches). 8:30pm: everybody on the dance floor, DJ starts spinning. 10:30pm: bartender's last call. 11:00pm: music ends, photobooth closes, tearful goodbyes. Please plan to arrive 5 to 10 minutes early."
                   width={612}
                   height={792}
                 />
@@ -67,7 +67,7 @@ export default function InformationPage() {
               We are so grateful for your generosity and support. Your presence at our wedding is the greatest gift of all!
               <br></br>
               <br></br>
-              For those who wish to honor us with a gift, we have created a registry that can be found on our <a href='/registry'>registry page</a>.
+              For those who wish to honor us with a gift, we have created a registry that can be found on our <Link href="/registry">registry page</Link>.
             </p>
           }
         >
