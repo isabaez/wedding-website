@@ -6,6 +6,56 @@ and each entry says why the change was made.
 
 ## [Unreleased]
 
+## [2026-11-13]
+
+### Added
+
+- CI runs `npm ci`, `npm run lint` and `npm run build` on every pull request into `develop` and push to `beta`, and
+  checks that every page was exported, since pull requests had no lint or build check (#39)
+- CONTRIBUTING.md describes the branch workflow, the checks before a pull request, QA on `beta` and releasing;
+  README.md replaces the create-next-app boilerplate with setup, directory layout and deploy steps; and CHANGELOG.md
+  records each release (#26)
+
+### Changed
+
+- Every page carries `noindex, nofollow, noimageindex`, so the site stays shareable by link but its event details,
+  venues, dates and photos stay out of search results (#41)
+- **Breaking:** the project needs Node 24 or later (`engines`), matching CI and the deploy workflow, and
+  `npm run lint` runs `eslint .` because Next.js 16 removed `next lint`: install Node 24 before running it (#37)
+
+### Fixed
+
+- Every focusable element shows a visible focus ring (a white outline over a black band), since keyboard users
+  couldn't see focus on the accordion toggles, the RSVP text fields or the gallery arrows (#33)
+- The RSVP attendance radios can be reached and switched by keyboard; they were hidden with `display: none`, so
+  keyboard users couldn't answer "Will you be in attendance?" (#33)
+- The RSVP error is announced to screen readers and the thank-you moves focus to its heading, so screen reader users
+  can tell whether their RSVP went through (#34)
+- CSS transitions and the gallery cross-fade finish at once when the OS asks for reduced motion, which people with
+  that setting still got (#35)
+- The accordion caret draws in full: its SVG path had full-width digits from a paste, so the end of the icon was
+  missing and the browser logged SVG errors (#40)
+- Accordion buttons sit inside their heading and say whether they're open (`aria-expanded`), and links in collapsed
+  panels are out of the tab order, so screen reader and keyboard users can tell what's open and don't land on hidden
+  links (#40)
+- Open accordion panels follow their content's height, so zooming or rotating a phone no longer clips them (#40)
+- The schedule of events image's alt text gives the full schedule, which was only in the image's pixels (#40)
+- The RSVP form shows its error message when the request fails (network error, error response, a reply that isn't
+  JSON), where it used to show nothing (#40)
+- Submit ignores presses while the RSVP is sending, so a double click can't send two RSVPs (#40)
+- The links from `/rsvp` to the information page and from `/information` to the registry no longer reload the whole
+  site (#40)
+
+### Security
+
+- Next.js is upgraded from 15.4.6 to 16 (with React 19.3), which had 35 open advisories, 4 of them critical (#37)
+- Swiper is upgraded from 11 to 14 and other packages updated, so `npm audit` reports no vulnerabilities (it listed
+  16, the critical one in Swiper 11) (#38)
+- The deploy workflow pins its actions by commit SHA, grants write permissions only to the deploy job and doesn't
+  keep credentials after checkout, so it passes the Security workflow's zizmor check (#39)
+- Dependabot opens weekly update and security pull requests, a Security workflow (gitleaks, OSV-Scanner, zizmor,
+  Trivy) checks every pull request into `develop`, and SECURITY.md says how to report a vulnerability (#26)
+
 ## [2026-04-01]
 
 ### Added
