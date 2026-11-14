@@ -1,3 +1,18 @@
+// Reduced motion (WCAG 2.2 SC 2.3.3): when the OS asks for it, every CSS transition and animation finishes almost
+// at once, including a transition-duration set inline from JavaScript (a stylesheet !important beats a normal inline
+// style). 0.01ms rather than 0 so transitionend still fires for any script waiting on it. Motion CSS can't reach
+// (requestAnimationFrame, the Web Animations API) uses the usePrefersReducedMotion hook.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 :root {
   --background: #000;
   --foreground: #fff;

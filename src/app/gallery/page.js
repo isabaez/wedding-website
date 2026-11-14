@@ -7,10 +7,12 @@ import { EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import "@styles/gallery.scss";
+import usePrefersReducedMotion from "@hooks/use-prefers-reduced-motion";
 
 
 export default function GalleryPage() {
   const swiperRef = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
     <div className="Gallery">
@@ -63,6 +65,10 @@ export default function GalleryPage() {
             modules={[EffectFade]}
             loop={true}
             effect={'fade'}
+            // base.scss's reduced-motion rule already shortens Swiper's inline transition-duration (stylesheet
+            // !important beats inline); speed 0 also makes Swiper switch slides at once instead of waiting for
+            // transitionend. 300 is Swiper's default.
+            speed={prefersReducedMotion ? 0 : 300}
             fadeEffect={{ crossFade: true }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
