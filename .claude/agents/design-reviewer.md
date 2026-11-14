@@ -97,4 +97,4 @@ medium = an inconsistency users will notice; low = polish.
 - Viewports: 375, 768, 1280 (SCSS breakpoints are 375, 450, 768 and 1024).
 - Pages: `/`, `/information`, `/italy`, `/gallery` (Swiper carousel), `/registry`, `/rsvp` (form in `src/app/components/rsvp-form.js`).
 - Fonts: Hamilton Script (`$serif`, headings) and Prairie Sans (`$sansSerif`), loaded with `next/font/local` in `src/app/layout.js`.
-- Tokens: colours and font stacks in `src/app/styles/_variables.scss`; one SCSS file per page or component in `src/app/styles/`.
+- Tokens: colours, font stacks and the `focus-ring` mixin (applied to every `:focus-visible` element in `base.scss`) in `src/app/styles/_variables.scss`; one SCSS file per page or component in `src/app/styles/`.

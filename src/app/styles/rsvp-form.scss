@@ -32,12 +32,27 @@
     }
   }
 
+  // Holds one radio and its label, so the hidden input sits under its own label's circle (where a screen reader's
+  // focus box and scroll-into-view point).
+  &__radio {
+    position: relative;
+  }
+
+  // Hidden visually but not with display: none, so the radios stay in the tab order and arrow keys work; the label
+  // draws the circle and shows the focus ring.
   &__radio-input {
-    display: none;
-    margin-bottom: 1rem;
+    position: absolute;
+    top: .8rem;
+    left: .8rem;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
   }
 
   &__radio-label {
+    // Shrink to the circle and text, so the focus ring hugs the control instead of spanning the form.
+    width: fit-content;
     display: flex;
     align-items: center;
     color: $white;
@@ -62,6 +77,10 @@
       height: 1.6rem;
       background: $white;
       border-radius: 50%;
+    }
+
+    #{$c}__radio-input:focus-visible + & {
+      @include focus-ring;
     }
 
     #{$c}__radio-input:checked + &::after {

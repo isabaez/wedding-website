@@ -80,8 +80,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `src/app/hooks/` (`@hooks/<name>`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
-  (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables in `_variables.scss`
-  (colours, font stacks) work everywhere without an import.
+  (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables and mixins in
+  `_variables.scss` (colours, font stacks, the `focus-ring` mixin) work everywhere without an import.
 - **Fonts**: Hamilton Script and Prairie Sans from `src/app/fonts/` (`hamilton-script.woff2`, `Prairie-Sans.woff`, the
   only files there), loaded with `next/font/local` in `layout.js` and exposed as `--font-hamilton-script` /
   `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
@@ -108,7 +108,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 2. Styles for the section go in that page's SCSS file; accordion styles in `src/app/styles/accordion-item.scss`.
 
 ### Change a design element
-1. Colours and font stacks: `src/app/styles/_variables.scss` (applies to every SCSS file).
+1. Colours, font stacks and the focus ring (`focus-ring` mixin): `src/app/styles/_variables.scss` (applies to every
+   SCSS file).
 2. Shared elements (`.h1`–`.h6`, `.cta`, `.back-link`, base typography): `src/app/styles/base.scss`.
 3. Anything else: the SCSS file named after the page or component.
 
@@ -143,14 +144,16 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
 
 ### Accessibility in this project
 
-- No shared helpers yet: no visually hidden class, skip link or `:focus-visible` styles.
-  Five rules remove focus outlines with no replacement (`accordion-item.scss`, `floating-label-input.scss`,
-  `gallery.scss`).
+- **Focus:** `base.scss` gives every `:focus-visible` element the `focus-ring` mixin from `_variables.scss` (a white
+  outline over a black band, visible on the black pages and on the gallery's tan background). Never set
+  `outline: none`. Where focus lands on a visually hidden control, put `@include focus-ring` on its label (the RSVP
+  radios, which are hidden with `opacity: 0`, not `display: none`, so they stay in the tab order).
 - **Reduced motion:** a `prefers-reduced-motion: reduce` rule at the top of `base.scss` makes every CSS transition and
   animation finish at once, including a `transition-duration` set inline from JavaScript, so new CSS motion needs
   nothing extra. Motion CSS can't reach (`requestAnimationFrame`, the Web Animations API) reads
   `usePrefersReducedMotion()` (`@hooks/use-prefers-reduced-motion`); the gallery also sets Swiper's `speed` to 0 with
   it, so slides switch without waiting for `transitionend`.
+- No other shared helpers yet: no visually hidden class, skip link or live region.
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
 - The design is dark only (black background); `base.scss` sets `color-scheme: dark` under
   `prefers-color-scheme: dark`. There is no contrast check.

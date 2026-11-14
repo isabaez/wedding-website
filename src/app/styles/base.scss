@@ -39,6 +39,10 @@ body {
   margin: 0;
 }
 
+:focus-visible {
+  @include focus-ring;
+}
+
 .cta {
   display: inline-block;
   font-family: $sansSerif;
