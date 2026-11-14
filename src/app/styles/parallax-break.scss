@@ -1,0 +1,47 @@
+// The break is a 100vh gap in the page. Its image layer is position: fixed, so it stays still while the page
+// scrolls, and clip-path on the section limits it to the section's box: that's the window onto the image.
+// background-attachment: fixed would be simpler, but iOS Safari ignores it.
+// min-height, not height: a long heading at high zoom or wide text spacing grows the break instead of being clipped.
+.parallax-break {
+  position: relative;
+  min-height: 100vh;
+  clip-path: inset(0);
+  display: grid;
+  place-items: center;
+
+  &__layer {
+    position: fixed;
+    inset: 0;
+    // The large viewport, so no strip shows when a phone's browser bars collapse.
+    height: 100lvh;
+
+    // Under reduced motion the image scrolls with the page instead of staying still.
+    @media (prefers-reduced-motion: reduce) {
+      position: absolute;
+      height: 100%;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__underlay {
+    position: absolute;
+    inset: 0;
+    background: $black;
+    // 0.45 is also the component's default; the fallback here covers underlayOpacity={null}.
+    opacity: var(--underlay-opacity, 0.45);
+  }
+
+  // In the section, not the fixed layer, so it scrolls with the page while the image stays still.
+  &__heading {
+    position: relative;
+    padding-inline: 2.4rem;
+    color: $white;
+    // The rem part keeps it growing with browser zoom (a pure vw size wouldn't double at 200%).
+    font-size: clamp(4.8rem, 2.4rem + 6vw, 9.6rem);
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+}

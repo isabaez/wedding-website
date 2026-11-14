@@ -1,161 +1,164 @@
-import Link from "next/link";
-import Image from "next/image";
-import Footer from "@components/footer";
-import AccordionItem from "@components/accordion-item";
+import ImageGallery from "@components/image-gallery";
+import ParallaxBreak from "@components/parallax-break";
+import {
+  LENKA_SLIDES,
+  BORGO_SLIDES,
+  APERITIVO_SLIDES,
+  RECEPTION_SLIDES,
+  RECOVERY_SLIDES,
+  AMENITIES_SLIDES,
+} from "@/app/italy/galleries";
 import "@styles/italy.scss";
 
+// Text sits in .italy__content columns (700px wide at most); galleries and the parallax breaks go between them, as
+// direct children of .italy, so they span the screen.
 export default function ItalyPage() {
-
   return (
-    <div className="italy">
-      <Link
-        href="/"
-        className="back-link"
-      >
-        <Image
-          className="back-link__image"
-          src="/spade-white.png"
-          alt=""
-          width={100}
-          height={100}
-        /> Home
-      </Link>
+    <main className="italy">
+      {/* Three lines up to 1023px, two from 1024px ("ITALY" on its own); the spaces between them keep the heading's
+          text one sentence. */}
       <h1 className="italy__header">
-        What is Happening in Italy?
+        <span className="italy__header-line">You’re invited to</span>{" "}
+        <span className="italy__header-line">our wedding in</span>{" "}
+        <span className="italy__header-line italy__header-line--caps">ITALY</span>
       </h1>
+
       <div className="italy__content">
-        <AccordionItem
-          disableToggle={true}
-          content={
-            <div>
-              <p>
-                We are hosting a very intimate, 3-night wedding in a Tuscan villa. It will be a traditional ceremony with a full day after to recover and enjoy. As a very close friend of ours, you are invited to spend all 3 nights with us.
-              </p>
-              <h4>
-                Where
-              </h4>
-              <p>
-                The villas are located 10 minutes outside of Lucca, Italy. About 1.5 hours from Florence airport (FLR)
-              </p>
-              <h4>
-                When
-              </h4>
-              <p>
-                May 26 - 29, 2027
-              </p>
-            </div>
-          }
-        >
-        </AccordionItem>
+        <p>
+          Nearly two years ago, I proposed to Brianna in New York. Before we started searching for venues, Brianna saw
+          some photos of Villa Lenka in an online magazine, and we instantly knew that it would be the location of our
+          wedding.
+        </p>
+        <p>
+          When we learned that it had a two-year waitlist (!), we decided that we would enjoy a long and beautiful
+          engagement while planning for the wedding of our dreams. Along the way, we threw a backyard party for our
+          civil union to include extended family in our celebrations. But we’ve been counting down the days until the
+          real thing.
+        </p>
+        <p>
+          You’re invited to our very intimate three-night nuptial celebrations in the historic 17th-century Coselli
+          villas. There’s only room for 35, and we’d love for you to spend all three days with us as one big family.
+        </p>
 
-        <AccordionItem
-          title="Tentative Itinerary"
-          disableToggle={true}
-          content={
-            <div>
-              <h4>
-                May 26, 2027: Arrival
-              </h4>
-              <p>
-                Welcome aperitivo at the villa. We will have a light dinner and drinks, and a chance to catch up with everyone before the big day.
-              </p>
-              <h4>
-                May 27, 2027: Wedding Day
-              </h4>
-              <p>
-                Breakfast provided at the villa. Wedding ceremony in the afternoon, followed by reception dinner and open bar + party at night.
-              </p>
-              <h4>
-                May 28, 2027: Recovery Day
-              </h4>
-              <p>
-                Breakfast provided at the villa. Poolside recovery and relaxation. Optional group excursion to Pisa and/or Lucca.
-              </p>
-              <h4>
-                May 29, 2027: Farewell Day
-              </h4>
-              <p>
-                Check-out & honeymoon sendoff
-              </p>
-            </div>
-          }
-        >
-        </AccordionItem>
+        <h2 className="italy__section-heading">When:</h2>
+        <p>May 26 - 29, 2027</p>
 
-        <AccordionItem
-          title="The Villa"
-          disableToggle={true}
-          content={
-            <div>
-              <p>19 total bedrooms each with private bathroom.</p>
-              <h4>
-                <Link 
-                  href="https://www.coselli.com/villas/villa-lenka/"
-                  target="_blank"
-                >
-                  Villa Lenka
-                </Link>
-              </h4>
-              <p>
-                <Link 
-                  href="https://www.coselli.com/villas/villa-lenka/"
-                  target="_blank"
-                >
-                  <Image
-                    className="italy__image"
-                    src="/lenka.webp"
-                    alt=""
-                    width={1000}
-                    height={600}
-                  />
-                </Link>
-              </p>
-              <h4>
-                <Link 
-                  href="https://www.coselli.com/villas/borgo-bernardini/"
-                  target="_blank"
-                >
-                  Borgo Bernardini
-                </Link>
-              </h4>
-              <p>
-                <Link 
-                  href="https://www.coselli.com/villas/borgo-bernardini/"
-                  target="_blank"
-                >
-                  <Image
-                    className="italy__image"
-                    src="/bernardini.webp"
-                    alt=""
-                    width={1000}
-                    height={600}
-                  />
-                </Link>
-              </p>
-            </div>
-          }
-        >
-        </AccordionItem>
-
-        <AccordionItem
-          title="Dress Code"
-          disableToggle={true}
-          content={
-            <div>
-              <p>
-                Dress code for the wedding ceremony and reception dinner will be black tie / formal. For the welcome aperitivo and recovery day, dress code is casual.
-              </p>
-              <h4>Women</h4>
-              <p>Full length evening dress</p>
-              <h4>Men</h4>
-              <p>Tuxedo or dark suit with tie and dress shoes</p>
-            </div>
-          }
-        >
-        </AccordionItem>
-
+        <h2 className="italy__section-heading">Where:</h2>
+        <p>
+          All of our guests will be staying on-site at either Villa Lenka or Borgo Bernardini, where all the wedding
+          events will be taking place. The Coselli Estate is located 10 minutes outside of Lucca, Italy, about 1 hour
+          from Florence and 20 minutes from Pisa (yes, the leaning tower. More on that later…).
+        </p>
       </div>
-      <Footer />
-    </div>
+
+      <ParallaxBreak
+        src="/parallax-1.webp"
+        objectPosition="50% 45%"
+      />
+
+      <div className="italy__content italy__content--gallery-intro">
+        <h2 className="italy__section-heading">The Villas</h2>
+        <p>19 bedrooms total, each with a private bathroom, robe, and slippers.</p>
+
+        <h3 className="italy__subheading">Villa Lenka</h3>
+      </div>
+
+      <ImageGallery slides={LENKA_SLIDES} label="Villa Lenka photos" />
+
+      <div className="italy__content italy__content--gallery-intro">
+        <h3 className="italy__subheading">Borgo Bernardini</h3>
+      </div>
+
+      <ImageGallery slides={BORGO_SLIDES} label="Borgo Bernardini photos" />
+
+      <div className="italy__content italy__content--gallery-intro">
+        <h2 className="italy__section-heading">Itinerary</h2>
+
+        <h3 className="italy__day">1st day: Welcome Aperitivo</h3>
+        <p>
+          We’re so excited to welcome friends from around the globe with a traditional Italian aperitivo. Light dinner
+          (pasta) will also be served, and we’ll get to catch up with everyone before the big day. Check-in time is
+          4pm.
+        </p>
+      </div>
+
+      <ImageGallery slides={APERITIVO_SLIDES} label="Welcome aperitivo photos" />
+
+      <div className="italy__content italy__content--gallery-intro">
+        <h3 className="italy__day">2nd day: The Wedding</h3>
+        <p>
+          You wake in your incredible guest room and make your way to the fountains for breakfast. The Wedding ceremony
+          will take place in the afternoon, so you’ll have plenty of time to rest, explore the venue and all its
+          amenities, take a dip in the pool, or even play tennis after breakfast. Following the ceremony, we’ll have an
+          amazing reception dinner and afterparty.
+        </p>
+      </div>
+
+      <ImageGallery slides={RECEPTION_SLIDES} label="Wedding day photos" />
+
+      <div className="italy__content italy__content--gallery-intro">
+        <h3 className="italy__day">3rd day: Recovery</h3>
+        <p>
+          Another glorious breakfast provided at the villa. We’ll gather by the pool to recap the wedding day and
+          relax. In the late afternoon, we hope to take a group trip to the nearby town of Pisa for sightseeing and
+          dinner. You’ll get your iconic leaning tower photo before heading back to the villas.
+        </p>
+      </div>
+
+      <ImageGallery slides={RECOVERY_SLIDES} label="Recovery day photos" />
+
+      <div className="italy__content">
+        <h3 className="italy__day">4th day: Farewell and Honeymoon sendoff</h3>
+        <p>
+          After 3 days of celebrating, we’ll say arrivederci (see you later) to each other and the beautiful villas.
+        </p>
+        <p>Check-out time is 10am.</p>
+
+        <h2 className="italy__section-heading">Dress Code</h2>
+        <p>For the wedding ceremony and reception dinner, the dress code is black tie formal.</p>
+        <p>
+          <strong>Women:</strong> Full length evening dress
+          <br />
+          <strong>Men:</strong> Tuxedo or dark suit with tie and dress shoes
+        </p>
+        <p>For the welcome aperitivo, the dress code is cocktail or semi-formal.</p>
+        <p>For the recovery day, the dress code is casual.</p>
+
+        {/* The dress code gallery goes here once its photos are in public/. */}
+      </div>
+
+      <ParallaxBreak
+        src="/parallax-2.webp"
+        objectPosition="50% 40%"
+      />
+
+      <div className="italy__content italy__content--gallery-intro">
+        <h2 className="italy__section-heading">What’s included</h2>
+        <p>
+          As our gift to you, we’re committed to providing the best and easiest vacation possible. This includes: a
+          shuttle from Pisa Airport to the villas, a welcome gift, a kitchen stocked for 24-hour snacks and wine,
+          breakfasts at the villa, the welcome aperitivo, the post-ceremony cocktail hour, the reception dinner,
+          afterparty, and 80% of your stay at the villas.
+        </p>
+      </div>
+
+      <ImageGallery slides={AMENITIES_SLIDES} label="Villa rooms and amenities photos" />
+
+      <div className="italy__content">
+        <h2 className="italy__section-heading">What you’ll need to cover:</h2>
+        <p>
+          Your flight to Italy, your meal during our excursion to Pisa, and 20% of your stay at the villas ($300 per
+          person for all 3 nights). Please, no gifts!
+        </p>
+
+        <h2 className="italy__section-heading">RSVP / Questions?</h2>
+        <p>
+          To RSVP (or if you have any questions) please reach out to either of us directly. We’d love to help make this
+          the most memorable trip for everyone.
+        </p>
+
+        <p className="italy__closing">See you in May!</p>
+      </div>
+    </main>
   );
 }
