@@ -76,7 +76,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `/gallery`, `/registry`, `/rsvp`. `src/app/layout.js` is the root layout: it loads the two local fonts and
   `base.scss`.
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
-  `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
+  `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`). React hooks live in
+  `src/app/hooks/` (`@hooks/<name>`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
   (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables in `_variables.scss`
@@ -137,14 +138,19 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
   `.accordion-item__toggle`). The PascalCase page blocks (`.Home`, `.Gallery__caption`) are older code, renamed only
   through a refactor issue. Existing state class: `.is-active` (the accordion styles its state through
   `[aria-expanded]`).
-- Imports use the `@components/` and `@styles/` aliases, not relative paths.
+- Imports use the `@components/`, `@styles/` and `@hooks/` aliases, not relative paths.
 - JavaScript only, no TypeScript; no CSS Modules or CSS-in-JS.
 
 ### Accessibility in this project
 
-- No shared helpers yet: no visually hidden class, skip link, `:focus-visible` styles or reduced-motion handling.
+- No shared helpers yet: no visually hidden class, skip link or `:focus-visible` styles.
   Five rules remove focus outlines with no replacement (`accordion-item.scss`, `floating-label-input.scss`,
   `gallery.scss`).
+- **Reduced motion:** a `prefers-reduced-motion: reduce` rule at the top of `base.scss` makes every CSS transition and
+  animation finish at once, including a `transition-duration` set inline from JavaScript, so new CSS motion needs
+  nothing extra. Motion CSS can't reach (`requestAnimationFrame`, the Web Animations API) reads
+  `usePrefersReducedMotion()` (`@hooks/use-prefers-reduced-motion`); the gallery also sets Swiper's `speed` to 0 with
+  it, so slides switch without waiting for `transitionend`.
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
 - The design is dark only (black background); `base.scss` sets `color-scheme: dark` under
   `prefers-color-scheme: dark`. There is no contrast check.

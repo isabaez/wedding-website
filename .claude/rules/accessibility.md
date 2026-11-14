@@ -15,6 +15,11 @@ paths:
   `aria-roledescription="slide"` and a name. If it auto-rotates, add a pause button first in tab order and stop on
   focus or hover.
   Source: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ (checked 2026-11-13)
+- **Reduced motion**: `base.scss` cuts every CSS transition and animation under `prefers-reduced-motion: reduce`, so
+  CSS motion needs nothing extra. Motion CSS can't reach (`requestAnimationFrame`, Web Animations, a library's own
+  timing such as Swiper's `speed`) checks `usePrefersReducedMotion()`. Never auto-play motion longer than 5 seconds
+  without a pause control.
+  Source: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html (checked 2026-11-14)
 - **Form labels** (`floating-label-input.js`): every control has a `<label for>` matching its `id`; hide a label
   visually only with a clip-based class, never `display: none`; don't replace labels with placeholders or `title`.
   Source: https://www.w3.org/WAI/tutorials/forms/labels/ (checked 2026-11-13)
