@@ -93,7 +93,7 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 ## Recipes
 
 ### Add a page
-1. Create `src/app/<route>/page.js` exporting a default component; copy the back link and `<h1 className="… h1">`
+1. Create `src/app/<route>/page.js` exporting a default component; copy the back link and `<h1 className="…__header">`
    from `src/app/italy/page.js`.
 2. Create `src/app/styles/<route>.scss` with a kebab-case root class (`.rsvp-page` is the model) and import it in
    the page as `@styles/<route>.scss`.
@@ -110,7 +110,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 ### Change a design element
 1. Colours, font stacks and the focus ring (`focus-ring` mixin): `src/app/styles/_variables.scss` (applies to every
    SCSS file).
-2. Shared elements (`.h1`–`.h6`, `.cta`, `.back-link`, base typography): `src/app/styles/base.scss`.
+2. Shared elements (`h1`–`h6`, `.cta`, `.back-link`, base typography): `src/app/styles/base.scss`. Heading type for an
+   element that isn't a heading: `@include heading-type` (`_variables.scss`).
 3. Anything else: the SCSS file named after the page or component.
 
 <!-- init-project:conventions v1 — managed by /init-project; re-sync replaces everything up to the end marker, so put project notes below it -->
@@ -135,10 +136,11 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
 
 ### Conventions in this project
 
-- Class names: new blocks are kebab-case BEM named after the page or component (`.rsvp-page`,
-  `.accordion-item__toggle`). The PascalCase page blocks (`.Home`, `.Gallery__caption`) are older code, renamed only
-  through a refactor issue. Existing state class: `.is-active` (the accordion styles its state through
-  `[aria-expanded]`).
+- Class names: every block is kebab-case BEM, named after its page or component (`.gallery__caption`,
+  `.accordion-item__toggle`) or, for the shared elements in `base.scss`, after the element (`.cta`, `.back-link`);
+  state is a modifier (`.gallery__caption--active`, `.floating-label-input__field--filled`) or its attribute
+  (`[aria-expanded]`).
+  No utility classes: shared styles are mixins in `_variables.scss` (`heading-type`, `focus-ring`).
 - Imports use the `@components/`, `@styles/` and `@hooks/` aliases, not relative paths.
 - JavaScript only, no TypeScript; no CSS Modules or CSS-in-JS.
 

@@ -21,7 +21,7 @@ export default function DallasRsvpPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className="rsvp-page__header h1">
+      <h1 className="rsvp-page__header">
         R<span className="rsvp-page__header-space">SVP</span>
       </h1>
       <div className="rsvp-page__info-text">

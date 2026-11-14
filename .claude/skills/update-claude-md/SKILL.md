@@ -129,5 +129,5 @@ propose adding it.
 - Stack: Next.js 16 App Router (Turbopack, Node 24+) with static export (`output: 'export'`), React 19, JavaScript (no TypeScript), Sass, Swiper.
 - Official docs used (checked 2026-11-13): Next.js static exports, react.dev rules, Sass `@import` breaking change, WAI-ARIA APG accordion and carousel, WAI forms labels tutorial.
 - Rules files: `nextjs.md` (static-export limits), `react.md` (purity, hooks), `sass.md` (`@import` deprecation), `accessibility.md` (accordion, carousel, form labels). `git-workflow.md` is managed by /init-project.
-- Line budget: CLAUDE.md about 180 lines of 200.
-- No convention exceptions: new CSS blocks are kebab-case BEM; the PascalCase page blocks are older code.
+- Line budget: CLAUDE.md is about 210 lines, over the 200 budget; trim before adding more.
+- No convention exceptions: every CSS block is kebab-case BEM (the PascalCase page blocks were renamed in #32).

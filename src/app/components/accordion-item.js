@@ -29,7 +29,7 @@ export default function AccordionItem({
   }, []);
 
   const titleText = (
-    <span className="accordion-item__title h3">
+    <span className="accordion-item__title">
       {title}
     </span>
   );

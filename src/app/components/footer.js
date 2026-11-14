@@ -6,9 +6,9 @@ export default function Footer({
  }) {
 
   return (
-    <footer className={invert ? "Footer Footer--inverted" : "Footer"}>
+    <footer className={invert ? "footer footer--inverted" : "footer"}>
       <Image
-        className="Footer__crest"
+        className="footer__crest"
         src={invert ? '/crest-black.png' : '/crest-white.png'}
         alt=""
         width={200}

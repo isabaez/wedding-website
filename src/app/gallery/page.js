@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,12 +10,39 @@ import "@styles/gallery.scss";
 import usePrefersReducedMotion from "@hooks/use-prefers-reduced-motion";
 
 
+// One caption per slide, in slide order; the caption whose index matches the active slide is shown.
+const CAPTIONS = [
+  "Engaged on 2/15/2025",
+  "Our first visit to Mexico, 2 months dating",
+  "6 month anniversary in New York",
+  "Starry-eyed long distance reunion in DC",
+  "Wedding guests",
+  "Coffee walks in New York",
+  "more weddings!",
+  "Long distance again--reuinted in Italy",
+  "In love at the Boboli Gardens",
+  "Our favorite city in the world, Firenze",
+  "An unforgettable trip to Greece",
+  "Coffee strolls in Spain",
+  "Christmas in our first apartment",
+  "Celebrating our engagement with our family",
+  "Moments after he proposed",
+  "Two love birds",
+  "Perfect happiness",
+  "Uri and Brianna",
+  "A Dallas arboretum date",
+  "An unforgettable hot air balloon ride in Mexico",
+  "Our first ever performance -- a folklorico duet",
+  "Performining at Latinidad in Dallas",
+];
+
 export default function GalleryPage() {
   const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <div className="Gallery">
+    <div className="gallery">
       <Link
         href="/"
         className="back-link back-link--transparent"
@@ -28,11 +55,11 @@ export default function GalleryPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className="Gallery__header h1">
+      <h1 className="gallery__header">
         Gallery
       </h1>
       <Image 
-        className="Gallery__background-mobile"
+        className="gallery__background-mobile"
         src="/gallery-background-mobile.png"
         alt=""
         priority={true}
@@ -40,7 +67,7 @@ export default function GalleryPage() {
         sizes="100vw"
       />
       <Image 
-        className="Gallery__background-desktop"
+        className="gallery__background-desktop"
         src="/gallery-background-desktop.png"
         alt=""
         priority={true}
@@ -48,9 +75,9 @@ export default function GalleryPage() {
         sizes="100vw"
       />
 
-      <div className="Gallery__frame-container">
+      <div className="gallery__frame-container">
         <Image 
-          className="Gallery__frame"
+          className="gallery__frame"
           src="/gallery-frame.png"
           width={1289}
           height={1667}
@@ -58,9 +85,9 @@ export default function GalleryPage() {
           sizes="700px"
         />
 
-        <div className="Gallery__slider-wrapper">
+        <div className="gallery__slider-wrapper">
           <Swiper
-            className="Gallery__slider"
+            className="gallery__slider"
             slidesPerView={1}
             modules={[EffectFade]}
             loop={true}
@@ -73,21 +100,11 @@ export default function GalleryPage() {
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-            onSlideChange={(swiper) => {
-              const $captions = document.querySelectorAll('.Gallery__caption');
-              $captions.forEach(($caption) => {
-                const { captionIndex } = $caption.dataset
-                if (captionIndex === swiper.realIndex.toString()) {
-                  $caption.classList.add('is-active');
-                } else {
-                  $caption.classList.remove('is-active');
-                }
-              });
-            }}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           >
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/0.png'
                 alt=""
                 width={800}
@@ -96,7 +113,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/1.png'
                 alt=""
                 width={800}
@@ -105,7 +122,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/2.png'
                 alt=""
                 width={800}
@@ -114,7 +131,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/3.png'
                 alt=""
                 width={800}
@@ -123,7 +140,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/4.png'
                 alt=""
                 width={800}
@@ -132,7 +149,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/5.png'
                 alt=""
                 width={800}
@@ -141,7 +158,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/6.png'
                 alt=""
                 width={800}
@@ -150,7 +167,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/7.png'
                 alt=""
                 width={800}
@@ -159,7 +176,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/8.png'
                 alt=""
                 width={800}
@@ -168,7 +185,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/9.png'
                 alt=""
                 width={800}
@@ -177,7 +194,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/10.png'
                 alt=""
                 width={800}
@@ -186,7 +203,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/11.png'
                 alt=""
                 width={800}
@@ -195,7 +212,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/12.png'
                 alt=""
                 width={800}
@@ -204,7 +221,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/13.png'
                 alt=""
                 width={800}
@@ -213,7 +230,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/14.png'
                 alt=""
                 width={800}
@@ -222,7 +239,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/15.png'
                 alt=""
                 width={800}
@@ -231,7 +248,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/16.png'
                 alt=""
                 width={800}
@@ -240,7 +257,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/17.png'
                 alt=""
                 width={800}
@@ -249,7 +266,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/18.png'
                 alt=""
                 width={800}
@@ -258,7 +275,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/19.png'
                 alt=""
                 width={800}
@@ -267,7 +284,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/20.png'
                 alt=""
                 width={800}
@@ -276,7 +293,7 @@ export default function GalleryPage() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                className="Gallery__slider-image"
+                className="gallery__slider-image"
                 src='/21.png'
                 alt=""
                 width={800}
@@ -288,11 +305,11 @@ export default function GalleryPage() {
 
         <button 
           onClick={() => swiperRef.current?.slidePrev()}
-          className="Gallery__arrow Gallery__arrow--prev"
+          className="gallery__arrow gallery__arrow--prev"
           aria-label="Previous Slide"
         >
           <Image
-            className="Gallery__arrow-image"
+            className="gallery__arrow-image"
             src='/spade-black.png'
             alt=""
             width={100}
@@ -301,150 +318,26 @@ export default function GalleryPage() {
         </button>
         <button 
           onClick={() => swiperRef.current?.slideNext()}
-          className="Gallery__arrow Gallery__arrow--next"
+          className="gallery__arrow gallery__arrow--next"
           aria-label="Next Slide"
         >
           <Image
-            className="Gallery__arrow-image"
+            className="gallery__arrow-image"
             src='/spade-black.png'
             alt=""
             width={100}
             height={100}
           />
         </button>
-        <div className="Gallery__captions-container">
-          <div 
-            className="Gallery__caption"
-            data-caption-index={0}
-          >
-            Engaged on 2/15/2025
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={1}
-          >
-            Our first visit to Mexico, 2 months dating
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={2}
-          >
-            6 month anniversary in New York
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={3}
-          >
-            Starry-eyed long distance reunion in DC
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={4}
-          >
-            Wedding guests
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={5}
-          >
-            Coffee walks in New York
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={6}
-          >
-            more weddings!
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={7}
-          >
-            Long distance again--reuinted in Italy
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={8}
-          >
-            In love at the Boboli Gardens
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={9}
-          >
-            Our favorite city in the world, Firenze
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={10}
-          >
-            An unforgettable trip to Greece
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={11}
-          >
-            Coffee strolls in Spain
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={12}
-          >
-            Christmas in our first apartment
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={13}
-          >
-            Celebrating our engagement with our family
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={14}
-          >
-            Moments after he proposed
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={15}
-          >
-            Two love birds
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={16}
-          >
-            Perfect happiness
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={17}
-          >
-            Uri and Brianna
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={18}
-          >
-            A Dallas arboretum date
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={19}
-          >
-            An unforgettable hot air balloon ride in Mexico
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={20}
-          >
-            Our first ever performance -- a folklorico duet
-          </div>
-          <div 
-            className="Gallery__caption"
-            data-caption-index={21}
-          >
-            Performining at Latinidad in Dallas
-          </div>
+        <div className="gallery__captions-container">
+          {CAPTIONS.map((caption, index) => (
+            <div
+              key={index}
+              className={index === activeIndex ? "gallery__caption gallery__caption--active" : "gallery__caption"}
+            >
+              {caption}
+            </div>
+          ))}
         </div>
       </div>
     </div>
