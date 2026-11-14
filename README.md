@@ -24,7 +24,7 @@ Fonts are loaded from `src/app/fonts/` with [`next/font/local`](https://nextjs.o
 
 ```text
 src/app/              App Router routes: page.js (home), information/, italy/, gallery/, registry/, rsvp/
-src/app/layout.js     root layout: fonts and base styles
+src/app/layout.js     root layout: fonts, base styles and site metadata (title, description, noindex)
 src/app/components/   navigation, footer, accordion item, floating-label input, RSVP form
 src/app/styles/       one SCSS file per page or component; _variables.scss is @use'd into all of them
 src/app/fonts/        local font files

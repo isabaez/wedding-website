@@ -171,6 +171,11 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
   fail the Security workflow's zizmor job.
 - The deploy workflow's `actions/configure-pages` (`static_site_generator: next`) edits the Next.js config during
   the build; local builds and `ci.yml` don't get that change.
+- **The site is unlisted**: `metadata.robots` in `src/app/layout.js` puts `noindex, nofollow, noimageindex` on every
+  page, so it's shareable by link but kept out of search results, images included. Metadata merges shallowly: a page
+  that sets its own `robots` replaces this one, so it has to repeat all three. Don't add a `robots.txt` with
+  `Disallow: /` (crawlers then can't read the noindex) or a sitemap. After the move off GitHub Pages, also send
+  `X-Robots-Tag: noindex, nofollow, noimageindex` from the CDN, which also covers the image files themselves.
 
 ## Gotchas
 
