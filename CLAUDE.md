@@ -76,7 +76,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `/gallery`, `/registry`, `/rsvp`. `src/app/layout.js` is the root layout: it loads the two local fonts and
   `base.scss`.
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
-  `rsvp-form`, `live-region`, `image-gallery`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
+  `rsvp-form`, `live-region`, `image-gallery`, `parallax-break`) and are imported as `@components/<name>` (aliases in
+  `jsconfig.json`).
   React hooks live in `src/app/hooks/` (`@hooks/<name>`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
@@ -103,9 +104,9 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
    `.github/workflows/ci.yml` (its "Check that every page was exported" step).
 
 ### Add an information section
-1. In `src/app/information/page.js` (or `src/app/italy/page.js`), add an `<AccordionItem title=… content={…} />`;
-   `disableToggle` renders it always open, as a plain heading with no button. A collapsed panel is `inert`, so its
-   links stay out of the tab order.
+1. In `src/app/information/page.js` (or `src/app/italy/page.js`, inside one of its `.italy__content` columns, not
+   between them), add an `<AccordionItem title=… content={…} />`; `disableToggle` renders it always open, as a plain
+   heading with no button. A collapsed panel is `inert`, so its links stay out of the tab order.
 2. Styles for the section go in that page's SCSS file; accordion styles in `src/app/styles/accordion-item.scss`.
 
 ### Change a design element
@@ -159,6 +160,7 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
   nothing extra. Motion CSS can't reach (`requestAnimationFrame`, the Web Animations API) reads
   `usePrefersReducedMotion()` (`@hooks/use-prefers-reduced-motion`); both Swiper carousels (the gallery page and
   `ImageGallery`) also set Swiper's `speed` to 0 with it, so slides switch without waiting for `transitionend`.
+  `ParallaxBreak`'s fixed image layer becomes `position: absolute` under reduced motion, so it scrolls with the page.
 - No other shared helpers yet: no visually hidden class or skip link.
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
 - The design is dark (black background) except `/italy`, which is light: `$chocolate` text on `$champagne` (about
@@ -205,6 +207,9 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
 - **`/italy` is the only light page** (chocolate on champagne): a shared style that renders there takes
   `currentColor`, not `$white`, as the accordion divider and `ImageGallery`'s progress bar do. `.cta` and
   `.back-link` in `base.scss` are still white on black.
+- **`ParallaxBreak` is a fixed image layer clipped by `clip-path: inset(0)` on its section** (iOS Safari ignores
+  `background-attachment: fixed`). A `transform`, `filter` or `perspective` on any ancestor turns `position: fixed`
+  into absolute and breaks it; place it as a direct child of `.italy`, outside the content column.
 - **The Italy page broke the build once** and was removed (commit c9eaa33) before it came back in #22: run
   `npm run build`, not only `npm run dev`, before a PR.
 - **`package.json` `overrides` forces `minimatch` ^11.0.1 under `@typescript-eslint/typescript-estree`** (lint only):

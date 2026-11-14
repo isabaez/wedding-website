@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AccordionItem from "@components/accordion-item";
 import ImageGallery from "@components/image-gallery";
+import ParallaxBreak from "@components/parallax-break";
 import "@styles/italy.scss";
 
 // The Italy page's photo gallery: 5:4 .webp files in public/, named italy-gallery-<n>.webp. Add a caption to a
@@ -107,7 +108,14 @@ export default function ItalyPage() {
           }
         >
         </AccordionItem>
+      </div>
 
+      <ParallaxBreak
+        src="/parallax-2.webp"
+        objectPosition="50% 40%"
+      />
+
+      <div className="italy__content">
         <AccordionItem
           title="Tentative Itinerary"
           disableToggle={true}
@@ -141,7 +149,14 @@ export default function ItalyPage() {
           }
         >
         </AccordionItem>
+      </div>
 
+      <ParallaxBreak
+        src="/parallax-1.webp"
+        objectPosition="50% 45%"
+      />
+
+      <div className="italy__content">
         <AccordionItem
           title="The Villa"
           disableToggle={true}
