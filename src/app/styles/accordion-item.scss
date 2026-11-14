@@ -30,11 +30,15 @@
     position: relative;
     background: none;
     border: none;
-    outline: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // The script title's descenders and swashes reach about 5px past the button box.
+    &:focus-visible {
+      @include focus-ring(6px);
+    }
   }
 
   &__title {
@@ -65,7 +69,11 @@
   }
 
   &__content-wrapper {
-    width: 100%;
+    // overflow: hidden clips the height animation; 4px of inline padding (cancelled by the negative margins, so the
+    // content keeps its width) leaves room for the focus ring of a link that spans a full line.
+    width: calc(100% + 8px);
+    margin-inline: -4px;
+    padding-inline: 4px;
     overflow: hidden;
     transition: height 0.3s ease-out;
     height: 0;

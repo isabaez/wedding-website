@@ -76,32 +76,36 @@ export default function DallasRsvpForm() {
             <legend className="rsvp-form__legend">
               Will you be in attendance on May 2, 2026 in Hutchins, TX?
             </legend>
-            <input
-              id="attending-yes"
-              type="radio"
-              name="attending"
-              value="yes"
-              className="rsvp-form__radio-input"
-            />
-            <label 
-              htmlFor="attending-yes"
-              className="rsvp-form__radio-label"
-            >
-              Yes, I will be attending
-            </label>
-            <input
-              id="attending-no"
-              type="radio"
-              name="attending"
-              value="no"
-              className="rsvp-form__radio-input"
-            />
-            <label 
-              htmlFor="attending-no"
-              className="rsvp-form__radio-label"
-            >
-              No, I will not be attending
-            </label>
+            <div className="rsvp-form__radio">
+              <input
+                id="attending-yes"
+                type="radio"
+                name="attending"
+                value="yes"
+                className="rsvp-form__radio-input"
+              />
+              <label 
+                htmlFor="attending-yes"
+                className="rsvp-form__radio-label"
+              >
+                Yes, I will be attending
+              </label>
+            </div>
+            <div className="rsvp-form__radio">
+              <input
+                id="attending-no"
+                type="radio"
+                name="attending"
+                value="no"
+                className="rsvp-form__radio-input"
+              />
+              <label 
+                htmlFor="attending-no"
+                className="rsvp-form__radio-label"
+              >
+                No, I will not be attending
+              </label>
+            </div>
           </fieldset>
 
           { attending && (
