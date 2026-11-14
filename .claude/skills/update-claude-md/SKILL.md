@@ -127,3 +127,7 @@ propose adding it.
 <!-- Filled in by /init-project. The CM path; the stack and the official docs used (with the date checked); the rules files and what each covers; the line budget; convention exceptions the dev approved. Facts only; nothing sensitive in a public repo. -->
 - CLAUDE.md path: `CLAUDE.md` at the repo root.
 - Stack: Next.js 15 App Router with static export (`output: 'export'`), React 19, JavaScript (no TypeScript), Sass, Swiper.
+- Official docs used (checked 2026-11-13): Next.js static exports, react.dev rules, Sass `@import` breaking change, WAI-ARIA APG accordion and carousel, WAI forms labels tutorial.
+- Rules files: `nextjs.md` (static-export limits), `react.md` (purity, hooks), `sass.md` (`@import` deprecation), `accessibility.md` (accordion, carousel, form labels). `git-workflow.md` is managed by /init-project.
+- Line budget: CLAUDE.md about 180 lines of 200.
+- No convention exceptions: new CSS blocks are kebab-case BEM; the PascalCase page blocks are older code.
