@@ -80,6 +80,6 @@ a rule break; low = a clarity problem likely to cause a bug later.
 
 <!-- Filled in by /init-project (Step 3). Facts CLAUDE.md doesn't already state that sharpen a review: hot-spot files many parts depend on, invariants that are easy to break, read-only commands safe to run. Facts only; no secret values; nothing sensitive if the repo is public. -->
 - Static export (`output: 'export'` in `next.config.mjs`): no API routes, server actions, middleware, `next/image` optimization or anything that needs a Node server at runtime; `next build` must still produce `out/` for GitHub Pages.
-- Hot spots: `src/app/components/navigation.js` (on every page) and `src/app/styles/_variables.scss`, which `next.config.mjs` prepends to every Sass file, so a change there touches all styles.
+- Hot spots: `src/app/components/navigation.js` (on every page) and `src/app/styles/_variables.scss`, which `next.config.mjs` loads into every Sass file with `@use "src/app/styles/variables" as *;` (`sassOptions.additionalData`), so a change there touches all styles.
 - Path aliases `@components/*` and `@styles/*` come from `jsconfig.json`; JavaScript only, no TypeScript.
 - Safe once `node_modules` exists: `npm run lint`, `npm run build` (writes the ignored `.next/` and `out/`).

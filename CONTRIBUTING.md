@@ -76,6 +76,9 @@ npm run build   # static export to out/; the deploy runs this same build, so it 
 - There are no automated tests yet. Also open the pages you changed with `npm run dev` (http://localhost:3000),
   at phone and desktop widths.
 - Neither check needs a service, a `.env` file or a network connection once `node_modules` exists.
+- `.github/workflows/ci.yml` runs the same three commands, then checks that every page was exported to `out/`, on
+  every pull request into `develop` (and every push to `beta`); a pull request is ready to merge only when that
+  check passes.
 
 ## QA in this project
 
@@ -85,7 +88,7 @@ with `npm run dev` or `npm run build` from a checkout of `beta`.
 ## Releasing this project
 
 When the `[ production deploy ]` pull request merges into `main`, `.github/workflows/nextjs.yml` builds the site
-(Node 20, `npm ci`, `next build`) and publishes `out/` to GitHub Pages; `CNAME` sets the custom domain. There is
+(Node 24, `npm ci`, `next build`) and publishes `out/` to GitHub Pages; `CNAME` sets the custom domain. There is
 nothing to run by hand. The workflow can also be re-run from the Actions tab.
 
 ## Code style

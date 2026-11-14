@@ -14,7 +14,9 @@ npm run lint    # ESLint with next/core-web-vitals (eslint.config.mjs)
 npm run build   # static export to out/; the deploy runs this same build, so it must pass
 ```
 
-- There is no test runner yet; lint and build are the checks before a PR.
+- There is no test runner yet; lint and build are the checks before a PR. `.github/workflows/ci.yml` runs
+  `npm ci`, lint and build (Node 24), then checks every page's `out/<route>.html`, on every PR into `develop` and
+  every push to `beta`.
 - `npm run start` doesn't serve a static export; preview `out/` with any static file server instead.
 
 <!-- init-project:git-workflow v3 — managed by /init-project; re-sync replaces everything up to the end marker, so put project notes below it -->
@@ -75,8 +77,9 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
   `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
-  `@styles/<name>.scss`. `next.config.mjs` prepends `_variables.scss` (colours, font stacks) to every SCSS file, so its
-  variables are available everywhere without an import.
+  `@styles/<name>.scss`. `next.config.mjs` adds `@use "src/app/styles/variables" as *;` to every SCSS file
+  (`sassOptions.additionalData`), so the variables in `_variables.scss` (colours, font stacks) work everywhere without
+  an import.
 - **Fonts**: Hamilton Script and Prairie Sans from `src/app/fonts/`, loaded with `next/font/local` in `layout.js` and
   exposed as `--font-hamilton-script` / `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
 - **Images** sit in `public/` and render through `next/image` with `images.unoptimized: true` (static export has no
@@ -92,7 +95,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 2. Create `src/app/styles/<route>.scss` with a kebab-case root class (`.rsvp-page` is the model) and import it in
    the page as `@styles/<route>.scss`.
 3. Link it from `src/app/components/navigation.js`, or from a page, if guests should find it.
-4. `npm run lint` and `npm run build`; check `out/<route>.html` exists.
+4. `npm run lint` and `npm run build`; check `out/<route>.html` exists, and add `<route>` to the page list in
+   `.github/workflows/ci.yml` (its "Check that every page was exported" step).
 
 ### Add an information section
 1. In `src/app/information/page.js` (or `src/app/italy/page.js`), add an `<AccordionItem title=… content={…} />`;
@@ -160,17 +164,19 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
 
 ## Deployment
 
-- `.github/workflows/nextjs.yml` runs on every push to `main` (and by hand): Node 20, `npm ci`, `next build`, then
-  uploads `out/` and deploys it to GitHub Pages. `CNAME` sets the custom domain.
-- CI's `actions/configure-pages` (`static_site_generator: next`) edits the Next.js config during the build; local
-  builds don't get that change.
+- `.github/workflows/nextjs.yml` runs on every push to `main` (and by hand): Node 24, `npm ci`, `next build`, then
+  uploads `out/` and deploys it to GitHub Pages. `CNAME` sets the custom domain. It is the only workflow that runs
+  these deploy actions, so a change to it is first tested by the next production deploy.
+- Every workflow pins actions by full commit SHA with the version in a comment; Dependabot bumps them. Tag pins
+  fail the Security workflow's zizmor job.
+- The deploy workflow's `actions/configure-pages` (`static_site_generator: next`) edits the Next.js config during
+  the build; local builds and `ci.yml` don't get that change.
 
 ## Gotchas
 
 - **`/italy` isn't linked from any page**: guests reach it by direct URL.
 - **The Italy page broke the build once** and was removed (commit c9eaa33) before it came back in #22: run
   `npm run build`, not only `npm run dev`, before a PR.
-- **`_variables.scss` is prepended with `@import`**, which Dart Sass 1.80+ deprecates (warnings during build).
 - **The caret SVG path in `src/app/components/accordion-item.js` contains full-width digits** from a paste; `public/caret-down.svg`
   is the intended icon (the comment there says so).
 - **`public/` holds about 60 MB of PNGs** and images aren't optimized at build time: compress new images before adding
