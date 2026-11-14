@@ -4,17 +4,76 @@ import AccordionItem from "@components/accordion-item";
 import ImageGallery from "@components/image-gallery";
 import "@styles/italy.scss";
 
-// Placeholder photos until the gallery's images are chosen (#48); new ones go in public/ as compressed 5:4 .webp.
+// The Italy page's photo gallery: 5:4 .webp files in public/, named italy-gallery-<n>.webp. Add a caption to a
+// slide with caption: "…".
 const GALLERY_SLIDES = [
   {
-    src: "/lenka.webp",
-    alt: "Villa Lenka at dusk: a lit, two-storey ochre villa behind a gravel path lined with lawns and potted flowers",
-    caption: "Villa Lenka",
+    src: "/italy-gallery-1.webp",
+    alt: "Cannoli dusted with powdered sugar on plates over a green gingham tablecloth",
   },
   {
-    src: "/bernardini.webp",
-    alt: "Borgo Bernardini from above: terracotta-roofed buildings beside a long pool, surrounded by gardens",
-    caption: "Borgo Bernardini",
+    src: "/italy-gallery-2.webp",
+    alt: "Pasta being tossed inside a hollowed-out wheel of cheese",
+  },
+  {
+    src: "/italy-gallery-3.webp",
+    alt: "A long candlelit dinner table beside a villa at dusk, seen from above",
+  },
+  {
+    src: "/italy-gallery-4.webp",
+    alt: "The front of a Tuscan villa with a double staircase, lit at dusk",
+  },
+  {
+    src: "/italy-gallery-5.webp",
+    alt: "Guests seated at long tables in front of a pale yellow villa",
+  },
+  {
+    src: "/italy-gallery-6.webp",
+    alt: "A waiter setting out glasses on a white-clothed table in a garden",
+  },
+  {
+    src: "/italy-gallery-7.webp",
+    alt: "Guests in summer formal wear gathered on a lawn beside a pond",
+  },
+  {
+    src: "/italy-gallery-8.webp",
+    alt: "Plates of tortelli being served from a large pan",
+  },
+  {
+    src: "/italy-gallery-9.webp",
+    alt: "Sauce being poured over sliced steak",
+  },
+  {
+    src: "/italy-gallery-10.webp",
+    alt: "Guests at a long candlelit table, seen from above",
+  },
+  {
+    src: "/italy-gallery-11.webp",
+    alt: "A red pizza truck with a wood-fired oven on the lawn of a yellow villa",
+  },
+  {
+    src: "/italy-gallery-12.webp",
+    alt: "A slice of pizza on a plate on a pink toile tablecloth",
+  },
+  {
+    src: "/italy-gallery-13.webp",
+    alt: "Guests relaxing around a pool with inflatable rings",
+  },
+  {
+    src: "/italy-gallery-14.webp",
+    alt: "A gelato cart under a red awning in a garden",
+  },
+  {
+    src: "/italy-gallery-15.webp",
+    alt: "White hydrangeas above a buffet of pastries outside a villa",
+  },
+  {
+    src: "/italy-gallery-16.webp",
+    alt: "A hand holding a spritz over a pool",
+  },
+  {
+    src: "/italy-gallery-17.webp",
+    alt: "Swimmers in yellow-striped rings in a pool, seen from above",
   },
 ];
 
@@ -141,7 +200,7 @@ export default function ItalyPage() {
 
       <ImageGallery
         slides={GALLERY_SLIDES}
-        label="The villas"
+        label="Photos from Italy"
       />
 
       <div className="italy__content">
