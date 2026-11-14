@@ -29,7 +29,7 @@ src/app/components/   navigation, footer, accordion item, floating-label input, 
 src/app/hooks/        React hooks (prefers-reduced-motion)
 src/app/styles/       one SCSS file per page or component; _variables.scss is @use'd into all of them
 src/app/fonts/        local font files
-public/               images served as-is (gallery photos, Italy page photos, icons, villa photos)
+public/               images served as-is (gallery photos, Italy page photos, icons)
 next.config.mjs       static export, Sass options, unoptimized images
 .github/workflows/    ci.yml: lint and build on PRs and beta; nextjs.yml: deploy to GitHub Pages; security.yml
 CNAME                 the custom domain for GitHub Pages

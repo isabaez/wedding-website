@@ -14,9 +14,14 @@ paths:
   `aria-roledescription="carousel"` and a label without the word "carousel" (`ImageGallery` also gives it
   `role="region"`, which the label needs); each slide is `role="group"` with `aria-roledescription="slide"` and a
   name. The /gallery page has native previous/next `<button>`s. `ImageGallery` has none, by the dev's choice (#48):
-  arrow keys move it, and clicking a side slide centres it (`slideToClickedSlide`), the single-pointer alternative to
-  swiping (WCAG 2.5.7). Keep Swiper's Keyboard `pageUpDown` off so Page Up / Page Down still scroll the page. If a
-  carousel auto-rotates, add a pause button first in tab order and stop on focus or hover.
+  clicking a side slide centres it (`slideToClickedSlide`), the single-pointer alternative to swiping (WCAG 2.5.7),
+  and the carousel itself takes focus (`tabIndex={0}`, focus ring drawn inside its edges) so Left / Right move it.
+  Arrow keys move only the focused carousel, not Swiper's Keyboard module (which moves every one in view; /italy
+  has six); modified arrows (Alt+Left, Cmd+Left: Back) and other keys, Page Up / Page Down included, stay with the
+  page. A hidden hint (`aria-describedby`) names the arrow keys. In loop mode Swiper moves a slide from one end to
+  the other on every change, so its `aria-live` on the slide wrapper is off and a hidden `LiveRegion` announces
+  "n of m: <alt>" instead. If a carousel auto-rotates, add a pause
+  button first in tab order and stop on focus or hover.
   Source: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ (checked 2026-11-13)
 - **Focus indicator**: every `:focus-visible` element gets the `focus-ring` mixin (`_variables.scss`, applied in
   `base.scss`): a white outline over a black band, so it holds 3:1 on black and on light images. Never set

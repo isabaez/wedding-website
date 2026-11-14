@@ -24,7 +24,9 @@ body:has(.italy) {
 
   &__header {
     padding-inline: var(--page-padding);
-    font-size: 6rem;
+    // Small enough that the longest line, "You're invited to" (about 4.85 times the font size), fits between the
+    // page padding with room to spare at any width, 320px included: the size follows the viewport below about 385px.
+    font-size: min(6rem, (100vw - 2 * var(--page-padding)) / 5.4);
     text-align: center;
     letter-spacing: .2rem;
 
@@ -33,31 +35,120 @@ body:has(.italy) {
     }
   }
 
-  &__content {
-    max-width: calc(600px + 2 * var(--page-padding));
-    margin: 0 auto;
-    padding: 6rem var(--page-padding);
-    font-size: 1.2rem;
-    line-height: 1.6;
-    letter-spacing: -.02rem;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  // One line each: the heading breaks after "to" and "in", and from 1024px only after "in". The font size leaves room
+  // for each line, so no nowrap: with increased text spacing (WCAG 1.4.12) a line wraps instead of being cut off.
+  &__header-line {
+    display: block;
 
     @media screen and (min-width: 1024px) {
-      padding-block: 8rem;
-      gap: 60px;
+      display: inline;
+
+      &--caps {
+        display: block;
+      }
+    }
+
+    // The capitals of "ITALY" rise higher than the lowercase above them: extra space keeps the gap looking even.
+    &--caps {
+      margin-top: .25em;
     }
   }
 
-  &__image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    aspect-ratio: calc(5/3);
+  // Text columns, 700px wide at most. Galleries and the parallax breaks sit between them, full width.
+  &__content {
+    max-width: calc(700px + 2 * var(--page-padding));
+    margin: 0 auto;
+    padding: 6.4rem var(--page-padding);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-align: center;
+    text-wrap: pretty;
 
     @media screen and (min-width: 1024px) {
-      width: 80%;
+      padding-block: 8rem;
+    }
+
+    > * + * {
+      margin-top: 1.6rem;
+    }
+
+    // A column that introduces the gallery below it sits half as far from it as from what comes before, so the
+    // gallery reads as part of that text.
+    &--gallery-intro {
+      padding-bottom: 3.2rem;
+
+      @media screen and (min-width: 1024px) {
+        padding-bottom: 4rem;
+      }
+    }
+  }
+
+  // Script headings for the page's sections, each with a short divider under it in the text colour.
+  &__section-heading {
+    // Steps down with the title below about 385px, so it stays smaller than the title.
+    font-size: min(4.8rem, (100vw - 2 * var(--page-padding)) / 6);
+    letter-spacing: normal;
+    text-wrap: balance;
+    // A long word still wraps at 320px with increased text spacing (WCAG 1.4.12) instead of running off the screen.
+    overflow-wrap: anywhere;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 6rem;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 1px;
+      margin: 1.6rem auto 0;
+      background: currentColor;
+    }
+
+    // Space above a section that follows text in the same column.
+    * + & {
+      margin-top: 6.4rem;
+    }
+  }
+
+  // The two villas, under "The Villas": script, smaller than a section heading.
+  &__subheading {
+    font-size: 3.6rem;
+    letter-spacing: normal;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 4.4rem;
+    }
+
+    * + & {
+      margin-top: 4.8rem;
+    }
+  }
+
+  // Itinerary days: sans-serif, bold.
+  &__day {
+    font-family: $sansSerif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+
+    * + & {
+      margin-top: 4rem;
+    }
+  }
+
+  &__closing {
+    @include heading-type;
+    // No larger than the title on small screens.
+    font-size: min(5.6rem, (100vw - 2 * var(--page-padding)) / 5.4);
+    text-wrap: balance;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 7.2rem;
+    }
+
+    * + & {
+      margin-top: 6.4rem;
     }
   }
 }

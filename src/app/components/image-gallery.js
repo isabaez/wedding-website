@@ -1,11 +1,12 @@
 'use client';
-import { useRef } from "react";
+import { useId, useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Keyboard } from "swiper/modules";
+import { A11y } from "swiper/modules";
 import "swiper/css";
 import "@styles/image-gallery.scss";
 import usePrefersReducedMotion from "@hooks/use-prefers-reduced-motion";
+import LiveRegion from "@components/live-region";
 
 // Swiper's loop needs more slides than are in view (3 above 1024px, plus one on each side to loop into), so a
 // shorter list is repeated until it has at least this many.
@@ -17,17 +18,17 @@ const GAP_SMALL = 16;
 const GAP_LARGE = 32;
 const LARGE_BREAKPOINT = 1025;
 const BREAKPOINTS = { [LARGE_BREAKPOINT]: { spaceBetween: GAP_LARGE } };
-// Arrow keys move the carousel while it's in view. Page Up / Page Down stay with the page: Swiper would otherwise
-// take them, and a reader paging down /italy would get stuck cycling slides.
-const KEYBOARD = { enabled: true, onlyInViewport: true, pageUpDown: false };
 
-// A full-width carousel of 5:4 images that always loops, with an optional centred caption under each image and a
+// A full-width carousel of 4:3 images that always loops, with an optional centred caption under each image and a
 // thin progress bar under the slides. Up to 1024px one slide is in view with its neighbours peeking at the sides;
-// above that, three. Swiping, arrow keys (Keyboard module) and clicking a side slide move it; there are no
-// previous/next buttons and no autoplay.
+// above that, three. Swiping, clicking a side slide, and the left and right arrow keys while the carousel has focus
+// move it; there are no previous/next buttons and no autoplay.
 // slides: [{ src, alt, caption? }]. label: the carousel's accessible name (don't include the word "carousel").
 export default function ImageGallery({ slides, label }) {
   const progressFillRef = useRef(null);
+  const swiperRef = useRef(null);
+  const announcementRef = useRef(null);
+  const hintId = useId();
   const prefersReducedMotion = usePrefersReducedMotion();
   const slideCount = slides.length;
 
@@ -45,15 +46,42 @@ export default function ImageGallery({ slides, label }) {
   // count the copies, and set straight on the element: a React re-render on every slide change hands Swiper new
   // props mid-transition, and it then sometimes stops responding to the next swipe or key press.
   const updateProgress = (swiper) => {
-    const progress = ((swiper.realIndex % slideCount) + 1) / slideCount;
-    progressFillRef.current.style.transform = `scaleX(${progress})`;
+    const position = swiper.realIndex % slideCount;
+    progressFillRef.current.style.transform = `scaleX(${(position + 1) / slideCount})`;
+    // Announce the slide now in the centre. Swiper's own aria-live on the slide wrapper is turned off (onSwiper): in
+    // loop mode it moves a slide from one end to the other on every change, and screen readers would read that one.
+    announcementRef.current.textContent = `${position + 1} of ${slideCount}: ${slides[position].alt}`;
+  };
+
+  // Arrow keys move only the carousel that has focus (Tab reaches it), not every carousel in view as Swiper's Keyboard
+  // module would: /italy has several, often two on screen at once. Other keys, Page Up / Down included, stay with the
+  // page.
+  const handleKeyDown = (event) => {
+    // Leave modified arrows to the browser: Alt+Left and Cmd+Left are Back, the only way off /italy.
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+      return;
+    }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      swiperRef.current?.slidePrev();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      swiperRef.current?.slideNext();
+    }
   };
 
   return (
-    <div className="image-gallery">
+    <div className="image-gallery" onKeyDown={handleKeyDown}>
       <Swiper
         className="image-gallery__slider"
-        modules={[A11y, Keyboard]}
+        modules={[A11y]}
+        // Focusable, so a keyboard user can Tab to it and use the arrow keys (handleKeyDown above).
+        tabIndex={0}
+        aria-describedby={hintId}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          swiper.wrapperEl.setAttribute("aria-live", "off");
+        }}
         loop={true}
         centeredSlides={true}
         slidesPerView="auto"
@@ -62,7 +90,6 @@ export default function ImageGallery({ slides, label }) {
         // base.scss's reduced-motion rule already cuts Swiper's inline transition-duration; speed 0 also makes Swiper
         // switch slides at once instead of waiting for transitionend. 300 is Swiper's default.
         speed={prefersReducedMotion ? 0 : 300}
-        keyboard={KEYBOARD}
         a11y={{
           // A region, so screen readers announce the label and "carousel" (both are ignored on a plain div).
           containerRole: "region",
@@ -91,8 +118,8 @@ export default function ImageGallery({ slides, label }) {
                 className="image-gallery__image"
                 src={slide.src}
                 alt={slide.alt}
-                width={1000}
-                height={800}
+                width={1200}
+                height={900}
                 sizes={`(min-width: ${LARGE_BREAKPOINT}px) 33vw, 100vw`}
               />
               {slide.caption && (
@@ -104,6 +131,10 @@ export default function ImageGallery({ slides, label }) {
           </SwiperSlide>
         ))}
       </Swiper>
+      <p id={hintId} className="image-gallery__hint">
+        Use the left and right arrow keys to see more photos.
+      </p>
+      <LiveRegion className="image-gallery__announcement" ref={announcementRef} />
       <div className="image-gallery__progress" aria-hidden="true">
         <span
           className="image-gallery__progress-fill"

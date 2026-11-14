@@ -9,6 +9,23 @@
     --gap: 32px;
   }
 
+  // The carousel takes focus for its arrow keys. It spans the screen, so an outline outside it would be cut off at the
+  // edges: the focus-ring colours (a white line over a black band) are drawn inside it instead, above the slides.
+  &__slider:focus-visible {
+    outline-color: $black;
+    outline-offset: -2px;
+    box-shadow: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      z-index: 2;
+      border: 2px solid $white;
+      pointer-events: none;
+    }
+  }
+
   // Slides stretch to the tallest one (Swiper sets height: 100%, which stops the stretch), so every slide reserves
   // the same caption row and the carousel's height doesn't change between slides with and without captions.
   // Never turn on Swiper's autoHeight.
@@ -39,7 +56,7 @@
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
   }
 
@@ -60,17 +77,23 @@
     }
   }
 
+  // For screen readers: the key hint (the carousel's description) and the live region that announces each slide.
+  &__hint,
+  &__announcement {
+    @include visually-hidden;
+  }
+
   // Centred under the slides, at most 300px wide.
   &__progress {
     position: relative;
     width: calc(100% - 2 * (var(--gap) + var(--peek)));
     max-width: 300px;
-    height: 2px;
+    height: 1px;
     margin: 2.4rem auto 0;
     overflow: hidden;
-    // Translucent track in the text colour (chocolate on the Italy page): 55% keeps it about 3.3:1 against
-    // champagne and the fill about 3.6:1 against the track (WCAG 1.4.11).
-    background: color-mix(in srgb, currentColor 55%, transparent);
+    // The track is the text colour (chocolate on the Italy page) at 30% opacity; the fill is the solid text colour.
+    // The bar is decorative (aria-hidden): screen readers get each slide's "n of m" instead.
+    background: color-mix(in srgb, currentColor 30%, transparent);
   }
 
   &__progress-fill {
