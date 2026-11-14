@@ -30,7 +30,8 @@ paths:
   https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22 (checked 2026-11-14)
 - **Reduced motion**: `base.scss` cuts every CSS transition and animation under `prefers-reduced-motion: reduce`, so
   CSS motion needs nothing extra. Motion CSS can't reach (`requestAnimationFrame`, Web Animations, a library's own
-  timing such as Swiper's `speed`) checks `usePrefersReducedMotion()`. Never auto-play motion longer than 5 seconds
+  timing such as Swiper's `speed`) checks `usePrefersReducedMotion()`. Scroll effects done with `position: fixed`
+  (`ParallaxBreak`) switch to `position: absolute` under reduced motion. Never auto-play motion longer than 5 seconds
   without a pause control.
   Source: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html (checked 2026-11-14)
 - **Form labels** (`floating-label-input.js`): every control has a `<label for>` matching its `id`; hide a label
