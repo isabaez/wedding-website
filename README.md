@@ -6,7 +6,7 @@ backend (RSVPs are sent to Web3Forms from the browser).
 
 ## Getting Started
 
-Prerequisites: Node.js 24 (what CI and the deploy workflow use) and npm (the repo has a `package-lock.json`).
+Prerequisites: Node.js 24 or later (`engines` in package.json; CI and the deploy workflow use 24) and npm (the repo has a `package-lock.json`).
 
 ```bash
 npm ci          # install the pinned dependencies
