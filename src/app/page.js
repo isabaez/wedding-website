@@ -23,10 +23,10 @@ export default function Home() {
         />
         <div className="Home__cta-container">
           <Link 
-            href="/rsvp" 
+            href="/registry" 
             className="cta"
           >
-            RSVP
+            Registry
           </Link>
         </div>
         <Image

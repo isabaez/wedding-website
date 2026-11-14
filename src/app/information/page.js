@@ -27,9 +27,23 @@ export default function InformationPage() {
         <AccordionItem
           title="The Event"
           content={
-            <p>
-              We will be celebrating our legal marriage on Saturday, May 2, 2026 in Hutchins, Texas. The party will begin at 6:00pm with an open bar, followed by dinner and speeches, cake (!!!), dancing to our favorite DJ, and unlimited photobooth pics. We can&#39;t wait to celebrate with you!
-            </p>
+            <div>
+              <p>
+                We will be celebrating our legal marriage on Saturday, May 2, 2026 in Hutchins, Texas. The party will begin at 6:00pm with an open bar, followed by dinner and speeches, cake (!!!), dancing to our favorite DJ, and unlimited photobooth pics. We can&#39;t wait to celebrate with you!
+              </p>
+              <h4>
+                Schedule of Events
+              </h4>
+              <p>
+                <Image
+                  className="Information__image"
+                  src="/schedule-of-events.jpg"
+                  alt=""
+                  width={612}
+                  height={792}
+                />
+              </p>
+            </div>  
           }
         >
         </AccordionItem>
@@ -45,6 +59,20 @@ export default function InformationPage() {
             </p>
           }
         />
+
+        <AccordionItem
+          title="Our Registry"
+          content={
+            <p>
+              We are so grateful for your generosity and support. Your presence at our wedding is the greatest gift of all!
+              <br></br>
+              <br></br>
+              For those who wish to honor us with a gift, we have created a registry that can be found on our <a href='/registry'>registry page</a>.
+            </p>
+          }
+        >
+        </AccordionItem>
+        
         <AccordionItem
           title="Dress Code"
           content={
@@ -67,19 +95,6 @@ export default function InformationPage() {
               <br></br>
               <br></br>
               All food and drinks will be served buffet-style.
-            </p>
-          }
-        >
-        </AccordionItem>
-
-        <AccordionItem
-          title="Our Registry"
-          content={
-            <p>
-              We are so grateful for your generosity and support. Your presence at our wedding is the greatest gift of all!
-              <br></br>
-              <br></br>
-              For those who wish to honor us with a gift, we have created a registry that can be found on our <a href='/registry'>registry page</a>.
             </p>
           }
         >
