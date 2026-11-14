@@ -7,7 +7,7 @@ import "@styles/information.scss";
 export default function InformationPage() {
 
   return (
-    <div className="Information">
+    <div className="information">
       <Link
         href="/"
         className="back-link"
@@ -20,10 +20,10 @@ export default function InformationPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className="Information__header h1">
+      <h1 className="information__header">
         Information
       </h1>
-      <div className="Information__content">
+      <div className="information__content">
         <AccordionItem
           title="The Event"
           content={
@@ -36,7 +36,7 @@ export default function InformationPage() {
               </h4>
               <p>
                 <Image
-                  className="Information__image"
+                  className="information__image"
                   src="/schedule-of-events.jpg"
                   alt="Schedule of events, May 2nd 2026. 6:00pm: host's welcome remarks and cocktail hour kickoff. 7:00pm: dinner presentation and photobooth opens. 8:00pm: cake! (and speeches). 8:30pm: everybody on the dance floor, DJ starts spinning. 10:30pm: bartender's last call. 11:00pm: music ends, photobooth closes, tearful goodbyes. Please plan to arrive 5 to 10 minutes early."
                   width={612}
