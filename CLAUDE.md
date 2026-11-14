@@ -76,7 +76,7 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `/gallery`, `/registry`, `/rsvp`. `src/app/layout.js` is the root layout: it loads the two local fonts and
   `base.scss`.
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
-  `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
+  `rsvp-form`, `live-region`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
   (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables in `_variables.scss`
@@ -142,9 +142,13 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
 
 ### Accessibility in this project
 
-- No shared helpers yet: no visually hidden class, skip link, `:focus-visible` styles or reduced-motion handling.
+- Shared helpers: `LiveRegion` (below). None yet for visually hidden text, a skip link, `:focus-visible` styles or
+  reduced-motion handling.
   Five rules remove focus outlines with no replacement (`accordion-item.scss`, `floating-label-input.scss`,
   `gallery.scss`).
+- **Announcements:** `LiveRegion` (`src/app/components/live-region.js`) renders `role="status"` (or `role="alert"`
+  with `urgent`). Render it always and put the message inside, since screen readers may not announce a region that
+  appears with its message. The RSVP error uses it; the RSVP thank-you moves focus to its heading (`tabIndex={-1}`).
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
 - The design is dark only (black background); `base.scss` sets `color-scheme: dark` under
   `prefers-color-scheme: dark`. There is no contrast check.

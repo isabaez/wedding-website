@@ -15,6 +15,11 @@ paths:
   `aria-roledescription="slide"` and a name. If it auto-rotates, add a pause button first in tab order and stop on
   focus or hover.
   Source: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ (checked 2026-11-13)
+- **Live region** (`live-region.js`): a message that appears after load (an error, a confirmation) goes inside a
+  `LiveRegion` that is already in the page, `urgent` (`role="alert"`) for errors and `role="status"` otherwise. When
+  new content replaces the focused control (the RSVP thank-you), move focus to its heading with `tabIndex={-1}`.
+  Source: https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19 and
+  https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22 (checked 2026-11-14)
 - **Form labels** (`floating-label-input.js`): every control has a `<label for>` matching its `id`; hide a label
   visually only with a clip-based class, never `display: none`; don't replace labels with placeholders or `title`.
   Source: https://www.w3.org/WAI/tutorials/forms/labels/ (checked 2026-11-13)

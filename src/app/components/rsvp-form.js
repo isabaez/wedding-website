@@ -1,7 +1,8 @@
 'use client';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "@styles/rsvp-form.scss";
 import FloatingLabelInput from "@components/floating-label-input";
+import LiveRegion from "@components/live-region";
 import Link from "next/link";
 
 export default function DallasRsvpForm() {
@@ -9,6 +10,15 @@ export default function DallasRsvpForm() {
   const [error, setError] = useState(false);
   const [attending, setAttending] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const successHeadingRef = useRef(null);
+
+  // The thank-you replaces the form, so the focused Submit button disappears: move focus to the heading, which
+  // also makes screen readers read it.
+  useEffect(() => {
+    if (success) {
+      successHeadingRef.current?.focus();
+    }
+  }, [success]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -172,17 +182,23 @@ export default function DallasRsvpForm() {
               Submit
             </button>
 
-            { error && (
-              <p className="rsvp-form__error-message">
-                There was an error submitting your RSVP.<br />
-                Please try again or email us at <Link href="mailto:briurixo@gmail.com">briurixo@gmail.com</Link>
-              </p>
-            )}
+            <LiveRegion urgent>
+              { error && (
+                <p className="rsvp-form__error-message">
+                  There was an error submitting your RSVP.<br />
+                  Please try again or email us at <Link href="mailto:briurixo@gmail.com">briurixo@gmail.com</Link>
+                </p>
+              )}
+            </LiveRegion>
           </div>
         </form>
       ) : (
       <div className="rsvp-form__success-container">
-        <h2 className="rsvp-form__success-header">
+        <h2
+          className="rsvp-form__success-header"
+          ref={successHeadingRef}
+          tabIndex={-1}
+        >
           Thank you for your RSVP!
         </h2>
         <p className="rsvp-form__success-text">
