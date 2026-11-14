@@ -76,3 +76,4 @@ detail or cosmetic.
 <!-- Filled in by /init-project (Step 3). Which doc is the product doc and what it must cover; which doc sections track which code (e.g. a setup section that must match service files); docs beyond README.md that are in scope; numbers that must be kept current. Facts only; no secret values; nothing sensitive if the repo is public. -->
 - README.md is the product doc; its local-setup commands must match the `package.json` scripts (`dev`, `build`, `start`, `lint`).
 - Deploy docs must match `.github/workflows/nextjs.yml` (GitHub Pages on push to `main`) and `CNAME`.
+- CI docs (CLAUDE.md Commands, CONTRIBUTING.md "Checks before a pull request", the README's directory layout and Node prerequisite) must match `.github/workflows/ci.yml` (triggers, `node-version`, steps, the exported-page list) and the `node-version` in `nextjs.yml`.
