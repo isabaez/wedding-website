@@ -88,6 +88,6 @@ propose adding it.
 ## This project
 
 <!-- Filled in by /init-project. README size and whether audits fan out; which existing sections map to the four required parts; sections tied to code (e.g. a setup section that must match service files); numbers or counts that must stay current. Facts only; nothing sensitive in a public repo. -->
-- README.md is the stock create-next-app README (about 1.4 KB): no fan-out needed.
-- "Getting Started" is the only section that maps to a required part (local setup); its "Deploy on Vercel" section does not match the real deploy (GitHub Pages via `.github/workflows/nextjs.yml`).
-- Setup steps must match `package.json` scripts (`dev`, `build`, `start`, `lint`).
+- README.md is about 4 KB: no fan-out needed.
+- Required parts: intro (top), local setup ("Getting Started"), "Directory layout", "Working with Claude Code" (near the end, after "Deploy" and "Learn More").
+- Getting Started must match the `package.json` scripts (`dev`, `build`, `lint`) and the Node version in `.github/workflows/nextjs.yml`; "Deploy" must match that workflow.
