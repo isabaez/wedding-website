@@ -5,23 +5,23 @@ import "@styles/home.scss";
 
 export default function Home() {
   return (
-    <div className="Home">
+    <div className="home">
       <header>
         <Navigation />
       </header>
-      <main className="Home__main">
-        <h1 className="Home__heading h1">
+      <main className="home__main">
+        <h1 className="home__heading">
           Brianna & Uriel <br />Are Getting Married
         </h1>
-        <p className="Home__subheading">May 2, 2026</p>
+        <p className="home__subheading">May 2, 2026</p>
         <Image
-          className="Home__photobooth-image"
+          className="home__photobooth-image"
           src='/photobooth-3.png'
           alt=""
           width={600}
           height={200}
         />
-        <div className="Home__cta-container">
+        <div className="home__cta-container">
           <Link 
             href="/registry" 
             className="cta"
@@ -30,7 +30,7 @@ export default function Home() {
           </Link>
         </div>
         <Image
-          className="Home__cherub"
+          className="home__cherub"
           src='/cherub-white.png'
           alt=""
           width={100}

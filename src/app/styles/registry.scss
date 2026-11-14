@@ -1,4 +1,4 @@
-.Registry {
+.registry {
   min-height: 100svh;
   padding: 6rem 0rem;
 
@@ -83,8 +83,7 @@
   }
 
   &__cta-text {
-    font-family: $serif;
-    font-weight: 400;
+    @include heading-type;
     letter-spacing: .2rem;
     text-transform: none;
     font-size: 2.8rem;

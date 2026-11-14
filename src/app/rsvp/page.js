@@ -21,11 +21,11 @@ export default function DallasRsvpPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className="rsvp-page__header h1">
+      <h1 className="rsvp-page__header">
         R<span className="rsvp-page__header-space">SVP</span>
       </h1>
       <div className="rsvp-page__info-text">
-        Please visit our <a href="/information">information page</a> before submitting your RSVP
+        Please visit our <Link href="/information">information page</Link> before submitting your RSVP
       </div>
       <RsvpForm/>
       <Footer />

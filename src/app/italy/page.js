@@ -7,7 +7,7 @@ import "@styles/italy.scss";
 export default function ItalyPage() {
 
   return (
-    <div className="Italy">
+    <div className="italy">
       <Link
         href="/"
         className="back-link"
@@ -20,10 +20,10 @@ export default function ItalyPage() {
           height={100}
         /> Home
       </Link>
-      <h1 className="Italy__header h1">
+      <h1 className="italy__header">
         What is Happening in Italy?
       </h1>
-      <div className="Italy__content">
+      <div className="italy__content">
         <AccordionItem
           disableToggle={true}
           content={
@@ -102,7 +102,7 @@ export default function ItalyPage() {
                   target="_blank"
                 >
                   <Image
-                    className="Italy__image"
+                    className="italy__image"
                     src="/lenka.webp"
                     alt=""
                     width={1000}
@@ -124,7 +124,7 @@ export default function ItalyPage() {
                   target="_blank"
                 >
                   <Image
-                    className="Italy__image"
+                    className="italy__image"
                     src="/bernardini.webp"
                     alt=""
                     width={1000}
