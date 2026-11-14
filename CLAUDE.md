@@ -81,8 +81,9 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
   (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables in `_variables.scss`
   (colours, font stacks) work everywhere without an import.
-- **Fonts**: Hamilton Script and Prairie Sans from `src/app/fonts/`, loaded with `next/font/local` in `layout.js` and
-  exposed as `--font-hamilton-script` / `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
+- **Fonts**: Hamilton Script and Prairie Sans from `src/app/fonts/` (`hamilton-script.woff2`, `Prairie-Sans.woff`, the
+  only files there), loaded with `next/font/local` in `layout.js` and exposed as `--font-hamilton-script` /
+  `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
 - **Images** sit in `public/` and render through `next/image` with `images.unoptimized: true` (static export has no
   image optimizer), so files ship as they are.
 - **Client components** (`'use client'`): `rsvp-form`, `accordion-item`, the gallery and RSVP pages. State is local
@@ -185,5 +186,11 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
 - **`/italy` isn't linked from any page**: guests reach it by direct URL.
 - **The Italy page broke the build once** and was removed (commit c9eaa33) before it came back in #22: run
   `npm run build`, not only `npm run dev`, before a PR.
+- **`package.json` `overrides` forces `minimatch` ^11.0.1 under `@typescript-eslint/typescript-estree`** (lint only):
+  typescript-eslint pins `^10.2.2`, which has GHSA-g3hv-75wg-m249. It only calls `minimatch()`, which 11 keeps. Remove
+  the override once typescript-eslint allows minimatch 11.
+- **Dependency updates wait 7 days** (Dependabot `cooldown`); install by hand with `npm install --before=<7 days ago>` to
+  match. ESLint stays on 9 until the plugins eslint-config-next bundles (`eslint-plugin-react`, `-jsx-a11y`, `-import`)
+  allow 10.
 - **`public/` holds about 60 MB of PNGs** and images aren't optimized at build time: compress new images before adding
   them.
