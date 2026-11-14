@@ -81,7 +81,7 @@ export default function DallasRsvpForm() {
 
           <fieldset 
             className="rsvp-form__fieldset"
-            onChange={(e) => setAttending(e.target.value === 'yes')}
+            onChange={(event) => setAttending(event.target.value === 'yes')}
           >  
             <legend className="rsvp-form__legend">
               Will you be in attendance on May 2, 2026 in Hutchins, TX?
