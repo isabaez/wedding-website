@@ -101,5 +101,5 @@ weakened; medium = hardening gap with a plausible path; low = defence in depth.
 <!-- Filled in by /init-project (Step 3). The class of data at stake and the paths that hold or handle it; trust boundaries (what listens where, what runs privileged); where secrets live, by name and location only; public or private repo; whether a dependency audit command is safe to run. Facts only; no secret values; nothing sensitive if the repo is public. -->
 - Public repo; a static site on GitHub Pages with no server, database or repo secrets (`.env*` is ignored).
 - Personal data: the RSVP form in `src/app/components/rsvp-form.js` posts guests' names, emails and attendance from the browser straight to Web3Forms. Its access key is a public client key by design. Changing where form data goes, or adding fields that collect personal data, is high.
-- Deploy: `.github/workflows/nextjs.yml` (Pages, `pages: write`, `id-token: write`) and `CNAME`; workflow changes are sensitive.
+- Workflows: `.github/workflows/nextjs.yml` (deploy to Pages; only its `deploy` job has `pages: write` and `id-token: write`), `ci.yml` (lint and build on PRs into `develop`, `contents: read`) and `security.yml`, plus `CNAME`; workflow changes are sensitive.
 - Dependency audit: Dependabot alerts are on; `npm audit` may run once `node_modules` exists (it queries the npm registry).

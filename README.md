@@ -6,7 +6,7 @@ backend (RSVPs are sent to Web3Forms from the browser).
 
 ## Getting Started
 
-Prerequisites: Node.js 20 (what the deploy workflow uses) and npm (the repo has a `package-lock.json`).
+Prerequisites: Node.js 24 (what CI and the deploy workflow use) and npm (the repo has a `package-lock.json`).
 
 ```bash
 npm ci          # install the pinned dependencies
@@ -26,11 +26,11 @@ Fonts are loaded from `src/app/fonts/` with [`next/font/local`](https://nextjs.o
 src/app/              App Router routes: page.js (home), information/, italy/, gallery/, registry/, rsvp/
 src/app/layout.js     root layout: fonts and base styles
 src/app/components/   navigation, footer, accordion item, floating-label input, RSVP form
-src/app/styles/       one SCSS file per page or component; _variables.scss is prepended to all of them
+src/app/styles/       one SCSS file per page or component; _variables.scss is @use'd into all of them
 src/app/fonts/        local font files
 public/               images served as-is (gallery photos, icons, villa photos)
 next.config.mjs       static export, Sass options, unoptimized images
-.github/workflows/    nextjs.yml: build and deploy to GitHub Pages
+.github/workflows/    ci.yml: lint and build on PRs and beta; nextjs.yml: deploy to GitHub Pages; security.yml
 CNAME                 the custom domain for GitHub Pages
 ```
 
