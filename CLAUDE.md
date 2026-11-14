@@ -1,16 +1,17 @@
 # Wedding website — working agreements
 
-Static wedding website: Next.js 15 App Router with static export (`output: 'export'`), React 19, JavaScript, Sass and
-Swiper. `npm run dev` serves it on **3000**; `npm run build` writes the static site to `out/`, which GitHub Pages
-serves. No backend: the RSVP form posts from the browser to Web3Forms. README.md is the product doc: read the section
-for the area you are touching before changing it.
+Static wedding website: Next.js 16 App Router with static export (`output: 'export'`), React 19, JavaScript, Sass and
+Swiper; `next dev` and `next build` use Turbopack, and it expects Node 24 or later (`engines`; npm warns on older).
+`npm run dev` serves it on **3000**; `npm run build` writes the static site to `out/`, which GitHub Pages serves. No
+backend: the RSVP form posts from the browser to Web3Forms. README.md is the product doc: read the section for the
+area you are touching before changing it.
 
 ## Commands
 
 ```bash
 npm ci          # install exactly what package-lock.json pins (CI does the same)
 npm run dev     # dev server on http://localhost:3000
-npm run lint    # ESLint with next/core-web-vitals (eslint.config.mjs)
+npm run lint    # eslint . with eslint-config-next/core-web-vitals (flat config in eslint.config.mjs)
 npm run build   # static export to out/; the deploy runs this same build, so it must pass
 ```
 
@@ -77,9 +78,9 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
   `rsvp-form`) and are imported as `@components/<name>` (aliases in `jsconfig.json`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
-  `@styles/<name>.scss`. `next.config.mjs` adds `@use "src/app/styles/variables" as *;` to every SCSS file
-  (`sassOptions.additionalData`), so the variables in `_variables.scss` (colours, font stacks) work everywhere without
-  an import.
+  `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
+  (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables in `_variables.scss`
+  (colours, font stacks) work everywhere without an import.
 - **Fonts**: Hamilton Script and Prairie Sans from `src/app/fonts/`, loaded with `next/font/local` in `layout.js` and
   exposed as `--font-hamilton-script` / `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
 - **Images** sit in `public/` and render through `next/image` with `images.unoptimized: true` (static export has no

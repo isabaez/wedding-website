@@ -69,7 +69,7 @@ never opens a pull request into `main`, never edits `CHANGELOG.md` (only the mai
 
 ```bash
 npm ci          # install what package-lock.json pins
-npm run lint    # ESLint with next/core-web-vitals
+npm run lint    # eslint . with eslint-config-next/core-web-vitals
 npm run build   # static export to out/; the deploy runs this same build, so it must pass
 ```
 
