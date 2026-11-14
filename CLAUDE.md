@@ -101,7 +101,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
 
 ### Add an information section
 1. In `src/app/information/page.js` (or `src/app/italy/page.js`), add an `<AccordionItem title=… content={…} />`;
-   `disableToggle` renders it always open.
+   `disableToggle` renders it always open, as a plain heading with no button. A collapsed panel is `inert`, so its
+   links stay out of the tab order.
 2. Styles for the section go in that page's SCSS file; accordion styles in `src/app/styles/accordion-item.scss`.
 
 ### Change a design element
@@ -133,7 +134,8 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
 
 - Class names: new blocks are kebab-case BEM named after the page or component (`.rsvp-page`,
   `.accordion-item__toggle`). The PascalCase page blocks (`.Home`, `.Gallery__caption`) are older code, renamed only
-  through a refactor issue. Existing state classes: `.is-open`, `.is-active`.
+  through a refactor issue. Existing state class: `.is-active` (the accordion styles its state through
+  `[aria-expanded]`).
 - Imports use the `@components/` and `@styles/` aliases, not relative paths.
 - JavaScript only, no TypeScript; no CSS Modules or CSS-in-JS.
 
@@ -183,7 +185,5 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
 - **`/italy` isn't linked from any page**: guests reach it by direct URL.
 - **The Italy page broke the build once** and was removed (commit c9eaa33) before it came back in #22: run
   `npm run build`, not only `npm run dev`, before a PR.
-- **The caret SVG path in `src/app/components/accordion-item.js` contains full-width digits** from a paste; `public/caret-down.svg`
-  is the intended icon (the comment there says so).
 - **`public/` holds about 60 MB of PNGs** and images aren't optimized at build time: compress new images before adding
   them.

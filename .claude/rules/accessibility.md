@@ -6,7 +6,9 @@ paths:
 # Accessibility patterns used here
 
 - **Accordion** (`accordion-item.js`): the toggle is a `<button>` that is the only child of the heading; it carries
-  `aria-expanded` (true/false) and `aria-controls` pointing at the panel's `id`. Enter and Space toggle it.
+  `aria-expanded` (true/false) and `aria-controls` pointing at the panel's `id`; the panel is `inert` while collapsed
+  and has no `role="region"` (8 panels on /information; the APG advises against regions past about 6). Enter and
+  Space toggle it. Always-open items (`disableToggle`) have no button, only the heading.
   Source: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/ (checked 2026-11-13)
 - **Carousel** (the Swiper gallery): previous/next controls are native `<button>`s; the container has
   `aria-roledescription="carousel"` and a label without the word "carousel"; each slide is `role="group"` with
