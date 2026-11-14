@@ -6,6 +6,19 @@ and each entry says why the change was made.
 
 ## [Unreleased]
 
+## [2026-11-14]
+
+### Added
+
+- `/italy` is the invitation to the Italy wedding: the story, when and where, the two villas, a four-day itinerary,
+  the dress code, what's included and what guests cover, with six photo carousels and two full-screen paintings, so
+  guests invited to Italy have every detail of the trip, and what it costs them, in one place (#48)
+
+### Changed
+
+- `/italy` is champagne with chocolate text instead of black and white, and has no back link or crest footer, so
+  the Italy page reads as its own invitation, apart from the rest of the site (#48)
+
 ## [2026-11-13]
 
 ### Added

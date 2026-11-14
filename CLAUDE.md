@@ -76,8 +76,9 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `/gallery`, `/registry`, `/rsvp`. `src/app/layout.js` is the root layout: it loads the two local fonts and
   `base.scss`.
 - **Components** live in `src/app/components/` (`navigation`, `footer`, `accordion-item`, `floating-label-input`,
-  `rsvp-form`, `live-region`) and are imported as `@components/<name>` (aliases in `jsconfig.json`). React hooks
-  live in `src/app/hooks/` (`@hooks/<name>`).
+  `rsvp-form`, `live-region`, `image-gallery`, `parallax-break`) and are imported as `@components/<name>` (aliases in
+  `jsconfig.json`).
+  React hooks live in `src/app/hooks/` (`@hooks/<name>`).
 - **Styles**: one SCSS file per page or component in `src/app/styles/`, imported by that file as
   `@styles/<name>.scss`. `next.config.mjs` adds `@use "variables" as *;` to every SCSS file
   (`sassOptions.additionalData`, resolved through `sassOptions.loadPaths`), so the variables and mixins in
@@ -87,14 +88,15 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
 - **Images** sit in `public/` and render through `next/image` with `images.unoptimized: true` (static export has no
   image optimizer), so files ship as they are.
-- **Client components** (`'use client'`): `rsvp-form`, `accordion-item`, the gallery and RSVP pages. State is local
-  component state only; the RSVP form sends `FormData` to the Web3Forms API and shows a success or error message.
+- **Client components** (`'use client'`): `rsvp-form`, `accordion-item`, `image-gallery`, the gallery and RSVP pages.
+  State is local component state only; the RSVP form sends `FormData` to the Web3Forms API and shows a success or
+  error message.
 
 ## Recipes
 
 ### Add a page
 1. Create `src/app/<route>/page.js` exporting a default component; copy the back link and `<h1 className="…__header">`
-   from `src/app/italy/page.js`.
+   from `src/app/information/page.js`.
 2. Create `src/app/styles/<route>.scss` with a kebab-case root class (`.rsvp-page` is the model) and import it in
    the page as `@styles/<route>.scss`.
 3. Link it from `src/app/components/navigation.js`, or from a page, if guests should find it.
@@ -102,9 +104,12 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
    `.github/workflows/ci.yml` (its "Check that every page was exported" step).
 
 ### Add an information section
-1. In `src/app/information/page.js` (or `src/app/italy/page.js`), add an `<AccordionItem title=… content={…} />`;
-   `disableToggle` renders it always open, as a plain heading with no button. A collapsed panel is `inert`, so its
-   links stay out of the tab order.
+1. In `src/app/information/page.js`, add an `<AccordionItem title=… content={…} />`; `disableToggle` renders it
+   always open, as a plain heading with no button. A collapsed panel is `inert`, so its links stay out of the tab order.
+   On `src/app/italy/page.js`, a section is an `<h2 className="italy__section-heading">` and its paragraphs inside one
+   of the `.italy__content` columns, not between them; a photo carousel is an `<ImageGallery>` between columns, with
+   its slides in `src/app/italy/galleries.js`, and the column above it takes `italy__content--gallery-intro` (less
+   space below, so the gallery reads as part of that text).
 2. Styles for the section go in that page's SCSS file; accordion styles in `src/app/styles/accordion-item.scss`.
 
 ### Change a design element
@@ -141,7 +146,8 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
   state is a modifier (`.gallery__caption--active`, `.floating-label-input__field--filled`) or its attribute
   (`[aria-expanded]`).
   No utility classes: shared styles are mixins in `_variables.scss` (`heading-type`, `focus-ring`).
-- Imports use the `@components/`, `@styles/` and `@hooks/` aliases, not relative paths.
+- Imports use the `@components/`, `@styles/` and `@hooks/` aliases, and `@/` (`src/`) for anything else, such as
+  `@/app/italy/galleries`; not relative paths.
 - JavaScript only, no TypeScript; no CSS Modules or CSS-in-JS.
 
 ### Accessibility in this project
@@ -149,19 +155,27 @@ Stack-specific practice from the official docs is in `.claude/rules/`, which loa
 - **Focus:** `base.scss` gives every `:focus-visible` element the `focus-ring` mixin from `_variables.scss` (a white
   outline over a black band, visible on the black pages and on the gallery's tan background). Never set
   `outline: none`. Where focus lands on a visually hidden control, put `@include focus-ring` on its label (the RSVP
-  radios, which are hidden with `opacity: 0`, not `display: none`, so they stay in the tab order).
+  radios, which are hidden with `opacity: 0`, not `display: none`, so they stay in the tab order). `ImageGallery`'s
+  carousel (focusable for its arrow keys) spans the screen, so `image-gallery.scss` draws the same black and white
+  inside its edges instead (`&__slider:focus-visible`).
 - **Announcements:** `LiveRegion` (`src/app/components/live-region.js`) renders `role="status"` (or `role="alert"`
   with `urgent`). Render it always and put the message inside, since screen readers may not announce a region that
   appears with its message. The RSVP error uses it; the RSVP thank-you moves focus to its heading (`tabIndex={-1}`).
+  `ImageGallery` announces each slide change in one (hidden), setting its text through `ref` so React doesn't
+  re-render mid-slide, and turns off Swiper's own `aria-live`, which in loop mode reads the slide being moved.
 - **Reduced motion:** a `prefers-reduced-motion: reduce` rule at the top of `base.scss` makes every CSS transition and
   animation finish at once, including a `transition-duration` set inline from JavaScript, so new CSS motion needs
   nothing extra. Motion CSS can't reach (`requestAnimationFrame`, the Web Animations API) reads
-  `usePrefersReducedMotion()` (`@hooks/use-prefers-reduced-motion`); the gallery also sets Swiper's `speed` to 0 with
-  it, so slides switch without waiting for `transitionend`.
-- No other shared helpers yet: no visually hidden class or skip link.
+  `usePrefersReducedMotion()` (`@hooks/use-prefers-reduced-motion`); both Swiper carousels (the gallery page and
+  `ImageGallery`) also set Swiper's `speed` to 0 with it, so slides switch without waiting for `transitionend`.
+  `ParallaxBreak`'s fixed image layer becomes `position: absolute` under reduced motion, so it scrolls with the page.
+- **Visually hidden text:** the `visually-hidden` mixin (`_variables.scss`, clip-based) hides text from sight but not
+  from screen readers; `ImageGallery` uses it for its arrow-key hint and its slide announcements. No skip link yet.
 - Form fields use `FloatingLabelInput`, which ties each `<label>` to its input by `id` (`input-<name>`).
-- The design is dark only (black background); `base.scss` sets `color-scheme: dark` under
-  `prefers-color-scheme: dark`. There is no contrast check.
+- The design is dark (black background) except `/italy`, which is light: `$chocolate` text on `$champagne` (about
+  11.7:1), with `color-scheme: light` on the page and `html:has(.italy)`, and `body:has(.italy)` champagne so overscroll
+  matches (`italy.scss`). `base.scss` sets `color-scheme: dark` under `prefers-color-scheme: dark`. There is no
+  contrast check.
 
 <!-- init-project:agents v2 — managed by /init-project; re-sync replaces everything up to the end marker, so put project notes below it -->
 ## Agents
@@ -197,7 +211,15 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
 
 ## Gotchas
 
-- **`/italy` isn't linked from any page**: guests reach it by direct URL.
+- **`/italy` isn't linked from any page**: guests reach it by direct URL. Since #48 it has no back link, footer or
+  links of any kind. Its text sits in `.italy__content` columns, with six `ImageGallery`s and two `ParallaxBreak`s
+  between them; the gallery photos are listed in `src/app/italy/galleries.js` (4:3 WebP, 1200×900).
+- **`/italy` is the only light page** (chocolate on champagne): a shared style that renders there takes
+  `currentColor`, not `$white`, as `ImageGallery`'s progress bar does. `.cta` and `.back-link` in `base.scss` are
+  still white on black.
+- **`ParallaxBreak` is a fixed image layer clipped by `clip-path: inset(0)` on its section** (iOS Safari ignores
+  `background-attachment: fixed`). A `transform`, `filter` or `perspective` on any ancestor turns `position: fixed`
+  into absolute and breaks it; place it as a direct child of `.italy`, outside the content column.
 - **The Italy page broke the build once** and was removed (commit c9eaa33) before it came back in #22: run
   `npm run build`, not only `npm run dev`, before a PR.
 - **`package.json` `overrides` forces `minimatch` ^11.0.1 under `@typescript-eslint/typescript-estree`** (lint only):

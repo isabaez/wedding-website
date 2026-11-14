@@ -4,13 +4,17 @@
 // https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19).
 //   urgent={false} (default): role="status", announced politely after what is being read (confirmations, progress).
 //   urgent: role="alert", announced at once (errors that stop the user).
+//   ref: the region's element, for a caller that sets its text directly instead of through children (ImageGallery,
+//   which must not re-render mid-slide).
 export default function LiveRegion({
   urgent = false,
   className,
-  children
+  children,
+  ref
  }) {
   return (
     <div
+      ref={ref}
       role={urgent ? "alert" : "status"}
       className={className}
     >

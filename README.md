@@ -25,11 +25,11 @@ Fonts are loaded from `src/app/fonts/` with [`next/font/local`](https://nextjs.o
 ```text
 src/app/              App Router routes: page.js (home), information/, italy/, gallery/, registry/, rsvp/
 src/app/layout.js     root layout: fonts, base styles and site metadata (title, description, noindex)
-src/app/components/   navigation, footer, accordion item, floating-label input, RSVP form, live region
+src/app/components/   navigation, footer, accordion item, floating-label input, RSVP form, live region, image gallery, parallax break
 src/app/hooks/        React hooks (prefers-reduced-motion)
 src/app/styles/       one SCSS file per page or component; _variables.scss is @use'd into all of them
 src/app/fonts/        local font files
-public/               images served as-is (gallery photos, icons, villa photos)
+public/               images served as-is (gallery photos, Italy page photos, icons)
 next.config.mjs       static export, Sass options, unoptimized images
 .github/workflows/    ci.yml: lint and build on PRs and beta; nextjs.yml: deploy to GitHub Pages; security.yml
 CNAME                 the custom domain for GitHub Pages

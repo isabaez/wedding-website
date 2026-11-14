@@ -1,0 +1,106 @@
+// Full-width image carousel (image-gallery.js). Place it outside any max-width column so it can span the screen.
+.image-gallery {
+  // Keep --gap in step with GAP_SMALL / GAP_LARGE in image-gallery.js (Swiper's spaceBetween).
+  --gap: 16px;
+  --peek: 2.4rem;
+  width: 100%;
+
+  @media screen and (min-width: 1025px) {
+    --gap: 32px;
+  }
+
+  // The carousel takes focus for its arrow keys. It spans the screen, so an outline outside it would be cut off at the
+  // edges: the focus-ring colours (a white line over a black band) are drawn inside it instead, above the slides.
+  &__slider:focus-visible {
+    outline-color: $black;
+    outline-offset: -2px;
+    box-shadow: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      z-index: 2;
+      border: 2px solid $white;
+      pointer-events: none;
+    }
+  }
+
+  // Slides stretch to the tallest one (Swiper sets height: 100%, which stops the stretch), so every slide reserves
+  // the same caption row and the carousel's height doesn't change between slides with and without captions.
+  // Never turn on Swiper's autoHeight.
+  &__slide.swiper-slide {
+    height: auto;
+    // Up to 1024px: one full slide, the previous and next ones peeking in by --peek.
+    width: calc(100% - 2 * (var(--gap) + var(--peek)));
+
+    // Above 1024px: three full slides, two gaps between them and one at each screen edge.
+    @media screen and (min-width: 1025px) {
+      width: calc((100% - 4 * var(--gap)) / 3);
+    }
+
+    // Clicking a neighbouring slide centres it (slideToClickedSlide); show that it's clickable.
+    &.swiper-slide-prev,
+    &.swiper-slide-next {
+      cursor: pointer;
+    }
+  }
+
+  &__figure {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__caption {
+    padding-top: 1.2rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-align: center;
+    color: inherit;
+    transition: opacity .3s ease;
+
+    // Up to 1024px only the centre slide's caption shows: the neighbours' would be cut off at the screen edges. It
+    // fades rather than collapses, so the caption row stays reserved and the height doesn't change.
+    @media screen and (max-width: 1024px) {
+      .image-gallery__slide:not(.swiper-slide-active) & {
+        opacity: 0;
+      }
+    }
+  }
+
+  // For screen readers: the key hint (the carousel's description) and the live region that announces each slide.
+  &__hint,
+  &__announcement {
+    @include visually-hidden;
+  }
+
+  // Centred under the slides, at most 300px wide.
+  &__progress {
+    position: relative;
+    width: calc(100% - 2 * (var(--gap) + var(--peek)));
+    max-width: 300px;
+    height: 1px;
+    margin: 2.4rem auto 0;
+    overflow: hidden;
+    // The track is the text colour (chocolate on the Italy page) at 30% opacity; the fill is the solid text colour.
+    // The bar is decorative (aria-hidden): screen readers get each slide's "n of m" instead.
+    background: color-mix(in srgb, currentColor 30%, transparent);
+  }
+
+  &__progress-fill {
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    transform-origin: left center;
+    transition: transform .3s ease;
+  }
+}
