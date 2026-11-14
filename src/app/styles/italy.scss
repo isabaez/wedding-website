@@ -1,13 +1,29 @@
+// Champagne background, chocolate text: overscroll and the area around the page show champagne too, not the black
+// of the other pages, and native controls and scrollbars use their light look.
+html:has(.italy) {
+  color-scheme: light;
+}
+
+body:has(.italy) {
+  background: $champagne;
+}
 
 .italy {
+  // Horizontal padding lives on the header and content sections, not here, so the image gallery can span the screen.
+  --page-padding: 3rem;
   min-height: 100svh;
-  padding: 6rem 3rem;
+  padding-block: 6rem;
+  background: $champagne;
+  color: $chocolate;
+  color-scheme: light;
 
   @media screen and (min-width: 1024px) {
-    padding: 8rem 6rem;
+    --page-padding: 6rem;
+    padding-block: 8rem;
   }
 
   &__header {
+    padding-inline: var(--page-padding);
     font-size: 6rem;
     text-align: center;
     letter-spacing: .2rem;
@@ -18,18 +34,18 @@
   }
 
   &__content {
-    max-width: 600px;
+    max-width: calc(600px + 2 * var(--page-padding));
     margin: 0 auto;
+    padding: 6rem var(--page-padding);
     font-size: 1.2rem;
     line-height: 1.6;
     letter-spacing: -.02rem;
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 6rem 0;
 
     @media screen and (min-width: 1024px) {
-      padding: 8arem 0;
+      padding-block: 8rem;
       gap: 60px;
     }
   }
@@ -45,7 +61,3 @@
     }
   }
 }
-
-
-
-

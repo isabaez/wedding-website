@@ -15,7 +15,8 @@
     transform: translateX(-50%);
     width: 35px;
     height: .5px;
-    background: $white;
+    // Follows the text colour: white on the black pages, chocolate on /italy.
+    background: currentColor;
   }
 
   &__heading {
