@@ -20,7 +20,7 @@
   "devDependencies": {
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
-    "sass": "^1.108.0"
+    "sass": "^1.108.1"
   },
   "overrides": {
     "@typescript-eslint/typescript-estree": {
