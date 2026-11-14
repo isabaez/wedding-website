@@ -4,16 +4,16 @@ import "@styles/navigation.scss";
 export default function Navigation() {
 
   return (
-    <nav className="Navigation">
-      <ul className="Navigation__list">
-        <li className="Navigation__item">
+    <nav className="navigation">
+      <ul className="navigation__list">
+        <li className="navigation__item">
           <Link href="/information">Information</Link>
         </li>
-        <li className="Navigation__item">
+        <li className="navigation__item">
           <Link href="/gallery">Gallery</Link>
         </li>
-        <li className="Navigation__item">
-          <Link href="/registry">Registry</Link>
+        <li className="navigation__item">
+          <Link href="/rsvp">RSVP</Link>
         </li>
       </ul>
     </nav>

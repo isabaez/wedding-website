@@ -18,19 +18,31 @@
     background: $white;
   }
 
+  &__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // The title used to sit inside a <button>, which resets letter-spacing; keep that for always-open items too.
+    letter-spacing: normal;
+  }
+
   &__toggle {
     position: relative;
     background: none;
     border: none;
-    outline: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // The script title's descenders and swashes reach about 5px past the button box.
+    &:focus-visible {
+      @include focus-ring(6px);
+    }
   }
 
   &__title {
-    // font-family: $sansSerif;
+    @include heading-type;
     font-size: 3.8rem;
 
     &:first-child {
@@ -50,17 +62,26 @@
       width: 100%;
       transition: transform 0.5s ease;
 
-      .is-open & {
+      [aria-expanded="true"] & {
         transform: scaleY(-1);
       }
     }
   }
 
   &__content-wrapper {
-    width: 100%;
+    // overflow: hidden clips the height animation; 4px of inline padding (cancelled by the negative margins, so the
+    // content keeps its width) leaves room for the focus ring of a link that spans a full line.
+    width: calc(100% + 8px);
+    margin-inline: -4px;
+    padding-inline: 4px;
     overflow: hidden;
     transition: height 0.3s ease-out;
     height: 0;
+
+    &--static {
+      height: auto;
+      transition: none;
+    }
   }
 
   &__content {
@@ -88,8 +109,5 @@
       }
     }
 
-    // .is-open & {
-    //   padding: 1rem 0;
-    // }
   }
 }

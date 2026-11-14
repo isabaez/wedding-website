@@ -24,6 +24,13 @@ const prairieSans = localFont({
 export const metadata = {
   title: "Uri & Brianna's Wedding - May 2, 2026",
   description: "Wedding details, dress code, registry, RSVP form, and more!",
+  // Unlisted: shareable by link, kept out of search results, images included
+  // (renders <meta name="robots" content="noindex, nofollow, noimageindex">).
+  robots: {
+    index: false,
+    follow: false,
+    noimageindex: true,
+  },
 };
 
 export default function RootLayout({ children }) {

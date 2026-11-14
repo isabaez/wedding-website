@@ -11,8 +11,14 @@ export default function FloatingLabelInput({
  }) {
   const [inputValue, setInputValue] = useState(value || '');
 
-  const handleInputChange = (e) => {
-    const { value } = e.target;
+  const fieldClassName = (modifier) => [
+    'floating-label-input__field',
+    modifier && `floating-label-input__field--${modifier}`,
+    inputValue && 'floating-label-input__field--filled',
+  ].filter(Boolean).join(' ');
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
     setInputValue(value);
   };
 
@@ -21,7 +27,7 @@ export default function FloatingLabelInput({
       { type === 'textarea' ? (
         <textarea
           id={'input-'+ name}
-          className={inputValue ? 'filled' : ''} 
+          className={fieldClassName('textarea')}
           name={name}
           value={inputValue} 
           onChange={handleInputChange} 
@@ -32,7 +38,7 @@ export default function FloatingLabelInput({
       ) : (
         <input 
           id={'input-'+ name}
-          className={inputValue ? 'filled' : ''} 
+          className={fieldClassName()}
           type={type} 
           name={name}
           value={inputValue} 
@@ -44,7 +50,7 @@ export default function FloatingLabelInput({
       { label && (
         <label 
           htmlFor={'input-'+ name}
-          className={inputValue ? 'filled' : ''}
+          className="floating-label-input__label"
         >
           {label}
         </label>
