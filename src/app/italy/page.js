@@ -1,25 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
-import Footer from "@components/footer";
 import AccordionItem from "@components/accordion-item";
+import ImageGallery from "@components/image-gallery";
 import "@styles/italy.scss";
 
-export default function ItalyPage() {
+// Placeholder photos until the gallery's images are chosen (#48); new ones go in public/ as compressed 5:4 .webp.
+const GALLERY_SLIDES = [
+  {
+    src: "/lenka.webp",
+    alt: "Villa Lenka at dusk: a lit, two-storey ochre villa behind a gravel path lined with lawns and potted flowers",
+    caption: "Villa Lenka",
+  },
+  {
+    src: "/bernardini.webp",
+    alt: "Borgo Bernardini from above: terracotta-roofed buildings beside a long pool, surrounded by gardens",
+    caption: "Borgo Bernardini",
+  },
+];
 
+export default function ItalyPage() {
   return (
     <div className="italy">
-      <Link
-        href="/"
-        className="back-link"
-      >
-        <Image
-          className="back-link__image"
-          src="/spade-white.png"
-          alt=""
-          width={100}
-          height={100}
-        /> Home
-      </Link>
       <h1 className="italy__header">
         What is Happening in Italy?
       </h1>
@@ -136,7 +137,14 @@ export default function ItalyPage() {
           }
         >
         </AccordionItem>
+      </div>
 
+      <ImageGallery
+        slides={GALLERY_SLIDES}
+        label="The villas"
+      />
+
+      <div className="italy__content">
         <AccordionItem
           title="Dress Code"
           disableToggle={true}
@@ -155,7 +163,6 @@ export default function ItalyPage() {
         </AccordionItem>
 
       </div>
-      <Footer />
     </div>
   );
 }

@@ -10,10 +10,13 @@ paths:
   and has no `role="region"` (8 panels on /information; the APG advises against regions past about 6). Enter and
   Space toggle it. Always-open items (`disableToggle`) have no button, only the heading.
   Source: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/ (checked 2026-11-13)
-- **Carousel** (the Swiper gallery): previous/next controls are native `<button>`s; the container has
-  `aria-roledescription="carousel"` and a label without the word "carousel"; each slide is `role="group"` with
-  `aria-roledescription="slide"` and a name. If it auto-rotates, add a pause button first in tab order and stop on
-  focus or hover.
+- **Carousel** (the Swiper carousels: the /gallery page and `image-gallery.js`): the container has
+  `aria-roledescription="carousel"` and a label without the word "carousel" (`ImageGallery` also gives it
+  `role="region"`, which the label needs); each slide is `role="group"` with `aria-roledescription="slide"` and a
+  name. The /gallery page has native previous/next `<button>`s. `ImageGallery` has none, by the dev's choice (#48):
+  arrow keys move it, and clicking a side slide centres it (`slideToClickedSlide`), the single-pointer alternative to
+  swiping (WCAG 2.5.7). Keep Swiper's Keyboard `pageUpDown` off so Page Up / Page Down still scroll the page. If a
+  carousel auto-rotates, add a pause button first in tab order and stop on focus or hover.
   Source: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ (checked 2026-11-13)
 - **Focus indicator**: every `:focus-visible` element gets the `focus-ring` mixin (`_variables.scss`, applied in
   `base.scss`): a white outline over a black band, so it holds 3:1 on black and on light images. Never set

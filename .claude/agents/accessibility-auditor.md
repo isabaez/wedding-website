@@ -105,7 +105,7 @@ medium = an AA failure elsewhere; low = best practice.
 
 <!-- Filled in by /init-project (Step 3). The app URL(s) and how the dev starts the app (you never do); how the theme is chosen (OS preference, a toggle, an attribute or storage key); target viewports and devices; the minimum target size if above 24px; any contrast or lint script that's safe to run; pages worth checking. Facts only; no secret values; nothing sensitive if the repo is public. -->
 - App: http://localhost:3000, started by the dev with `npm run dev` (you never start it).
-- Theme: one dark design (black background from `$background` in `src/app/styles/_variables.scss`); `base.scss` sets `color-scheme: dark` under `prefers-color-scheme: dark`. No toggle.
+- Theme: dark (black background from `$background` in `src/app/styles/_variables.scss`; `base.scss` sets `color-scheme: dark` under `prefers-color-scheme: dark`) except `/italy`, which is light: `$chocolate` text on `$champagne` with `color-scheme: light` (`src/app/styles/italy.scss`). No toggle.
 - Viewports: 375, 768, 1280 (SCSS breakpoints are 375, 450, 768 and 1024).
-- Pages: `/`, `/information`, `/italy`, `/gallery` (Swiper carousel), `/registry`, `/rsvp` (form in `src/app/components/rsvp-form.js`).
+- Pages: `/`, `/information`, `/italy` (light theme; `ImageGallery` carousel in `src/app/components/image-gallery.js`: one slide up to 1024px, three above, no previous/next buttons by design), `/gallery` (Swiper carousel), `/registry`, `/rsvp` (form in `src/app/components/rsvp-form.js`).
 - Fonts: Hamilton Script (`$serif`, headings) and Prairie Sans (`$sansSerif`), loaded with `next/font/local` in `src/app/layout.js`.
