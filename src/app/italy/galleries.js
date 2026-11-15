@@ -52,8 +52,7 @@ export const RECOVERY_SLIDES = [
   { src: "/recovery-4.webp", alt: "A slice of pizza and a spritz on a pink toile tablecloth" },
   { src: "/recovery-5.webp", alt: "Sun loungers and a white gazebo beside a pool" },
   { src: "/recovery-6.webp", alt: "The pool and gardens beside the villas, seen from above" },
-  { src: "/recovery-7.webp", alt: "A backgammon board and two drinks on the edge of a pool" },
-  { src: "/recovery-8.webp", alt: "A hand holding a spritz over a pool" },
+  { src: "/recovery-7.webp", alt: "A backgammon board and two drinks on the edge of a pool" }
 ];
 
 export const AMENITIES_SLIDES = [
