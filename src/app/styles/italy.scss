@@ -156,6 +156,19 @@ body:has(.italy) {
     }
   }
 
+  // Links in the text (the dress code's Pinterest board): black and underlined, never the browser's blue, so the
+  // underline, not colour alone, marks them as links.
+  &__link {
+    color: $black;
+    text-decoration: underline;
+  }
+
+  // The villas' amenities: a list for screen readers, one centred line each like the rest of the column, no bullets.
+  &__amenities {
+    padding: 0;
+    list-style: none;
+  }
+
   // Dress code colour swatches, two rows of four: 60px squares 10px apart below 768px, 80px squares 20px apart from
   // there. Below 330px four 60px squares don't fit beside the page padding, so they go two to a row.
   &__palette {

@@ -2,12 +2,12 @@
 // a slide with caption: "…".
 
 export const LENKA_SLIDES = [
+  { src: "/lenka-6.webp", alt: "Guests at a round table on the terrace in front of the villa at sunset" },
   { src: "/lenka-1.webp", alt: "Villa Lenka's yellow facade lit at dusk, with a gravel path between lawns and potted geraniums" },
   { src: "/lenka-2.webp", alt: "The villa's ochre facade in evening sun, with white umbrellas over the terrace" },
   { src: "/lenka-3.webp", alt: "A clipped jasmine arch over a gravel path in the garden" },
   { src: "/lenka-4.webp", alt: "A vintage white convertible parked on gravel beside terracotta urns" },
   { src: "/lenka-5.webp", alt: "The villa and its grounds from above, with cypress trees and a shaped pond" },
-  { src: "/lenka-6.webp", alt: "Guests at a round table on the terrace in front of the villa at sunset" },
   { src: "/lenka-7.webp", alt: "A wrought-iron garden gate between brick pillars topped with urns, under a willow" },
   { src: "/lenka-8.webp", alt: "Brick gate pillars with urns between round clipped shrubs, under a weeping willow" },
   { src: "/lenka-9.webp", alt: "A view through tall windows to a fountain and a cypress-lined garden at sunset" },
@@ -46,12 +46,12 @@ export const RECEPTION_SLIDES = [
 ];
 
 export const RECOVERY_SLIDES = [
+  { src: "/recovery-6.webp", alt: "The pool and gardens beside the villas, seen from above" },
   { src: "/recovery-1.webp", alt: "Swimmers in yellow-striped rings in a pool, seen from above" },
   { src: "/recovery-2.webp", alt: "A red and white gelato cart on a lawn" },
   { src: "/recovery-3.webp", alt: "A red pizza truck with a wood-fired oven beside a yellow villa" },
   { src: "/recovery-4.webp", alt: "A slice of pizza and a spritz on a pink toile tablecloth" },
   { src: "/recovery-5.webp", alt: "Sun loungers and a white gazebo beside a pool" },
-  { src: "/recovery-6.webp", alt: "The pool and gardens beside the villas, seen from above" },
   { src: "/recovery-7.webp", alt: "A backgammon board and two drinks on the edge of a pool" }
 ];
 
