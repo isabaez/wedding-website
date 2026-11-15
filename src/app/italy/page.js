@@ -1,6 +1,6 @@
 import ImageGallery from "@components/image-gallery";
 import ParallaxBreak from "@components/parallax-break";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import {
   LENKA_SLIDES,
   BORGO_SLIDES,
@@ -23,17 +23,36 @@ const PALETTE_COLORS = [
   "#262626",
 ];
 
+// The banner above the title, shown below 768px only (italy.scss). From 768px the <picture> swaps in a 1×1 transparent
+// GIF, so wider screens never download the photo. Decorative: the title right below it says where we are.
+// mobile-banner-2.webp is a backup photo for the same spot.
+const BANNER_HIDDEN_SOURCE = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+const { props: bannerProps } = getImageProps({
+  src: "/mobile-banner.webp",
+  alt: "",
+  width: 1600,
+  height: 900,
+  sizes: "100vw",
+  loading: "eager",
+  fetchPriority: "high",
+});
+
 // Text sits in .italy__content columns (700px wide at most); galleries and the parallax breaks go between them, as
 // direct children of .italy, so they span the screen.
 export default function ItalyPage() {
   return (
     <main className="italy">
+      <picture className="italy__banner">
+        <source media="(min-width: 768px)" srcSet={BANNER_HIDDEN_SOURCE} />
+        <img {...bannerProps} alt="" className="italy__banner-image" />
+      </picture>
+
       {/* Three lines up to 1023px, two from 1024px ("ITALY" on its own); the spaces between them keep the heading's
           text one sentence. */}
       <h1 className="italy__header">
         <span className="italy__header-line">You&apos;re invited to</span>{" "}
         <span className="italy__header-line">our wedding in</span>{" "}
-        <span className="italy__header-line italy__header-line--caps">ITALY</span>
+        <span className="italy__header-line italy__header-line--caps">ITALY!</span>
       </h1>
 
       <div className="italy__content">
@@ -61,6 +80,10 @@ export default function ItalyPage() {
           All of our guests will be staying on-site at either Villa Lenka or Borgo Bernardini, where all the wedding
           events will be taking place. The Coselli Estate is located 10 minutes outside of Lucca, Italy, about 1 hour
           from Florence and 20 minutes from Pisa (yes, The Leaning Tower. More on that later...).
+        </p>
+        <p>
+          We recommend flying into Pisa International Airport (PSA): it&apos;s the closest airport to the villas, and our
+          shuttle will pick you up there.
         </p>
       </div>
 
@@ -170,7 +193,7 @@ export default function ItalyPage() {
           As our gift to you, we&apos;re committed to providing the best and easiest vacation possible. This includes: a
           shuttle from Pisa Airport to the villas, a welcome gift, a kitchen stocked for 24-hour snacks and wine,
           breakfasts at the villa, the welcome aperitivo, the post-ceremony cocktail hour, the reception dinner,
-          afterparty, and 70% of your stay at the villas.
+          afterparty, an optional nanny during the ceremony, and 70% of your stay at the villas.
         </p>
       </div>
 

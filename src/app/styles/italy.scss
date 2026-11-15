@@ -22,6 +22,25 @@ body:has(.italy) {
     padding-block: 8rem;
   }
 
+  // Mobile only: a full-width 16:9 photo flush with the top of the screen (pulled up over the page's top padding),
+  // above the title. From 768px it's hidden, and page.js serves a 1×1 GIF in its place so the photo isn't downloaded.
+  &__banner {
+    display: block;
+    margin: -6rem 0 4.8rem;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__banner-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
   &__header {
     padding-inline: var(--page-padding);
     // Small enough that the longest line, "You're invited to" (about 4.85 times the font size), fits between the

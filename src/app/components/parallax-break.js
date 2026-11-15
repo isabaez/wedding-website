@@ -34,6 +34,9 @@ export default function ParallaxBreak({
           alt={alt}
           fill={true}
           sizes="100vw"
+          // Eager, not lazy: a lazy image starts loading only as the break nears the screen, so a fast scroll showed
+          // the empty window before the photo arrived.
+          loading="eager"
           style={{ objectPosition }}
         />
         {heading && <div className="parallax-break__underlay" />}
