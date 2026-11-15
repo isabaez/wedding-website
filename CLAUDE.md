@@ -87,7 +87,8 @@ same workflow for people. A hook (`.claude/hooks/git-guard.py`) blocks the comma
   only files there), loaded with `next/font/local` in `layout.js` and exposed as `--font-hamilton-script` /
   `--font-prairie-sans` (`$serif` / `$sansSerif` in `_variables.scss`).
 - **Images** sit in `public/` and render through `next/image` with `images.unoptimized: true` (static export has no
-  image optimizer), so files ship as they are.
+  image optimizer), so files ship as they are. Inside a `<picture>` (the `/italy` mobile banner), spread
+  `getImageProps()` onto a plain `<img>`.
 - **Client components** (`'use client'`): `rsvp-form`, `accordion-item`, `image-gallery`, the gallery and RSVP pages.
   State is local component state only; the RSVP form sends `FormData` to the Web3Forms API and shows a success or
   error message.
@@ -212,14 +213,17 @@ Fix each finding or list it as deferred in the PR body. Prefer these agents over
 ## Gotchas
 
 - **`/italy` isn't linked from any page**: guests reach it by direct URL. Since #48 it has no back link, footer or
-  links of any kind. Its text sits in `.italy__content` columns, with six `ImageGallery`s and two `ParallaxBreak`s
-  between them; the gallery photos are listed in `src/app/italy/galleries.js` (4:3 WebP, 1200×900).
+  links of any kind. Below 768px a decorative 16:9 banner (`public/mobile-banner.webp`, 1600×900) sits above the
+  title; from 768px its `<picture>` swaps in a 1×1 GIF, so wider screens never download it (`mobile-banner-2.webp` is
+  a spare for the same spot). Its text sits in `.italy__content` columns, with six `ImageGallery`s and two
+  `ParallaxBreak`s between them; the gallery photos are listed in `src/app/italy/galleries.js` (4:3 WebP, 1200×900).
 - **`/italy` is the only light page** (chocolate on champagne): a shared style that renders there takes
   `currentColor`, not `$white`, as `ImageGallery`'s progress bar does. `.cta` and `.back-link` in `base.scss` are
   still white on black.
 - **`ParallaxBreak` is a fixed image layer clipped by `clip-path: inset(0)` on its section** (iOS Safari ignores
   `background-attachment: fixed`). A `transform`, `filter` or `perspective` on any ancestor turns `position: fixed`
-  into absolute and breaks it; place it as a direct child of `.italy`, outside the content column.
+  into absolute and breaks it; place it as a direct child of `.italy`, outside the content column. Its image loads
+  eagerly (`loading="eager"`): a lazy one showed the empty window on a fast scroll.
 - **The Italy page broke the build once** and was removed (commit c9eaa33) before it came back in #22: run
   `npm run build`, not only `npm run dev`, before a PR.
 - **`package.json` `overrides` forces `minimatch` ^11.0.1 under `@typescript-eslint/typescript-estree`** (lint only):
