@@ -11,6 +11,18 @@ import {
 } from "@/app/italy/galleries";
 import "@styles/italy.scss";
 
+// The dress code's recommended colours, shown as swatches in two rows of four, sampled from the palette image.
+const PALETTE_COLORS = [
+  "#708289",
+  "#50461b",
+  "#4f2608",
+  "#320605",
+  "#b88c8c",
+  "#6f2332",
+  "#9d5a22",
+  "#262626",
+];
+
 // Text sits in .italy__content columns (700px wide at most); galleries and the parallax breaks go between them, as
 // direct children of .italy, so they span the screen.
 export default function ItalyPage() {
@@ -138,6 +150,13 @@ export default function ItalyPage() {
           length evening dress. Men may wear a tuxedo or dark suit with tie and dress shoes.</p>
         <p>For the recovery day, the dress code is casual.</p>
         <p>Recommended color pallete:</p>
+        <ul className="italy__palette" aria-label="Recommended colors">
+          {PALETTE_COLORS.map((hex, index) => (
+            <li key={index} className="italy__swatch" style={{ backgroundColor: hex }}>
+              <span className="italy__swatch-label">{hex}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <ParallaxBreak
