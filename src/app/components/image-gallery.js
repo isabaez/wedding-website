@@ -14,8 +14,8 @@ const MIN_LOOP_SLIDES = 6;
 
 // The gap between slides, in px. Keep in step with --gap in image-gallery.scss (Swiper's spaceBetween takes a number,
 // not a CSS variable); the breakpoint matches its media query.
-const GAP_SMALL = 16;
-const GAP_LARGE = 32;
+const GAP_SMALL = 20;
+const GAP_LARGE = 20;
 const LARGE_BREAKPOINT = 1025;
 const BREAKPOINTS = { [LARGE_BREAKPOINT]: { spaceBetween: GAP_LARGE } };
 

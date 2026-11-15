@@ -4,10 +4,14 @@
 // min-height, not height: a long heading at high zoom or wide text spacing grows the break instead of being clipped.
 .parallax-break {
   position: relative;
-  min-height: 100vh;
+  min-height: 85svh;
   clip-path: inset(0);
   display: grid;
   place-items: center;
+
+  @media screen and (min-width: 768px) {
+    min-height: 100svh;
+  }
 
   &__layer {
     position: fixed;
