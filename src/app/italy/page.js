@@ -17,7 +17,7 @@ const PALETTE_COLORS = [
   "#50461b",
   "#4f2608",
   "#320605",
-  "#b88c8c",
+  "#FBD3D9",
   "#6f2332",
   "#9d5a22",
   "#262626",
@@ -57,18 +57,16 @@ export default function ItalyPage() {
 
       <div className="italy__content">
         <p>
-          Nearly two years ago, I proposed to Brianna in New York. Before we had even started searching for venues, Brianna 
-          came across photos of Villa Lenka in an online magazine, and we instantly knew it would to be the location of 
-          our wedding.
+          Nearly two years ago, I proposed to Brianna in New York. Before we even started searching for venues, Brianna
+          came across photos of Villa Lenka, and we immediately knew it would be the location of our wedding.
         </p>
         <p>
           When we learned that it had a two-year waitlist (!), we decided that we would enjoy a long and beautiful
-          engagement while planning the wedding of our dreams. Along the way, we threw a backyard party for our
-          civil union to include extended family in our celebrations, but we&apos;ve always been counting down the days until 
-          the real deal.
+          engagement while planning the wedding of our dreams. Along the way, we threw a backyard party to include our
+          extended family in the celebrations, but we&apos;ve been counting down the days until the real thing.
         </p>
         <p>
-          You&apos;re invited to our very intimate three-night nuptial celebrations in the historic 17th-century Coselli
+          You&apos;re invited to join our intimate three-night nuptial celebrations in the historic 17th-century Coselli
           villas. There&apos;s only room for 35, and we&apos;d love for you to spend all three days with us as one big family.
         </p>
 
@@ -81,10 +79,7 @@ export default function ItalyPage() {
           events will be taking place. The Coselli Estate is located 10 minutes outside of Lucca, Italy, about 1 hour
           from Florence and 20 minutes from Pisa (yes, The Leaning Tower. More on that later...).
         </p>
-        <p>
-          We recommend flying into Pisa International Airport (PSA): it&apos;s the closest airport to the villas, and our
-          shuttle will pick you up there.
-        </p>
+        <p>We recommend flying into Pisa International Airport (PSA).</p>
       </div>
 
       <ParallaxBreak
@@ -95,18 +90,19 @@ export default function ItalyPage() {
       <div className="italy__content italy__content--gallery-intro">
         <h2 className="italy__section-heading">The Villas</h2>
         <p>
-          19 luxurious guestrooms total, each with a private bathroom and complimentary toiletries, robe, and slippers. 
-          Other amenities include: <br/>
-          Pool with pool service <br/>
-          Beautiful grounds with ponds and gazebo<br/>
-          Daily maid service <br/>
-          Air conditioning and Wi-Fi in every room<br/>
-          Access to tennis court, soccer, and volleyball fields with equipment 
-          provided<br/>
-          Billiards table<br/>
-          Satellite TV<br/>
-          Fitness room
+          19 luxurious guestrooms, each with a private bathroom and daily maid service. You&apos;ll have access to other
+          amenities, including:
         </p>
+        <ul className="italy__amenities">
+          <li>Air conditioning and Wi-Fi in every room</li>
+          <li>Two pools</li>
+          <li>Beautiful walking grounds</li>
+          <li>Tennis court and soccer/volleyball fields with equipment</li>
+          <li>Billiards table</li>
+          <li>Satellite TV</li>
+          <li>Gym/fitness room</li>
+          <li>Cribs for your babies (upon request!) and a nanny during the ceremony</li>
+        </ul>
 
         <h3 className="italy__subheading">Villa Lenka</h3>
       </div>
@@ -136,7 +132,7 @@ export default function ItalyPage() {
         <h3 className="italy__day">2nd day: The Wedding</h3>
         <p>
           You wake in your incredible guest room and make your way to the fountains for breakfast. The Wedding ceremony
-          will take place in the late afternoon, so you&apos;ll have plenty of time to lounge, explore the grounds, take a 
+          will take place in the late afternoon, so you&apos;ll have plenty of time to relax, explore the villas, take a
           dip in the pool, or even get a round of tennis in. Following the ceremony, we&apos;ll have an
           amazing reception dinner and afterparty.
         </p>
@@ -149,8 +145,8 @@ export default function ItalyPage() {
         <p>
           Another glorious breakfast provided at the villas. We&apos;ll gather by the pool to recap the wedding day and
           catch some sun while eating gelato. In the late afternoon, we&apos;ll take a group trip to the nearby town
-          of Pisa for sightseeing and dinner. You&apos;ll get your iconic leaning tower photo before heading back to the 
-          villas for another night of being amongst the best of friends.
+          of Pisa for sightseeing and dinner. You&apos;ll get your iconic leaning tower photo before heading back to the
+          villas for another night amongst the best of friends.
         </p>
       </div>
 
@@ -160,19 +156,26 @@ export default function ItalyPage() {
         <h3 className="italy__day">4th day: Farewell and Honeymoon sendoff</h3>
         <p>
           After 3 days of celebrating, we&apos;ll unfortunately have to say arrivederci to you and the beautiful villas.
-          Words won&apos;t be able to express how grateful we are that you&apos;ve joined us for our wedding, but 
-          we&apos;ll try nonetheless. Our adventure will continue as we head off on our honeymoon, and we hope 
-          you have a safe trip to your next destination.
+          Our adventure will continue as we head off on our honeymoon, and we hope you have a safe trip to your next
+          destination.
         </p>
-        <p>Check-out time is 10am, so set your alarm.</p>
+        <p>Check-out time is 10am.</p>
 
         <h2 className="italy__section-heading">Dress Code</h2>
         <p>For the welcome aperitivo, the dress code is cocktail or semi-formal.</p>
         <p>
-          For the wedding ceremony and reception dinner, the dress code is black tie formal. Women may wear full 
-          length evening dress. Men may wear a tuxedo or dark suit with tie and dress shoes.</p>
-        <p>For the recovery day, the dress code is casual.</p>
-        <p>Recommended color pallete:</p>
+          For the wedding ceremony and reception dinner, the dress code is black tie formal: full-length evening
+          dresses, tuxedo, or black suit with tie and dress shoes.
+        </p>
+        <p>For the recovery/pool day, the dress code is casual.</p>
+        <p>
+          Check out our{" "}
+          <a href="https://pin.it/4wErKUJdt" className="italy__link">
+            Pinterest board
+          </a>{" "}
+          for inspiration.
+        </p>
+        <p>Recommended color palette:</p>
         <ul className="italy__palette" aria-label="Recommended colors">
           {PALETTE_COLORS.map((hex, index) => (
             <li key={index} className="italy__swatch" style={{ backgroundColor: hex }}>
