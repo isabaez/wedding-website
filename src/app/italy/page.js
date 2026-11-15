@@ -164,10 +164,17 @@ export default function ItalyPage() {
         <h2 className="italy__section-heading">Dress Code</h2>
         <p>For the welcome aperitivo, the dress code is cocktail or semi-formal.</p>
         <p>
-          For the wedding ceremony and reception dinner, the dress code is black tie formal. Women may wear full
-          length evening dress. Men may wear a tuxedo or black suit with tie and dress shoes.
+          For the wedding ceremony and reception dinner, the dress code is black tie formal: full-length evening
+          dresses, tuxedo, or black suit with tie and dress shoes.
         </p>
-        <p>For the recovery day, the dress code is casual.</p>
+        <p>For the recovery/pool day, the dress code is casual.</p>
+        <p>
+          Check out our{" "}
+          <a href="https://pin.it/4wErKUJdt" className="italy__link">
+            Pinterest board
+          </a>{" "}
+          for inspiration.
+        </p>
         <p>Recommended color palette:</p>
         <ul className="italy__palette" aria-label="Recommended colors">
           {PALETTE_COLORS.map((hex, index) => (

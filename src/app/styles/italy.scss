@@ -156,6 +156,13 @@ body:has(.italy) {
     }
   }
 
+  // Links in the text (the dress code's Pinterest board): black and underlined, never the browser's blue, so the
+  // underline, not colour alone, marks them as links.
+  &__link {
+    color: $black;
+    text-decoration: underline;
+  }
+
   // The villas' amenities: a list for screen readers, one centred line each like the rest of the column, no bullets.
   &__amenities {
     padding: 0;
