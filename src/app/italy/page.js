@@ -168,7 +168,7 @@ export default function ItalyPage() {
           length evening dress. Men may wear a tuxedo or black suit with tie and dress shoes.
         </p>
         <p>For the recovery day, the dress code is casual.</p>
-        <p>Recommended color pallete:</p>
+        <p>Recommended color palette:</p>
         <ul className="italy__palette" aria-label="Recommended colors">
           {PALETTE_COLORS.map((hex, index) => (
             <li key={index} className="italy__swatch" style={{ backgroundColor: hex }}>
