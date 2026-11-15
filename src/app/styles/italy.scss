@@ -137,6 +137,37 @@ body:has(.italy) {
     }
   }
 
+  // Dress code colour swatches, two rows of four: 60px squares 10px apart below 768px, 80px squares 20px apart from
+  // there. Below 330px four 60px squares don't fit beside the page padding, so they go two to a row.
+  &__palette {
+    --swatch-size: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, var(--swatch-size));
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+
+    @media screen and (min-width: 330px) {
+      grid-template-columns: repeat(4, var(--swatch-size));
+    }
+
+    @media screen and (min-width: 768px) {
+      --swatch-size: 80px;
+      gap: 20px;
+    }
+  }
+
+  &__swatch {
+    width: var(--swatch-size);
+    height: var(--swatch-size);
+  }
+
+  // The hex code, for screen readers: the swatch's colour alone isn't announced.
+  &__swatch-label {
+    @include visually-hidden;
+  }
+
   &__closing {
     @include heading-type;
     // No larger than the title on small screens.
