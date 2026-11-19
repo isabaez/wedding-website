@@ -90,8 +90,8 @@ export default function ItalyPage() {
       <div className="italy__content italy__content--gallery-intro">
         <h2 className="italy__section-heading">The Villas</h2>
         <p>
-          19 luxurious guestrooms, each with a private bathroom and daily maid service. You&apos;ll have access to other
-          amenities, including:
+          19 luxurious guestrooms, each with daily maid service and a private bathroom with complimentary towels, soap,
+          robes, and slippers. You&apos;ll have access to other amenities, including:
         </p>
         <ul className="italy__amenities">
           <li>Air conditioning and Wi-Fi in every room</li>
