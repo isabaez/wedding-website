@@ -163,10 +163,16 @@ body:has(.italy) {
     text-decoration: underline;
   }
 
-  // The villas' amenities: a list for screen readers, one centred line each like the rest of the column, no bullets.
+  // The villas' amenities: each item centred like the rest of the column, with the bullet inside the line so it stays
+  // next to the centred text instead of at the column's left edge. Items sit half the paragraph gap apart, so an item
+  // that wraps stays distinguishable from the next.
   &__amenities {
     padding: 0;
-    list-style: none;
+    list-style: disc inside;
+
+    > li + li {
+      margin-top: .8rem;
+    }
   }
 
   // Dress code colour swatches, two rows of four: 60px squares 10px apart below 768px, 80px squares 20px apart from
